@@ -1,5 +1,8 @@
 package seresVivientes;
 
+import java.util.ArrayList;
+import finanzas.*;
+
 public class Cliente {
 
     private int id;
@@ -8,7 +11,19 @@ public class Cliente {
     private String direccion;
     private String ciudad;
     private long telefono;
-    private Paciente mascota;
+    private ArrayList<Paciente> Mascotas = new ArrayList<>();
+    private ArrayList<Servicio> pagoServicio = new ArrayList<>();
+
+    public Cliente(String nombre, String email, String direccion, long telefono) {
+        this.nombre = nombre;
+        this.email = email;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+
+    public Cliente(String nombre, String email, String direccion) {
+        this(nombre, email, direccion, 0);
+    }
 
     public int getId() {
         return id;
@@ -54,12 +69,20 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public Paciente getMascota() {
-        return mascota;
+    public ArrayList<Paciente> getMascotas() {
+        return Mascotas;
     }
 
-    public void setMascota(Paciente mascota) {
-        this.mascota = mascota;
+    public void setMascotas(ArrayList<Paciente> Mascotas) {
+        this.Mascotas = Mascotas;
     }
-    
+
+    public ArrayList<Servicio> getPagoServicio() {
+        return pagoServicio;
+    }
+
+    public void setPagoServicio(ArrayList<Servicio> pagoServicio) {
+        this.pagoServicio = pagoServicio;
+    }
+
 }
