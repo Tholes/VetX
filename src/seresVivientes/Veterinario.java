@@ -88,4 +88,7 @@ public class Veterinario {
         this.sueldo = sueldo;
     }
     
+    public String toString(){
+        return "Soy "+nombre+" mi email es: "+email+ " vivo en: "+direccion + " mi cargo es: "+ cargo+" tengo "+experiencia+" años de experiencia";
+    }
 }

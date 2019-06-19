@@ -74,5 +74,8 @@ public class Paciente {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+    public String toString(){
+        return "Mi nombre es "+nombre+" soy un/a "+raza+" soy de sexo: "+sexo+" nací el "+fechaNacimiento+" mi dueño es: "+dueño.getNombre();
+    }
 
 }

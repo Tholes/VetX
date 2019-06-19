@@ -14,15 +14,16 @@ public class Cliente {
     private ArrayList<Paciente> Mascotas = new ArrayList<>();
     private ArrayList<Servicio> pagoServicio = new ArrayList<>();
 
-    public Cliente(String nombre, String email, String direccion, long telefono) {
+    public Cliente(String nombre, String email,String ciudad,String direccion, long telefono) {
         this.nombre = nombre;
         this.email = email;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.ciudad = ciudad;
     }
 
-    public Cliente(String nombre, String email, String direccion) {
-        this(nombre, email, direccion, 0);
+    public Cliente(String nombre, String email,String ciudad ,String direccion) {
+        this(nombre, email, ciudad ,direccion, 0);
     }
 
     public int getId() {
@@ -73,8 +74,8 @@ public class Cliente {
         return Mascotas;
     }
 
-    public void setMascotas(ArrayList<Paciente> Mascotas) {
-        this.Mascotas = Mascotas;
+    public void setMascotas(Paciente Mascota) {
+        Mascotas.add(Mascota);
     }
 
     public ArrayList<Servicio> getPagoServicio() {
@@ -84,5 +85,8 @@ public class Cliente {
     public void setPagoServicio(ArrayList<Servicio> pagoServicio) {
         this.pagoServicio = pagoServicio;
     }
-
+    
+    public String toString(){
+        return "Soy "+ nombre + " mi correo es: "+email+" vivo en: "+direccion+" "+ciudad+ " tengo "+Mascotas.size()+" mascotas";
+    }
 }
