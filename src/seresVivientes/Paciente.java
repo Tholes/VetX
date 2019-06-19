@@ -11,7 +11,18 @@ public class Paciente {
     private Date fechaNacimiento;
     private Cliente dueño;
     private boolean estado;
-
+    
+    public Paciente(String nombre, String raza, String sexo, Cliente amo){
+        this.nombre = nombre;
+        this.raza = raza;
+        this.sexo = sexo;
+        dueño = amo;
+    }
+    
+    public Paciente(String nombre, String raza, Cliente amo){
+        this(nombre,raza,"NN",amo);
+    }
+    
     public int getId() {
         return id;
     }

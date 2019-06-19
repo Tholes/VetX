@@ -1,5 +1,5 @@
 package seresVivientes;
-
+import servicio.*;
 public class Veterinario {
 
     private int id;
@@ -10,7 +10,24 @@ public class Veterinario {
     private String especialidad;
     private int experiencia;
     private int sueldo;
-
+    
+    public Veterinario(String nombre, String email, String direccion ,String cargo, String especialidad, int experiencia, int sueldo){
+        this.nombre = nombre;
+        this.email = email;
+        this.direccion = direccion;
+        this.cargo = cargo;
+        this.especialidad = especialidad;
+        this.experiencia = experiencia;
+        this.sueldo = sueldo;
+    }
+    
+    public Veterinario(String nombre, String email, String direccion ,String cargo, int experiencia, int sueldo){
+        this(nombre,email,direccion,cargo,"general",experiencia,sueldo);
+    }
+    public Veterinario(String nombre, String email, String direccion ,String cargo,String especialidad, int experiencia){
+        this(nombre,email, direccion, cargo, especialidad, experiencia,828116);
+    }
+    
     public int getId() {
         return id;
     }
