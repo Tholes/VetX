@@ -1,14 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servicio;
 
-/**
- *
- * @author CristianH
- */
+import java.util.Date;
+
 public class Procedimiento {
-    
+    private String nombreProcedimiento;
+    private int idProcedimento;
+    private int valor;
+    private Date fechaProcedimiento;
+
+    public String getNombreProcedimiento() {
+        return nombreProcedimiento;
+    }
+
+    public void setNombreProcedimiento(String nombreProcedimiento) {
+        this.nombreProcedimiento = nombreProcedimiento;
+    }
+
+    public int getIdProcedimento() {
+        return idProcedimento;
+    }
+
+    public void setIdProcedimento(int idProcedimento) {
+        this.idProcedimento = idProcedimento;
+    }
+
+    public int getValor() {
+        return valor;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+
+    public Date getFechaProcedimiento() {
+        return fechaProcedimiento;
+    }
+
+    public void setFechaProcedimiento(Date fechaProcedimiento) {
+        this.fechaProcedimiento = fechaProcedimiento;
+    }
 }
