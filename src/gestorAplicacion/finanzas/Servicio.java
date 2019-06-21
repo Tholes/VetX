@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package finanzas;
+package gestorAplicacion.finanzas;
 
 /**
  *
  * @author CristianH
  */
-public class Factura {
+public class Servicio {
     
 }

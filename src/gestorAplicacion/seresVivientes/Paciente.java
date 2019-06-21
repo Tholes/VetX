@@ -1,4 +1,4 @@
-package seresVivientes;
+package gestorAplicacion.seresVivientes;
 
 import java.util.Date;
 

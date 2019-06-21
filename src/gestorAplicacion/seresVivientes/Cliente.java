@@ -1,7 +1,7 @@
-package seresVivientes;
+package gestorAplicacion.seresVivientes;
 
 import java.util.ArrayList;
-import finanzas.*;
+import gestorAplicacion.finanzas.*;
 
 public class Cliente {
 

@@ -1,5 +1,5 @@
-package seresVivientes;
-import servicio.*;
+package gestorAplicacion.seresVivientes;
+import gestorAplicacion.servicio.*;
 public class Veterinario {
 
     private int id;
