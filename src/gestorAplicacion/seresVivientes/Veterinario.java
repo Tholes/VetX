@@ -1,7 +1,7 @@
 package gestorAplicacion.seresVivientes;
-import gestorAplicacion.servicio.*;
 public class Veterinario {
-
+    
+    private static int cantidadVeterinarios;
     private int id;
     private String nombre;
     private String email;
@@ -11,6 +11,12 @@ public class Veterinario {
     private int experiencia;
     private int sueldo;
     
+    /*
+    El constructor de veterinario en caso de no contener el cargo, será tomado cómo un médico GENERAL, puede estar sujeto a cambios
+    ya que son muchos parametros.
+    En caso de no contener el sueldo, daremos por sentado que se gana un mínimo, no estoy seguro de ambos constructores, ya que pueden generar errores.
+    */
+    
     public Veterinario(String nombre, String email, String direccion ,String cargo, String especialidad, int experiencia, int sueldo){
         this.nombre = nombre;
         this.email = email;
@@ -19,6 +25,8 @@ public class Veterinario {
         this.especialidad = especialidad;
         this.experiencia = experiencia;
         this.sueldo = sueldo;
+        cantidadVeterinarios++;
+        this.id = cantidadVeterinarios;
     }
     
     public Veterinario(String nombre, String email, String direccion ,String cargo, int experiencia, int sueldo){

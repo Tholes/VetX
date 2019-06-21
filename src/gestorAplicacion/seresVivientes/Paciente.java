@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Paciente {
 
+    private static int cantidadPacientes;
     private int id;
     private String nombre;
     private String raza;
@@ -12,16 +13,15 @@ public class Paciente {
     private Cliente dueño;
     private boolean estado;
     
-    public Paciente(String nombre, String raza, String sexo, Cliente amo){
+    public Paciente(String nombre, String raza, String sexo, Cliente amo, Date fechaNacimiento){
         this.nombre = nombre;
         this.raza = raza;
         this.sexo = sexo;
         dueño = amo;
-    }
-    
-    public Paciente(String nombre, String raza, Cliente amo){
-        this(nombre,raza,"NN",amo);
-    }
+        this.fechaNacimiento = fechaNacimiento;
+        cantidadPacientes++;
+        this.id = cantidadPacientes;
+    } 
     
     public int getId() {
         return id;
