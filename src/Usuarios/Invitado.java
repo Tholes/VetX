@@ -1,5 +1,5 @@
 package Usuarios;
 
-public class Invitado{
-    
+public class Invitado extends Persona{
+
 }

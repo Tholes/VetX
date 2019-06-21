@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import gestorAplicacion.finanzas.*;
 import gestorAplicacion.seresVivos.*;
 
-public class Cliente extends Invitado{//Herencia de clase Invitado, habría que cambiar muchas cosas abajo
+public class Cliente extends Persona{//Herencia de clase Persona, habría que cambiar muchas cosas abajo
                                         // pero serviría para reducir líneas de código, 
                                         //y no sobreescribir tantos setters y getters
 
@@ -108,7 +108,7 @@ public class Cliente extends Invitado{//Herencia de clase Invitado, habría que 
     Similar a getMascotas() aquí lo que hacemos es devolver una lista con los servicios usados en la veterinaria
     también llamando a su método toString()
      */
-    
+
     public String getServicios() {
         String serviciosCompletos = "----------------------------------------------------------";
         serviciosCompletos += "Los servicios que ha usado " + this.nombre + " en nuestra veterinaria son: \n";
