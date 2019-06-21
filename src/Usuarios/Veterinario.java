@@ -1,5 +1,7 @@
-package gestorAplicacion.seresVivientes;
-public class Veterinario {
+package Usuarios;
+public class Veterinario extends Invitado{//Herencia de clase Invitado, habría que cambiar muchas cosas abajo
+    // pero serviría para reducir líneas de código, 
+    //y no sobreescribir tantos setters y getters
     
     private static int cantidadVeterinarios;
     private int id;

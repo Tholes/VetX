@@ -1,6 +1,7 @@
-package gestorAplicacion.seresVivientes;
+package gestorAplicacion.seresVivos;
 
 import java.util.Date;
+import Usuarios.*;
 
 public class Paciente {
 

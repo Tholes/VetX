@@ -1,6 +1,6 @@
 package gestorAplicacion.servicio;
 import java.util.ArrayList;
-import gestorAplicacion.seresVivientes.*;
+import Usuarios.*;
 import java.util.Date;
 public class Cita {
     private Date fechaCita;
