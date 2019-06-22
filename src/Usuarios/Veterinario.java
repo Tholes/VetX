@@ -1,77 +1,43 @@
 package Usuarios;
-public class Veterinario extends Persona{//Herencia de clase Persona, habría que cambiar muchas cosas abajo
+
+public class Veterinario extends Persona {//Herencia de clase Persona, habría que cambiar muchas cosas abajo
     // pero serviría para reducir líneas de código, 
     //y no sobreescribir tantos setters y getters
-    
+
     private static int cantidadVeterinarios;
-    private int id;
-    private String nombre;
-    private String email;
-    private String direccion;
-    private String cargo;
     private String especialidad;
-    private int experiencia;
+    private byte experiencia;
     private int sueldo;
-    
+    private final long idTarjetaProfesional;
+
     /*
-    El constructor de veterinario en caso de no contener el cargo, será tomado cómo un médico GENERAL, puede estar sujeto a cambios
-    ya que son muchos parametros.
-    En caso de no contener el sueldo, daremos por sentado que se gana un mínimo, no estoy seguro de ambos constructores, ya que pueden generar errores.
-    */
-    
-    public Veterinario(String nombre, String email, String direccion ,String cargo, String especialidad, int experiencia, int sueldo){
+    El constructor de veterinario en caso de no contener el cargo, será tomado cómo un médico GENERAL y su sueldo será un SMMLV 
+    puede estar sujeto a cambios ya que son muchos parametros.
+    Recibe la tarjeta profesional cómo un long para que el tipo de dato sea diferente.
+    Recibe la experiencia cómo un byte para variar un poco el tipo de dato.
+     */
+    public Veterinario(String nombre, String email, String direccion, String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional) {
         this.nombre = nombre;
         this.email = email;
         this.direccion = direccion;
-        this.cargo = cargo;
         this.especialidad = especialidad;
         this.experiencia = experiencia;
         this.sueldo = sueldo;
         cantidadVeterinarios++;
-        this.id = cantidadVeterinarios;
-    }
-    
-    public Veterinario(String nombre, String email, String direccion ,String cargo, int experiencia, int sueldo){
-        this(nombre,email,direccion,cargo,"general",experiencia,sueldo);
-    }
-    public Veterinario(String nombre, String email, String direccion ,String cargo,String especialidad, int experiencia){
-        this(nombre,email, direccion, cargo, especialidad, experiencia,828116);
-    }
-    
-    public int getId() {
-        return id;
+        this.idTarjetaProfesional = idTarjetaProfesional;
+
     }
 
-    public String getNombre() {
-        return nombre;
+    public Veterinario(String nombre, String email, String direccion, String especialidad, byte experiencia, long idTarjetaProfesional) {
+        this(nombre, email, direccion, "general", experiencia, 828116, idTarjetaProfesional);
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public static int getCantidadVeterinarios() {
+        return cantidadVeterinarios;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public long getIdProfesional() {
+        return idTarjetaProfesional;
     }
 
     public String getEspecialidad() {
@@ -86,7 +52,7 @@ public class Veterinario extends Persona{//Herencia de clase Persona, habría qu
         return experiencia;
     }
 
-    public void setExperiencia(int experiencia) {
+    public void setExperiencia(byte experiencia) {
         this.experiencia = experiencia;
     }
 
@@ -97,8 +63,8 @@ public class Veterinario extends Persona{//Herencia de clase Persona, habría qu
     public void setSueldo(int sueldo) {
         this.sueldo = sueldo;
     }
-    
-    public String toString(){
-        return "Soy "+nombre+" mi email es: "+email+ " vivo en: "+direccion + " mi cargo es: "+ cargo+" tengo "+experiencia+" años de experiencia";
+
+    public String toString() {
+        return "Soy " + nombre + " mi email es: " + email + " vivo en: " + direccion + " mi especialidad es: " + especialidad + " tengo " + experiencia + " años de experiencia";
     }
 }
