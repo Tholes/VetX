@@ -10,7 +10,7 @@ public class Cliente extends Persona {//Herencia de clase Persona, habría que c
 
     private static int cantidadClientes;
     private final int id;
-    private ArrayList<Paciente> mascotas = new ArrayList<>();
+    private ArrayList<Mascota> mascotas = new ArrayList<>();
     private ArrayList<Servicio> servicios = new ArrayList<>();
 
     /*
@@ -59,7 +59,7 @@ public class Cliente extends Persona {//Herencia de clase Persona, habría que c
         return listadoMascotas;
     }
 
-    public void setMascotas(Paciente Mascota) {
+    public void setMascotas(Mascota Mascota) {
         mascotas.add(Mascota);
     }
 
