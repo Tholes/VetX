@@ -3,7 +3,7 @@ package gestorAplicacion.seresVivos;
 import java.util.Date;
 import Usuarios.*;
 
-public class Paciente {
+public class Mascota {
 
     private static int cantidadPacientes;
     private int id;
@@ -14,7 +14,7 @@ public class Paciente {
     private Cliente dueño;
     private boolean estado;
     
-    public Paciente(String nombre, String raza, String sexo, Cliente amo, Date fechaNacimiento){
+    public Mascota(String nombre, String raza, String sexo, Cliente amo, Date fechaNacimiento){
         this.nombre = nombre;
         this.raza = raza;
         this.sexo = sexo;
