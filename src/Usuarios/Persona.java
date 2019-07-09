@@ -1,6 +1,6 @@
 package Usuarios;
 
-public class Persona {
+public class Persona//tiene que ser abstracta {
 
     public int id;
     public String nombre;
