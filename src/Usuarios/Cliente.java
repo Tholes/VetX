@@ -1,9 +1,8 @@
 package Usuarios;
 
 import java.util.ArrayList;
-import gestorAplicacion.finanzas.*;
 import gestorAplicacion.seresVivos.*;
-
+import gestorAplicacion.servicio.*;
 public class Cliente extends Persona {//Herencia de clase Persona, habría que cambiar muchas cosas abajo
     // pero serviría para reducir líneas de código, 
     //y no sobreescribir tantos setters y getters
