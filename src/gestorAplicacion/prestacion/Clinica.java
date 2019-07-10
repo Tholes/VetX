@@ -9,7 +9,7 @@ public class Clinica {
     private long nit;
     private String comentarios;
     private String redesSociales;
-    
+       
     public String getNombre() {
         return nombreClinica;
     }
