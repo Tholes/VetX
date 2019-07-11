@@ -7,6 +7,7 @@ import gestorAplicacion.prestacion.Cita;
 import java.util.Date;
 
 public class verDisponibilidad extends OpcionDeMenu{
+    
     public void ejecutar(){
         ArrayList<Date> fechasDisponibles = Cita.getDisponibilidad();
         System.out.println("----------------------------------------------------------");

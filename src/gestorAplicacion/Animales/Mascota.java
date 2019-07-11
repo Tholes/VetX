@@ -1,7 +1,7 @@
 package gestorAplicacion.Animales;
 
 import java.util.Date;
-import Usuarios.*;
+import gestorAplicacion.Usuarios.Cliente;
 
 public class Mascota {
 
@@ -10,7 +10,7 @@ public class Mascota {
     private String nombre;
     private String raza;
     private String especie;
-    private final char sexo; //valores definidos de M/H
+    private char sexo; //valores definidos de M/H
     private Date fechaNacimiento;
     private Cliente amo;
     private boolean estado;
@@ -48,6 +48,9 @@ public class Mascota {
 
     public char getSexo() {
         return sexo;
+    }
+    public void setSexo(char sexo){
+        this.sexo = sexo;
     }
 
     public Date getFechaNacimiento() {

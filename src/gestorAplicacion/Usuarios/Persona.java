@@ -1,4 +1,4 @@
-package Usuarios;
+package gestorAplicacion.Usuarios;
 
 public class Persona {
 

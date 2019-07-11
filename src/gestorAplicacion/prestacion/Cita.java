@@ -1,6 +1,6 @@
 package gestorAplicacion.prestacion;
 import java.util.ArrayList;
-import Usuarios.*;
+import gestorAplicacion.Usuarios.Veterinario;
 import java.util.Date;
 public class Cita {
     private Date fechaCita;
@@ -32,6 +32,7 @@ public class Cita {
         this.veterinario = veterinario;
     }
 
+    
     public void setDisponibilidad(ArrayList<Date> disponibilidad) {
         this.disponibilidad = disponibilidad;
     }

@@ -1,4 +1,4 @@
-package Usuarios;
+package gestorAplicacion.Usuarios;
 
 import java.util.ArrayList;
 import gestorAplicacion.Animales.*;
