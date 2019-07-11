@@ -9,12 +9,12 @@ public class Mascota {
     private int id;
     private String nombre;
     private String raza;
-    private String sexo;
+    private char sexo; //valores definidos de M/H
     private Date fechaNacimiento;
     private Cliente dueño;
     private boolean estado;
     
-    public Mascota(String nombre, String raza, String sexo, Cliente amo, Date fechaNacimiento){
+    public Mascota(String nombre, String raza, char sexo, Cliente amo, Date fechaNacimiento){
         this.nombre = nombre;
         this.raza = raza;
         this.sexo = sexo;
@@ -44,11 +44,11 @@ public class Mascota {
         this.raza = raza;
     }
 
-    public String getSexo() {
+    public char getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(char sexo) {
         this.sexo = sexo;
     }
 

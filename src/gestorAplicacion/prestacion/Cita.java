@@ -5,12 +5,11 @@ import java.util.Date;
 public class Cita {
     private Date fechaCita;
     private Veterinario veterinario;
-    private ArrayList<Date> disponibilidad;
+    private static ArrayList<Date> disponibilidad; 
 
     public Cita(Date fechaCita, Veterinario veterinario, ArrayList<Date> disponibilidad) {
         this.fechaCita = fechaCita;
         this.veterinario = veterinario;
-        this.disponibilidad = disponibilidad;
     }
 
     public Date getFechaCita() {
@@ -21,7 +20,7 @@ public class Cita {
         return veterinario;
     }
 
-    public ArrayList<Date> getDisponibilidad() {
+    public static ArrayList<Date> getDisponibilidad() {
         return disponibilidad;
     }
 
