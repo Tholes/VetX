@@ -14,6 +14,7 @@ public class Cliente extends Persona {
     public Cliente(String nombre, String email, String direccion, String ciudad, long telefono) {
         super(nombre,email,direccion,ciudad,telefono);
         cantidadClientes++;
+        id = cantidadClientes;
     }
 
     public int getId() {
@@ -54,12 +55,13 @@ public class Cliente extends Persona {
      */
     public String getServicios() {
         String serviciosCompletos = "----------------------------------------------------------";
-        serviciosCompletos += "Los servicios que ha usado " + this.nombre + " en nuestra veterinaria son: \n";
+        serviciosCompletos += "Los servicios que ha usado " + super.getNombre() + " en nuestra veterinaria son: \n";
 
         for (int i = 0; i < servicios.size(); i++) {
             serviciosCompletos += servicios.get(i) + "\n";
         }
         serviciosCompletos += "----------------------------------------------------------";
+        
         return serviciosCompletos;
     }
 
@@ -68,6 +70,6 @@ public class Cliente extends Persona {
     }
 
     public String toString() {
-        return "Soy " + nombre + " mi correo es: " + email + " vivo en: " + direccion + " en la ciudad de " + ciudad + " y tengo " + mascotas.size() + " mascotas";
+        return "Soy " + super.getNombre() + " mi correo es: " + super.getEmail() + " vivo en: " + super.getDireccion() + " en la ciudad de " + super.getCiudad() + " y tengo " + mascotas.size() + " mascotas";
     }
 }

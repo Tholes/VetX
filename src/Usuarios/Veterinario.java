@@ -1,8 +1,6 @@
 package Usuarios;
 
-public class Veterinario extends Persona {//Herencia de clase Persona, habría que cambiar muchas cosas abajo
-    // pero serviría para reducir líneas de código, 
-    //y no sobreescribir tantos setters y getters
+public class Veterinario extends Persona {
 
     private static int cantidadVeterinarios;
     private String especialidad;
@@ -10,12 +8,6 @@ public class Veterinario extends Persona {//Herencia de clase Persona, habría q
     private int sueldo;
     private final long idTarjetaProfesional;
 
-    /*
-    El constructor de veterinario en caso de no contener el cargo, será tomado cómo un médico GENERAL y su sueldo será un SMMLV 
-    puede estar sujeto a cambios ya que son muchos parametros.
-    Recibe la tarjeta profesional cómo un long para que el tipo de dato sea diferente.
-    Recibe la experiencia cómo un byte para variar un poco el tipo de dato.
-     */
     public Veterinario(String nombre, String email, String direccion, String ciudad , Long telefono ,String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional) {
         super(nombre,email,direccion,ciudad,telefono);
         this.especialidad = especialidad;
@@ -63,6 +55,6 @@ public class Veterinario extends Persona {//Herencia de clase Persona, habría q
     }
 
     public String toString() {
-        return "Soy " + nombre + " mi email es: " + email + " vivo en: " + direccion + " mi especialidad es: " + especialidad + " tengo " + experiencia + " años de experiencia";
+        return "Soy " + super.getNombre() + " mi email es: " + super.getEmail() + " vivo en: " + super.getDireccion() + " mi especialidad es: " + especialidad + " tengo " + experiencia + " años de experiencia";
     }
 }
