@@ -2,14 +2,27 @@ package Usuarios;
 
 public class Persona {
 
-    public int id;
-    public String nombre;
-    public String email;
-    public String contraseña;
-    public String direccion;
-    public String ciudad;
-    public long telefono;
+    private int id;
+    private String nombre;
+    private String email;
+    private String contraseña;
+    private String direccion;
+    private String ciudad;
+    private long telefono;
 
+    //Necesitamos un constructor por defecto, para los usuarios invitados.
+    public Persona(){
+        
+    }
+
+    public Persona(String nombre, String email,String direccion, String ciudad, Long telefono){
+        this.nombre = nombre;
+        this.email = email;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.telefono = telefono;
+    }
+    
     public int getId() {
         return id;
     }

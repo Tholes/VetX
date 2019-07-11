@@ -3,31 +3,17 @@ package Usuarios;
 import java.util.ArrayList;
 import gestorAplicacion.Animales.*;
 import gestorAplicacion.prestacion.*;
-public class Cliente extends Persona {//Herencia de clase Persona, habría que cambiar muchas cosas abajo
-    // pero serviría para reducir líneas de código, 
-    //y no sobreescribir tantos setters y getters
+
+public class Cliente extends Persona {
 
     private static int cantidadClientes;
     private final int id;
     private ArrayList<Mascota> mascotas = new ArrayList<>();
     private ArrayList<Servicio> servicios = new ArrayList<>();
-
-    /*
-    Coloqué el atributo telefono cómo opcional, en caso de no tener telefono tendrá un 0 cómo valor por defecto, el tipo de dato
-    está en veremos, ya que al no hacer ningún tipo de operación con él, facilmente podríamos convertirlo en String
-     */
-    public Cliente(String nombre, String email, String ciudad, String direccion, long telefono) {
-        this.nombre = nombre;
-        this.email = email;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.ciudad = ciudad;
+    
+    public Cliente(String nombre, String email, String direccion, String ciudad, long telefono) {
+        super(nombre,email,direccion,ciudad,telefono);
         cantidadClientes++;
-        this.id = cantidadClientes;
-    }
-
-    public Cliente(String nombre, String email, String ciudad, String direccion) {
-        this(nombre, email, ciudad, direccion, 0);
     }
 
     public int getId() {

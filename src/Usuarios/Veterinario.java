@@ -16,10 +16,8 @@ public class Veterinario extends Persona {//Herencia de clase Persona, habría q
     Recibe la tarjeta profesional cómo un long para que el tipo de dato sea diferente.
     Recibe la experiencia cómo un byte para variar un poco el tipo de dato.
      */
-    public Veterinario(String nombre, String email, String direccion, String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional) {
-        this.nombre = nombre;
-        this.email = email;
-        this.direccion = direccion;
+    public Veterinario(String nombre, String email, String direccion, String ciudad , Long telefono ,String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional) {
+        super(nombre,email,direccion,ciudad,telefono);
         this.especialidad = especialidad;
         this.experiencia = experiencia;
         this.sueldo = sueldo;
@@ -28,8 +26,8 @@ public class Veterinario extends Persona {//Herencia de clase Persona, habría q
 
     }
 
-    public Veterinario(String nombre, String email, String direccion, String especialidad, byte experiencia, long idTarjetaProfesional) {
-        this(nombre, email, direccion, "general", experiencia, 828116, idTarjetaProfesional);
+    public Veterinario(String nombre, String email, String direccion, String ciudad, long telefono, String especialidad, byte experiencia, long idTarjetaProfesional) {
+        this(nombre, email, direccion,ciudad,telefono,"general", experiencia, 828116, idTarjetaProfesional);
     }
 
     public static int getCantidadVeterinarios() {
