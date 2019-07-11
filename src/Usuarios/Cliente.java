@@ -1,34 +1,20 @@
 package Usuarios;
 
 import java.util.ArrayList;
-import gestorAplicacion.finanzas.*;
-import gestorAplicacion.seresVivos.*;
+import gestorAplicacion.Animales.*;
+import gestorAplicacion.prestacion.*;
 
-public class Cliente extends Persona {//Herencia de clase Persona, habría que cambiar muchas cosas abajo
-    // pero serviría para reducir líneas de código, 
-    //y no sobreescribir tantos setters y getters
+public class Cliente extends Persona {
 
     private static int cantidadClientes;
     private final int id;
     private ArrayList<Mascota> mascotas = new ArrayList<>();
     private ArrayList<Servicio> servicios = new ArrayList<>();
-
-    /*
-    Coloqué el atributo telefono cómo opcional, en caso de no tener telefono tendrá un 0 cómo valor por defecto, el tipo de dato
-    está en veremos, ya que al no hacer ningún tipo de operación con él, facilmente podríamos convertirlo en String
-     */
-    public Cliente(String nombre, String email, String ciudad, String direccion, long telefono) {
-        this.nombre = nombre;
-        this.email = email;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.ciudad = ciudad;
+    
+    public Cliente(String nombre, String email, String direccion, String ciudad, long telefono) {
+        super(nombre,email,direccion,ciudad,telefono);
         cantidadClientes++;
-        this.id = cantidadClientes;
-    }
-
-    public Cliente(String nombre, String email, String ciudad, String direccion) {
-        this(nombre, email, ciudad, direccion, 0);
+        id = cantidadClientes;
     }
 
     public int getId() {
@@ -69,12 +55,13 @@ public class Cliente extends Persona {//Herencia de clase Persona, habría que c
      */
     public String getServicios() {
         String serviciosCompletos = "----------------------------------------------------------";
-        serviciosCompletos += "Los servicios que ha usado " + this.nombre + " en nuestra veterinaria son: \n";
+        serviciosCompletos += "Los servicios que ha usado " + super.getNombre() + " en nuestra veterinaria son: \n";
 
         for (int i = 0; i < servicios.size(); i++) {
             serviciosCompletos += servicios.get(i) + "\n";
         }
         serviciosCompletos += "----------------------------------------------------------";
+        
         return serviciosCompletos;
     }
 
@@ -83,6 +70,6 @@ public class Cliente extends Persona {//Herencia de clase Persona, habría que c
     }
 
     public String toString() {
-        return "Soy " + nombre + " mi correo es: " + email + " vivo en: " + direccion + " en la ciudad de " + ciudad + " y tengo " + mascotas.size() + " mascotas";
+        return "Soy " + super.getNombre() + " mi correo es: " + super.getEmail() + " vivo en: " + super.getDireccion() + " en la ciudad de " + super.getCiudad() + " y tengo " + mascotas.size() + " mascotas";
     }
 }

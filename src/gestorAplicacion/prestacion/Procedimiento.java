@@ -1,4 +1,4 @@
-package gestorAplicacion.servicio;
+package gestorAplicacion.prestacion;
 
 import java.util.Date;
 
