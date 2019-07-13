@@ -10,7 +10,8 @@ public class Cliente extends Persona {
     private final int id;
     private ArrayList<Mascota> mascotas = new ArrayList<>();
     private ArrayList<Servicio> servicios = new ArrayList<>();
-    
+    private ArrayList<Cita> citasAsignadas = new ArrayList<>();
+
     public Cliente(String nombre, String email, String direccion, String ciudad, long telefono) {
         super(nombre,email,direccion,ciudad,telefono);
         cantidadClientes++;
@@ -25,34 +26,34 @@ public class Cliente extends Persona {
         return cantidadClientes;
     }
 
-    /*
-    Cómo según los requerimientos del profe, estas clases no deben mostrar nada por pantalla, entonces debemos retornar todo.
-    En este método getMascotas() lo que hacemos es devolver cada objeto (llamando a su toString()) en un tipo de "lista" 
-     */
-    public String getMascotas() {
-        String listadoMascotas = "----------------------------------------------------------";
-        if (mascotas.size() == 1) {
+    public String mascotasRegistradas() {
+        String listadoMascotas = "----------------------------------------------------------\n";
+        if(mascotas.size() == 0){
+            listadoMascotas += "No tiene mascotas registradas\n";
+            listadoMascotas += "----------------------------------------------------------\n";
+            return listadoMascotas;
+        }
+        else if (mascotas.size() == 1) {
             listadoMascotas += "Su mascota es: \n";
             listadoMascotas += mascotas.get(0);
-            listadoMascotas += "----------------------------------------------------------";
+            listadoMascotas += "----------------------------------------------------------\n";
             return listadoMascotas;
         }
         listadoMascotas = "Sus mascotas son: \n";
         for (int i = 0; i < mascotas.size(); i++) {
             listadoMascotas += mascotas.get(i);
         }
-        listadoMascotas += "----------------------------------------------------------";
+        listadoMascotas += "----------------------------------------------------------\n";
         return listadoMascotas;
     }
 
-    public void setMascotas(Mascota Mascota) {
+    public ArrayList<Mascota> getMascotas(){
+        return mascotas;
+    }
+    public void setMascota(Mascota Mascota) {
         mascotas.add(Mascota);
     }
 
-    /*
-    Similar a getMascotas() aquí lo que hacemos es devolver una lista con los servicios usados en la veterinaria
-    también llamando a su método toString()
-     */
     public String getServicios() {
         String serviciosCompletos = "----------------------------------------------------------";
         serviciosCompletos += "Los servicios que ha usado " + super.getNombre() + " en nuestra veterinaria son: \n";
@@ -72,4 +73,22 @@ public class Cliente extends Persona {
     public String toString() {
         return "Soy " + super.getNombre() + " mi correo es: " + super.getEmail() + " vivo en: " + super.getDireccion() + " en la ciudad de " + super.getCiudad() + " y tengo " + mascotas.size() + " mascotas";
     }
+
+    @Override
+    public void registrarMascota(String nombre,Date fechaNacimiento ,char sexo, String especie, String raza){
+        Mascota mascota = new Mascota(nombre, fechaNacimiento, sexo, especie, raza, this);
+        this.setMascota(Mascota);
+
+    }
+
+    @Override
+    public boolean borrarMascota(Mascota mascota){
+        if(mascotas.contains(mascota)){
+            mascotas.remove(mascota);
+            mascota.eliminarMascota();
+            return true;
+        }
+        return false;
+    }
+
 }

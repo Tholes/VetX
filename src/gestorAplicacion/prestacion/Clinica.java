@@ -1,5 +1,8 @@
 package gestorAplicacion.prestacion;
 
+import java.util.ArrayList;
+
+import gestorAplicacion.Animales.Mascota;
 
 public class Clinica {
     
@@ -9,7 +12,8 @@ public class Clinica {
     private long nit;
     private String comentarios;
     private String redesSociales;
-       
+    private ArrayList<Mascota> mascotasHospitalizadas = new ArrayList<>();   
+
     public String getNombre() {
         return nombreClinica;
     }
@@ -58,6 +62,21 @@ public class Clinica {
         this.redesSociales = red;
     }
     
+    public void hospitalizarMascota(Mascota mascota){
+        mascotasHospitalizadas.add(mascota);
+        mascota.setEstado(true, this);
+    }
+
+    public boolean darDeAlta(Mascota mascota){
+
+        if(mascotasHospitalizadas.contains(mascota)){
+            mascota.setEstado(false, null);
+            mascotasHospitalizadas.remove(mascota);
+            return true;
+        }
+        return false;
+    }
+
 }
 
 

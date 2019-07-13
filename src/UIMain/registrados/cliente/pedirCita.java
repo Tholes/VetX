@@ -2,6 +2,8 @@ package UIMain.registrados.cliente;
 
 import UIMain.OpcionDeMenu;
 import UIMain.funcionesGenerales.verDisponibilidad;
+import gestorAplicacion.Usuarios.Administrador;
+import gestorAplicacion.Usuarios.Cliente;
 import gestorAplicacion.prestacion.Cita;
 import java.util.Date;
 import java.util.Scanner;
@@ -10,9 +12,18 @@ public class pedirCita extends OpcionDeMenu {
 
     Scanner in = new Scanner(System.in);
     verDisponibilidad fechasDisponibles = new verDisponibilidad();
+
     public void ejecutar() {
-        Date fechaCandidata = pedirFecha();
+        Date fecha = pedirFecha();
+        System.out.println("Su cita fue solicitada con exito, se le asignará un veterinario");
+        /*
+        Cree el método estatico asignarVeterinario() por comodidad,
+        luego deberemos re pensar cómo asignaremos un veterinario 
+        */
+        Veterinario veterinarioAsignado = Administrador.asignarVeterinario();
+        Cita cita = new Cita(fecha, veterinarioAsginado, cliente);
     }
+
 
     public Date pedirFecha() {
         fechasDisponibles.ejecutar();
@@ -23,14 +34,12 @@ public class pedirCita extends OpcionDeMenu {
         int mes = in.nextInt();
         System.out.print("Ingrese el día: ");
         int dia = in.nextInt();
-        Date fechaCandidata = new Date(año, mes, dia);
-
-        if (Cita.getDisponibilidad().contains(fechaCandidata)) {
-            return fechaCandidata;
-        } else {
-            System.out.println("Fecha no disponible, por favor: ");
+        Cliente cliente = new Cliente();//Ejemplo
+        if(!cliente.pedirCita(año, mes, dia)){
+            System.out.println("La fecha no se encuentra disponible, por favor: ");
             return pedirFecha();
         }
+        
     }
 
     public String toString() {

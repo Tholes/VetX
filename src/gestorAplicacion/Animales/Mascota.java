@@ -14,8 +14,9 @@ public class Mascota {
     private Date fechaNacimiento;
     private Cliente amo;
     private boolean estado;
-    
-    public Mascota(String nombre, String especie,String raza, char sexo, Cliente amo, Date fechaNacimiento){
+    private Clinica clinica;
+
+    public Mascota(String nombre, Date fechaNacimiento, char sexo , String especie, String raza, Cliente amo){
         this.nombre = nombre;
         this.raza = raza;
         this.sexo = sexo;
@@ -73,10 +74,15 @@ public class Mascota {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(boolean estado, Clinica clinica) {
         this.estado = estado;
+        this.clinica = clinica;
     }
     
+    public void eliminarMascota(){
+        this.finalize();
+    }
+
     public String toString(){
         return "Mi nombre es "+nombre+" soy un/a "+raza+" soy de sexo: "+sexo+" nací el "+fechaNacimiento+" mi dueño es: "+amo.getNombre();
     }

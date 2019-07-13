@@ -10,7 +10,7 @@ public class Persona {
     private String ciudad;
     private long telefono;
 
-    //Necesitamos un constructor por defecto, para los usuarios invitados.
+    //Usuarios invitados.
     public Persona(){
         
     }
@@ -69,6 +69,38 @@ public class Persona {
 
     public void setTelefono(long telefono) {
         this.telefono = telefono;
+    }
+
+    public void registrarMascota(String nombre,Date fechaNacimiento ,char sexo, String especie, String raza, Cliente cliente){
+        Mascota mascota = new Mascota(nombre, fechaNacimiento, sexo, especie, raza, cliente);
+        cliente.setMascota(Mascota);
+
+    }
+
+    public boolean borrarMascota(Mascota mascota, Cliente cliente){
+        if(cliente.getMascotas().contains(mascota)){
+            cliente.getMascotas().remove(mascota);
+            cliente.getMascotas().eliminarMascota();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean pedirCita(int año,int mes, int dia){  
+        Date fecha = new Date(año,mes,dia); 
+        if(Cita.getDisponibilidad().contains(fecha)){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean cancelarCita(Cita cita){
+        if(citasAsignadas.contains(cita)){
+            citasAsignadas.remove(cita);
+            cita.cancelarCita();
+            return true;
+        }
+        return false;
     }
 
 }
