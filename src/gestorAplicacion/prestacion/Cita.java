@@ -31,10 +31,10 @@ public class Cita {
         
         String ans = "----------------------------------------------------------\n";
         for (int i = 0; i < disponibilidad.size() ; i++) {
-            int año = disponibilidad.get(i).getYear();
+            int year = disponibilidad.get(i).getYear();
             int mes = disponibilidad.get(i).getMonth();
             int dia = disponibilidad.get(i).getDay();
-            ans += año+"/"+mes+"/"+dia +"\n";
+            ans += year+"/"+mes+"/"+dia +"\n";
         }
         ans += "----------------------------------------------------------\n";
         return ans;
@@ -66,8 +66,9 @@ public class Cita {
         disponibilidad = nuevasFechas;
     }
 
+    @Override
     public String toString(){
-        ans = "Señor "+cliente.getNombre()+" información sobre su cita:\n";
+        ans = "Sr "+cliente.getNombre()+" informaci�n sobre su cita:\n";
         ans += "Fecha: "+fechaCita.getYear()+"/"+fechaCita.getMonth()+"/"+fechaCita.getDay()+"\n";
         ans += "Veterinario: " + veterinario.toString()+"\n";
         return ans;

@@ -74,14 +74,14 @@ public class Cliente extends Persona {
         return "Soy " + super.getNombre() + " mi correo es: " + super.getEmail() + " vivo en: " + super.getDireccion() + " en la ciudad de " + super.getCiudad() + " y tengo " + mascotas.size() + " mascotas";
     }
 
-    @Override
+  
     public void registrarMascota(String nombre,Date fechaNacimiento ,char sexo, String especie, String raza){
         Mascota mascota = new Mascota(nombre, fechaNacimiento, sexo, especie, raza, this);
         this.setMascota(Mascota);
 
     }
 
-    @Override
+
     public boolean borrarMascota(Mascota mascota){
         if(mascotas.contains(mascota)){
             mascotas.remove(mascota);

@@ -5,7 +5,7 @@ public class Persona {
     private int id;
     private String nombre;
     private String email;
-    private String contraseña;
+    private String key;
     private String direccion;
     private String ciudad;
     private long telefono;
@@ -86,8 +86,8 @@ public class Persona {
         return false;
     }
 
-    public boolean pedirCita(int año,int mes, int dia){  
-        Date fecha = new Date(año,mes,dia); 
+    public boolean pedirCita(int year,int mes, int dia){  
+        Date fecha = new Date(year,mes,dia); 
         if(Cita.getDisponibilidad().contains(fecha)){
             return true;
         }

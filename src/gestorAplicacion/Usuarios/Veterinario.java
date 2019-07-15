@@ -75,6 +75,7 @@ public class Veterinario extends Persona {
         
         return ans;
     }
+    
     public String toString() {
         return "Soy " + super.getNombre() + " mi email es: " + super.getEmail() + " vivo en: " + super.getDireccion() + " mi especialidad es: " + especialidad + " tengo " + experiencia + " años de experiencia";
     }
