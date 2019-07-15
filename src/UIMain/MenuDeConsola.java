@@ -88,7 +88,7 @@ public class MenuDeConsola {
 		options.remove(index-1);
 	}
 	
-	public void añadirOpcion(String opt) {
+	public void aï¿½adirOpcion(String opt) {
 		options.add(Data.operations.get(opt));
 	}
 }

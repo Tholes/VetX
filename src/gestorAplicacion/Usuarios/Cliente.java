@@ -3,6 +3,7 @@ package gestorAplicacion.Usuarios;
 import java.util.ArrayList;
 import gestorAplicacion.Animales.*;
 import gestorAplicacion.prestacion.*;
+import java.util.Date;
 
 public class Cliente extends Persona {
 

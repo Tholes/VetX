@@ -1,6 +1,7 @@
 package gestorAplicacion.prestacion;
 import java.util.ArrayList;
 import java.util.Date;
+import gestorAplicacion.Usuarios.*;
 
 public class Cita {
     private Date fechaCita;
@@ -54,7 +55,7 @@ public class Cita {
         return false;
     }
     
-    public void cancelarCita(){
+    public void cancelarCita() throws Throwable{
         this.finalize();
     }
 
@@ -68,7 +69,7 @@ public class Cita {
 
     @Override
     public String toString(){
-        ans = "Sr "+cliente.getNombre()+" información sobre su cita:\n";
+        ans = "Sr "+cliente.getNombre()+" informaciï¿½n sobre su cita:\n";
         ans += "Fecha: "+fechaCita.getYear()+"/"+fechaCita.getMonth()+"/"+fechaCita.getDay()+"\n";
         ans += "Veterinario: " + veterinario.toString()+"\n";
         return ans;

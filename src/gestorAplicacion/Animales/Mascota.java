@@ -1,8 +1,8 @@
 package gestorAplicacion.Animales;
 
 import java.util.Date;
-import gestorAplicacion.Usuarios.Cliente;
-
+import gestorAplicacion.Usuarios.*;
+import gestorAplicacion.prestacion.*;
 public class Mascota {
 
     private static int cantidadPacientes;
@@ -79,7 +79,7 @@ public class Mascota {
         this.clinica = clinica;
     }
     
-    public void eliminarMascota(){
+    public void eliminarMascota() throws Throwable{
         this.finalize();
     }
 

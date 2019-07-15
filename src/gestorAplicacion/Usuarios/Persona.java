@@ -1,5 +1,7 @@
 package gestorAplicacion.Usuarios;
-
+import gestorAplicacion.Animales.*;
+import gestorAplicacion.prestacion.*;
+import java.util.Date;
 public class Persona {
 
     private int id;
