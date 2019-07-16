@@ -78,12 +78,12 @@ public class Cliente extends Persona {
   
     public void registrarMascota(String nombre,Date fechaNacimiento ,char sexo, String especie, String raza){
         Mascota mascota = new Mascota(nombre, fechaNacimiento, sexo, especie, raza, this);
-        this.setMascota(Mascota);
+        this.setMascota(mascota);
 
     }
 
 
-    public boolean borrarMascota(Mascota mascota){
+    public boolean borrarMascota(Mascota mascota) throws Throwable{
         if(mascotas.contains(mascota)){
             mascotas.remove(mascota);
             mascota.eliminarMascota();

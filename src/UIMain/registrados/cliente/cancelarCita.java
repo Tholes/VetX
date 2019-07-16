@@ -1,5 +1,7 @@
 package UIMain.registrados.cliente;
 
+import UIMain.OpcionDeMenu;
+
 public class cancelarCita extends OpcionDeMenu{
 
     public void ejecutar(){

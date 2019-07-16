@@ -75,7 +75,7 @@ public class Persona {
 
     public void registrarMascota(String nombre,Date fechaNacimiento ,char sexo, String especie, String raza, Cliente cliente){
         Mascota mascota = new Mascota(nombre, fechaNacimiento, sexo, especie, raza, cliente);
-        cliente.setMascota(Mascota);
+        cliente.setMascota(mascota);
 
     }
 
