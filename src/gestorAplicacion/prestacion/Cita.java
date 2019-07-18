@@ -8,6 +8,7 @@ public class Cita {
     private Veterinario veterinario;
     private Cliente cliente;
     private static ArrayList<Date> disponibilidad; 
+    private Procedimiento procedimiento;
 
     public Cita(Date fechaCita, Veterinario Veterinario, Cliente cliente) {
         this.fechaCita = fechaCita;
@@ -69,6 +70,7 @@ public class Cita {
 
     @Override
     public String toString(){
+        String ans;
         ans = "Sr "+cliente.getNombre()+" informaci�n sobre su cita:\n";
         ans += "Fecha: "+fechaCita.getYear()+"/"+fechaCita.getMonth()+"/"+fechaCita.getDay()+"\n";
         ans += "Veterinario: " + veterinario.toString()+"\n";

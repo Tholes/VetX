@@ -1,5 +1,6 @@
 package gestorAplicacion.prestacion;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Procedimiento {
@@ -7,7 +8,8 @@ public class Procedimiento {
     private int idProcedimento;
     private int valor;
     private Date fechaProcedimiento;
-
+    private ArrayList<Cita> citas = new ArrayList<>();
+    
     public String getNombreProcedimiento() {
         return nombreProcedimiento;
     }

@@ -90,7 +90,7 @@ public class Persona {
 
     public boolean pedirCita(int year,int mes, int dia){  
         Date fecha = new Date(year,mes,dia); 
-        if(Cita.getDisponibilidad().contains(fecha)){
+        if(Cita.getDisponibilidad().contains((CharSequence) fecha)){
             return true;
         }
         return false;
