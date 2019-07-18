@@ -82,7 +82,6 @@ public class Cliente extends Persona {
 
     }
 
-
     public boolean borrarMascota(Mascota mascota) throws Throwable{
         if(mascotas.contains(mascota)){
             mascotas.remove(mascota);
@@ -92,4 +91,11 @@ public class Cliente extends Persona {
         return false;
     }
 
+    public ArrayList<Cita> getCitasAsignadas() {
+        return citasAsignadas;
+    }
+
+    public void citaAsignada(Cita cita){
+        citasAsignadas.add(cita);
+    }
 }

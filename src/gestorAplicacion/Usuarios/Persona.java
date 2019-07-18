@@ -79,10 +79,9 @@ public class Persona {
 
     }
 
-    public boolean borrarMascota(Mascota mascota, Cliente cliente){
+    public boolean borrarMascota(Mascota mascota, Cliente cliente) throws Throwable {
         if(cliente.getMascotas().contains(mascota)){
-            cliente.getMascotas().remove(mascota);
-            cliente.getMascotas().eliminarMascota();
+            cliente.borrarMascota(mascota);
             return true;
         }
         return false;
@@ -96,9 +95,9 @@ public class Persona {
         return false;
     }
 
-    public boolean cancelarCita(Cita cita){
-        if(citasAsignadas.contains(cita)){
-            citasAsignadas.remove(cita);
+    public boolean cancelarCita(Cita cita, Cliente cliente) throws Throwable {
+        if(cliente.getCitasAsignadas().contains(cita)){
+            cliente.getCitasAsignadas().remove(cita);
             cita.cancelarCita();
             return true;
         }
