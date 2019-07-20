@@ -1,8 +1,8 @@
-package UIMain.registrados.cliente;
+package UIMain.funcionalidades;
 
 import UIMain.OpcionDeMenu;
 
-public class cancelarCita extends OpcionDeMenu{
+public class contratarVeterinario extends OpcionDeMenu{
 
     public void ejecutar(){
 
@@ -11,5 +11,4 @@ public class cancelarCita extends OpcionDeMenu{
     public String toString(){
         return "a";
     }
-
 }

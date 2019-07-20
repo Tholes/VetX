@@ -10,7 +10,7 @@ public class Cita {
     private static ArrayList<Date> disponibilidad; 
     private Procedimiento procedimiento;
 
-    public Cita(Date fechaCita, Veterinario Veterinario, Cliente cliente) {
+    public Cita(Date fechaCita, Veterinario veterinario, Cliente cliente) {
         this.fechaCita = fechaCita;
         this.veterinario = veterinario;
         this.cliente = cliente;

@@ -1,9 +1,8 @@
-package UIMain.registrados.administrador;
+package UIMain.funcionalidades;
 
 import UIMain.OpcionDeMenu;
 
-public class contratarVeterinario extends OpcionDeMenu{
-
+public class darDeAlta extends OpcionDeMenu{
     public void ejecutar(){
 
     }

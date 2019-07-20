@@ -1,4 +1,4 @@
-package UIMain.registrados.veterinario;
+package UIMain.funcionalidades;
 
 import UIMain.OpcionDeMenu;
 

@@ -13,8 +13,8 @@ public class Cliente extends Persona {
     private ArrayList<Servicio> servicios = new ArrayList<>();
     private ArrayList<Cita> citasAsignadas = new ArrayList<>();
 
-    public Cliente(String nombre, String email, String direccion, String ciudad, long telefono) {
-        super(nombre,email,direccion,ciudad,telefono);
+    public Cliente(String nombre, String email,String usuario ,String contraseña) {
+        super(nombre,email,usuario,contraseña);
         cantidadClientes++;
         id = cantidadClientes;
     }
@@ -72,7 +72,7 @@ public class Cliente extends Persona {
     }
 
     public String toString() {
-        return "Soy " + super.getNombre() + " mi correo es: " + super.getEmail() + " vivo en: " + super.getDireccion() + " en la ciudad de " + super.getCiudad() + " y tengo " + mascotas.size() + " mascotas";
+        return "Soy " + super.getNombre() + " mi correo es: " + super.getEmail() + " y tengo " + mascotas.size() + " mascotas";
     }
 
   

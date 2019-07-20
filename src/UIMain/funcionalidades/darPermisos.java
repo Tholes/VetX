@@ -1,4 +1,4 @@
-package UIMain.registrados.administrador;
+package UIMain.funcionalidades;
 
 import UIMain.OpcionDeMenu;
 

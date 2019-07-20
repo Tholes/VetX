@@ -1,8 +1,8 @@
-package UIMain.registrados.veterinario;
+package UIMain.funcionalidades;
 
 import UIMain.OpcionDeMenu;
 
-public class añadirAlHistorial extends OpcionDeMenu{
+public class cerrarSesion extends OpcionDeMenu{
     public void ejecutar(){
     
     }

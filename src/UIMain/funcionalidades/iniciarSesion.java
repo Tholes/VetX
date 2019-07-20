@@ -1,8 +1,8 @@
-package UIMain.registrados;
+package UIMain.funcionalidades;
 
 import UIMain.OpcionDeMenu;
 
-public class cerrarSesion extends OpcionDeMenu{
+public class iniciarSesion extends OpcionDeMenu{
     public void ejecutar(){
     
     }

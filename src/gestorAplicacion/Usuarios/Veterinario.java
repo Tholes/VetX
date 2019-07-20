@@ -10,11 +10,11 @@ public class Veterinario extends Persona {
     private String especialidad;
     private byte experiencia;
     private int sueldo;
-    private final long idTarjetaProfesional;
+    private long idTarjetaProfesional;
     private ArrayList<Cita> citasAsignadas = new ArrayList<Cita>();
 
-    public Veterinario(String nombre, String email, String direccion, String ciudad , Long telefono ,String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional) {
-        super(nombre,email,direccion,ciudad,telefono);
+    public Veterinario(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional,String usuario, String contraseña) {
+        super(nombre,email,usuario,contraseña);
         this.especialidad = especialidad;
         this.experiencia = experiencia;
         this.sueldo = sueldo;
@@ -23,10 +23,12 @@ public class Veterinario extends Persona {
 
     }
 
-    //Cómo no todos los veterinarios tienen una especialidad, los consideraremos cómo generales
-    //y que ganan un sueldo mínimo
-    public Veterinario(String nombre, String email, String direccion, String ciudad, long telefono, String especialidad, byte experiencia, long idTarjetaProfesional) {
-        this(nombre, email, direccion,ciudad,telefono,"general", experiencia, 828116, idTarjetaProfesional);
+    /*
+    Cómo no todos los veterinarios tienen una especialidad, los consideraremos cómo generales
+    y ganan un sueldo mínimo
+    */
+    public Veterinario(String nombre, String email, byte experiencia, long idTarjetaProfesional, String usuario, String contraseña) {
+        this(nombre, email,"general", experiencia, 828116, idTarjetaProfesional,usuario,contraseña);
     }
 
     public static int getCantidadVeterinarios() {
@@ -77,7 +79,7 @@ public class Veterinario extends Persona {
     }
     
     public String toString() {
-        return "Soy " + super.getNombre() + " mi email es: " + super.getEmail() + " vivo en: " + super.getDireccion() + " mi especialidad es: " + especialidad + " tengo " + experiencia + " años de experiencia";
+        return "Soy " + super.getNombre() + " mi email es: " + super.getEmail() + " mi especialidad es: " + especialidad + " tengo " + experiencia + " años de experiencia";
     }
 
 

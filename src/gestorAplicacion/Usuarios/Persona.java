@@ -8,21 +8,19 @@ public class Persona {
     private String nombre;
     private String email;
     private String key;
-    private String direccion;
-    private String ciudad;
-    private long telefono;
+    private String nombreUsuario;
+    private String contraseña;
 
     //Usuarios invitados.
     public Persona(){
         
     }
 
-    public Persona(String nombre, String email,String direccion, String ciudad, Long telefono){
+    public Persona(String nombre, String email,String usuario ,String contraseña){
         this.nombre = nombre;
         this.email = email;
-        this.direccion = direccion;
-        this.ciudad = ciudad;
-        this.telefono = telefono;
+        this.nombreUsuario = usuario;
+        this.contraseña = contraseña;
     }
     
     public int getId() {
@@ -47,30 +45,6 @@ public class Persona {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public long getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(long telefono) {
-        this.telefono = telefono;
     }
 
     public void registrarMascota(String nombre,Date fechaNacimiento ,char sexo, String especie, String raza, Cliente cliente){

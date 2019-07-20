@@ -1,10 +1,7 @@
-package UIMain.funcionesGenerales;
-
-import java.util.ArrayList;
+package UIMain.funcionalidades;
 
 import UIMain.OpcionDeMenu;
 import gestorAplicacion.prestacion.Cita;
-import java.util.Date;
 
 public class verDisponibilidad extends OpcionDeMenu{
 

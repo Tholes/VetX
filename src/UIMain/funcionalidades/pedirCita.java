@@ -1,7 +1,7 @@
-package UIMain.registrados.cliente;
+package UIMain.funcionalidades;
 
 import UIMain.OpcionDeMenu;
-import UIMain.funcionesGenerales.verDisponibilidad;
+import UIMain.funcionalidades.verDisponibilidad;
 import gestorAplicacion.Usuarios.Administrador;
 import gestorAplicacion.Usuarios.Cliente;
 import gestorAplicacion.prestacion.Cita;

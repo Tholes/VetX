@@ -1,4 +1,4 @@
-package UIMain.registrados.cliente;
+package UIMain.funcionalidades;
 
 import UIMain.OpcionDeMenu;
 import java.util.Scanner;

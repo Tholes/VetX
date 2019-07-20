@@ -1,8 +1,8 @@
-package UIMain.registrados.veterinario;
+package UIMain.funcionalidades;
 
 import UIMain.OpcionDeMenu;
 
-public class darDeAlta extends OpcionDeMenu{
+public class hospitalizarMascota extends OpcionDeMenu{
     public void ejecutar(){
 
     }
