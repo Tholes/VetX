@@ -10,7 +10,7 @@ public class Mascota {
     private String nombre;
     private String raza;
     private String especie;
-    private char sexo; //valores definidos de M/H
+    private char sexo; //valores definidos de M/H (Macho/Hembra)
     private Date fechaNacimiento;
     private Cliente amo;
     private boolean estado;

@@ -7,7 +7,6 @@ public class Persona {
     private int id;
     private String nombre;
     private String email;
-    private String key;
     private String nombreUsuario;
     private String contraseña;
 
@@ -78,4 +77,11 @@ public class Persona {
         return false;
     }
 
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
 }

@@ -1,5 +1,5 @@
 package UIMain.funcionalidades;
-
+//Opción de menú 1
 import UIMain.OpcionDeMenu;
 
 public class aprobarCitas extends OpcionDeMenu{

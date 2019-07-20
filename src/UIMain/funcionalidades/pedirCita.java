@@ -1,5 +1,5 @@
 package UIMain.funcionalidades;
-
+//Opción de menú 12
 import UIMain.OpcionDeMenu;
 import UIMain.funcionalidades.verDisponibilidad;
 import gestorAplicacion.Usuarios.Administrador;

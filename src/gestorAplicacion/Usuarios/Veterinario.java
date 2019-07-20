@@ -20,7 +20,6 @@ public class Veterinario extends Persona {
         this.sueldo = sueldo;
         cantidadVeterinarios++;
         this.idTarjetaProfesional = idTarjetaProfesional;
-
     }
 
     /*

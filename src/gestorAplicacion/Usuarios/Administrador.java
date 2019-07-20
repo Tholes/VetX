@@ -1,6 +1,10 @@
 package gestorAplicacion.Usuarios;
 
 public class Administrador extends Persona {
+
+    public Administrador(String nombre, String email, String usuario, String contraseña){
+        super(nombre, email, usuario, contraseña);
+    }
     
     public void asignarConsultorio(Veterinario vet){
         // ¿Tenemos consultarios?
@@ -15,8 +19,5 @@ public class Administrador extends Persona {
     }
 
     //Al pedir una cita, el administrador le va a asignar un veterinario a esa cita.
-    public static Veterinario asignarVeterinario(){ 
-
-    }
 
 }

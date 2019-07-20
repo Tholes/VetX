@@ -1,5 +1,5 @@
 package UIMain.funcionalidades;
-
+//Opción de menú 2
 import UIMain.OpcionDeMenu;
 
 public class añadirAlHistorial extends OpcionDeMenu{
