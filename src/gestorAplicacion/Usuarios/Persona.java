@@ -9,18 +9,18 @@ public class Persona {
     private String nombre;
     private String email;
     private String nombreUsuario;
-    private String contraseña;
+    private String key;
 
     //Usuarios invitados.
     public Persona(){
         
     }
 
-    public Persona(String nombre, String email,String usuario ,String contraseña){
+    public Persona(String nombre, String email,String usuario ,String key){
         this.nombre = nombre;
         this.email = email;
         this.nombreUsuario = usuario;
-        this.contraseña = contraseña;
+        this.key = key;
         cantidadPersonas++;
         this.id = cantidadPersonas;
     }
@@ -84,7 +84,7 @@ public class Persona {
         return nombreUsuario;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getkey() {
+        return key;
     }
 }

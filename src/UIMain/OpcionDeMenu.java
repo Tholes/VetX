@@ -28,9 +28,9 @@ public abstract class OpcionDeMenu {
         @Override
 	public abstract String toString ();
 	
-	public static void seeAllOperations() {
+	public static void seeAllfuncionalidades() {
 		int i = 1;
-		for (Map.Entry<String, OpcionDeMenu> opcionDeMenu : Data.operations.entrySet()) {
+		for (Map.Entry<String, OpcionDeMenu> opcionDeMenu : Data.funcionalidades.entrySet()) {
 			System.out.println(i + " "+opcionDeMenu.getValue());
 			i++;
 		}

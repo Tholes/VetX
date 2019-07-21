@@ -1,5 +1,5 @@
 
-package uiMain;
+package UIMain;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,38 +9,39 @@ import gestorAplicacion.Usuarios.Persona;
 
 public class MenuDeConsola {
 	
-	private Persona user;
-	private ArrayList<OpcionDeMenu> options = new ArrayList<OpcionDeMenu> ();
+	private Persona usuario;
+	private ArrayList<OpcionDeMenu> opciones = new ArrayList<OpcionDeMenu> ();
 	
-	public MenuDeConsola(ArrayList<OpcionDeMenu> options){
-		this.options = options;
+	public MenuDeConsola(ArrayList<OpcionDeMenu> opciones){
+		this.opciones = opciones;
 	}
 	
-	public MenuDeConsola(Persona user, ArrayList<OpcionDeMenu> options){
-		this.user = user;
-		this.options = options;
+	public MenuDeConsola(Persona usuario, ArrayList<OpcionDeMenu> opciones){
+		this.usuario = usuario;
+		this.opciones = opciones;
 	}
 	
 	public Persona getUser() {
-		return user;
+		return usuario;
 	}
 
-	public void setUser(Persona user) {
-		this.user = user;
+	public void setUser(Persona usuario) {
+		this.usuario = usuario;
 	}
 	
 	public ArrayList<OpcionDeMenu> getOptions() {
-		return options;
+		return opciones;
 	}
 
-	public void setOptions(ArrayList<OpcionDeMenu> options) {
-		this.options = options;
+	public void setOptions(ArrayList<OpcionDeMenu> opciones) {
+		this.opciones = opciones;
+                
 	}
 	
 	public String[] getOperations() {
-		String [] opt = new String[options.size()];
+		String [] opt = new String[opciones.size()];
 		int i = 0;
-		for (OpcionDeMenu opcionDeMenu : options) {
+		for (OpcionDeMenu opcionDeMenu : opciones) {
 			opt[i] = opcionDeMenu.getKey();
 			i++;
 		}
@@ -52,7 +53,7 @@ public class MenuDeConsola {
 		
 		System.out.println();
 		int i = 1;
-		for (OpcionDeMenu option : options) {
+		for (OpcionDeMenu option : opciones) {
 			
 			System.out.println(i+" "+option);
 			i++;
@@ -62,33 +63,33 @@ public class MenuDeConsola {
 		
 		System.out.print("Ingrese la opcion: ");
 		int opt = leer.nextInt();
-		options.get((opt-1)).ejecutar();
+		opciones.get((opt-1)).ejecutar();
 		
 	}
 	
-	public static void newMenu(Persona user, String [] operations) {
-		ArrayList<OpcionDeMenu> operationsMenu = new ArrayList<OpcionDeMenu>();
-		for (String opt : operations) {
-			operationsMenu.add(Data.operations.get(opt));
+	public static void newMenu(Persona usuario, String [] funcionalidades) {
+		ArrayList<OpcionDeMenu> funcionalidadMenu = new ArrayList<OpcionDeMenu>();
+		for (String opt : funcionalidades) {
+			funcionalidadMenu.add(Data.funcionalidades.get(opt));
 		}
-		MenuDeConsola menu = new MenuDeConsola(user, operationsMenu);
-		user.setMenu(menu);
-		Data.menus.put(user.getUsername(), menu);
+		MenuDeConsola menu = new MenuDeConsola(usuario, funcionalidadMenu);
+		usuario.setMenu(menu);
+		Data.menus.put(usuario.getUsername(), menu);
 	}
 	
 	public void seeOpt() {
 		int i = 1;
-		for (OpcionDeMenu opcionDeMenu : options) {
+		for (OpcionDeMenu opcionDeMenu : opciones) {
 			System.out.println(i + " "+opcionDeMenu);
 			i++;
 		}
 	}
 	
 	public void removeOpt(int index) {
-		options.remove(index-1);
+		opciones.remove(index-1);
 	}
 	
-	public void a�adirOpcion(String opt) {
-		options.add(Data.operations.get(opt));
+	public void agregarOpcion(String opt) {
+		opciones.add(Data.funcionalidades.get(opt));
 	}
 }

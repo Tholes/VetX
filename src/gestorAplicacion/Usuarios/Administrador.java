@@ -2,13 +2,10 @@ package gestorAplicacion.Usuarios;
 
 public class Administrador extends Persona {
 
-    public Administrador(String nombre, String email, String usuario, String contraseña){
-        super(nombre, email, usuario, contraseña);
+    public Administrador(String nombre, String email, String usuario, String key){
+        super(nombre, email, usuario, key);
     }
-    
-    public void asignarConsultorio(Veterinario vet){
-        // ¿Tenemos consultarios?
-    }
+
     
     public void contratarVeterianrio(){
         
