@@ -1,1 +1,1 @@
-petunia;2005/05/16;H;vaca;Romagnola;dan
+25;petunia;16/05/2005;H;vaca;Romagnola;dan

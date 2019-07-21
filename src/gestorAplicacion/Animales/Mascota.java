@@ -50,8 +50,13 @@ public class Mascota {
     public char getSexo() {
         return sexo;
     }
+
     public void setSexo(char sexo){
         this.sexo = sexo;
+    }
+
+    public String getEspecie() {
+        return especie;
     }
 
     public Date getFechaNacimiento() {

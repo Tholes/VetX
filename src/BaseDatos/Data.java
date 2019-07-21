@@ -1,6 +1,7 @@
 package BaseDatos;
 
 import UIMain.OpcionDeMenu;
+import com.sun.rmi.rmid.ExecPermission;
 import gestorAplicacion.Animales.Mascota;
 import gestorAplicacion.Usuarios.Administrador;
 import gestorAplicacion.Usuarios.Cliente;
@@ -22,8 +23,9 @@ import java.io.FileWriter;
 public class Data{
 
     public static HashMap<String, Persona> usuarios = new HashMap<>();
-    public static HashMap<String, HashMap<String,Mascota>> mascotas = new HashMap<>();
+    public static HashMap<Integer,Mascota > mascotas = new HashMap<>();
     public static HashMap<Integer, Cita> citas = new HashMap<>();
+    public static HashMap<Integer,Mascota> hospitalizados = new HashMap<>();
     public static String[] menuCliente;
     public static String[] menuVeterinario;
     public static String[] menuAdministrador;
@@ -36,6 +38,7 @@ public class Data{
         cargarMascotas(ruta);
         cargarCitas(ruta);
         cargarMenuUsuarios(ruta);
+        cargarClinica(ruta);
     }
 
     public static void cargarClientes(String ruta){
@@ -129,30 +132,19 @@ public class Data{
             while ((line = br.readLine()) != null){
                 if(!line.isEmpty()){
                     String[] mascota = line.split(";");
-                    String nombre = mascota[0];
-                    String[] fechaNacimientoString = mascota[1].split("/");
+                    int Id = Integer.parseInt(mascota[0]);
+                    String nombre = mascota[1];
+                    String[] fechaNacimientoString = mascota[2].split("/");
                     int año = Integer.parseInt(fechaNacimientoString[0]);
                     int mes = Integer.parseInt(fechaNacimientoString[1]);
                     int dia = Integer.parseInt(fechaNacimientoString[2]);
                     Date fechaNacimiento = new Date(año,mes,dia);
-                    char sexo = mascota[2].charAt(0);
-                    String especie = mascota[3];
-                    String raza = mascota[4];
-                    String usuarioDueño = mascota[5];
+                    char sexo = mascota[3].charAt(0);
+                    String especie = mascota[4];
+                    String raza = mascota[2];
+                    String usuarioDueño = mascota[6];
                     Cliente dueño = (Cliente) usuarios.get(usuarioDueño);
-
-                    if(!mascotas.containsKey(usuarioDueño)){
-                        HashMap<String,Mascota> datosMascota = new HashMap<>();
-                        datosMascota.put(nombre, new Mascota(nombre, fechaNacimiento, sexo, especie, raza, dueño));
-                        mascotas.put(usuarioDueño, datosMascota);
-
-                    }else {
-
-                        HashMap<String,Mascota> datosMascotas = (HashMap<String, Mascota>) mascotas.get(usuarioDueño).clone();
-                        datosMascotas.put(nombre, new Mascota(nombre, fechaNacimiento, sexo, especie, raza, dueño));
-                        mascotas.put(usuarioDueño,datosMascotas);
-
-                    }
+                    mascotas.put(Id,new Mascota(nombre,fechaNacimiento,sexo,especie,raza,dueño));
                 }
             }
             br.close();
@@ -219,16 +211,38 @@ public class Data{
         }
     }
 
+    public static void cargarClinica(String ruta){
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(ruta+"hospitalizados.txt"));
+            String line;
+            while((line = br.readLine()) != null){
+                if(!line.isEmpty()){
+                    String[] datos = line.split(";");
+                    int id = Integer.parseInt(datos[0]);
+                    String nombre = datos[1];
+                    hospitalizados.put(id,mascotas.get(id));
+                }
+            }
+        } catch (Exception e){
+            /*
+            * Un posible error es que no se actualizó correctamente la base de datos
+            * y estamos indexando una mascota que no tenemos registrada
+            * */
+        }
+    }
+
     public static void guardarDatos(){
         crearArchivos();
         String ruta = System.getProperty("user+dir")+"\\src\\temp";
         guardarDatosUsuario(ruta);
         guardarMenus(ruta);
+        guardarCitas(ruta);
+        guardarMascotas(ruta);
+        guardarClinica(ruta);
     }
 
-    public static void crearArchivos(){
+    public static void crearArchivos(String ruta){
         try{
-            String ruta = System.getProperty("user+dir")+"\\src\\temp";
             File directorio = new File(ruta);
             if(!directorio.exists()){
                 directorio.mkdir();
@@ -263,6 +277,7 @@ public class Data{
                 line += persona.getEmail()+";";
                 line += persona.getNombreUsuario()+";";
                 line += persona.getContraseña();
+
                 if (persona instanceof Cliente){
                     outCliente.println(line);
                 }
@@ -310,12 +325,64 @@ public class Data{
             for (int i = 0; i < menuAdministrador.length-1; i++) {
                 line += menuAdministrador[i]+";";
             }
-            line += menuAdministrador[menuAdministrador.length-1]+"\n";
-
+            line += menuAdministrador[menuAdministrador.length-1];
+            out.println(line);
+            out.close();
         } catch (Exception e){
 
         }
     }
+
+    public static void guardarCitas(String ruta){
+        try {
+            PrintWriter out = new PrintWriter(new FileWriter(ruta+"cita.txt"));
+            for (Map.Entry<Integer,Cita> cita : citas.entrySet()) {
+                Cita citaProxima = cita.getValue();
+                String line = Integer.toString(citaProxima.getId())+";";
+                line += citaProxima.getCliente().getNombreUsuario()+";";
+                line += citaProxima.getVeterinario().getNombreUsuario();
+                out.println(line);
+            }
+            out.close();
+        } catch (Exception e){
+
+        }
+
+    }
+
+    public static void guardarMascotas(String ruta){
+        try {
+            PrintWriter out = new PrintWriter(new FileWriter(ruta+"mascota.txt"));
+            for (Map.Entry<Integer,Mascota>  indice : mascotas.entrySet()) {
+                String line = Integer.toString(indice.getKey())+";";
+                line += indice.getValue().getNombre()+";";
+                line += indice.getValue().getFechaNacimiento()+";";
+                line += indice.getValue().getSexo()+";";
+                line += indice.getValue().getEspecie()+";";
+                line += indice.getValue().getRaza()+";";
+                line += indice.getValue().getAmo().getNombreUsuario();
+                out.println(line);
+            }
+            out.close();
+        } catch (Exception e){
+
+        }
+    }
+
+    public static void guardarClinica(String ruta){
+        try {
+            PrintWriter out = new PrintWriter(new FileWriter(ruta+"hospitalizados.txt"));
+            for (Map.Entry<Integer,Mascota> hospitalizadas : hospitalizados.entrySet()) {
+                String line = Integer.toString(hospitalizadas.getKey())+";";
+                line += hospitalizadas.getValue().getNombre();
+                out.println(line);
+            }
+            out.close();
+        } catch (Exception e){
+
+        }
+    }
+
 
 }
 

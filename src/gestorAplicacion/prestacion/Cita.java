@@ -4,17 +4,20 @@ import java.util.Date;
 import gestorAplicacion.Usuarios.*;
 
 public class Cita {
+    private int cantidadCitas;
     private Date fechaCita;
     private Veterinario veterinario;
     private Cliente cliente;
     private static ArrayList<Date> disponibilidad; 
     private Procedimiento procedimiento;
-
+    private int id;
     public Cita(Date fechaCita, Veterinario veterinario, Cliente cliente) {
         this.fechaCita = fechaCita;
         this.veterinario = veterinario;
         this.cliente = cliente;
         actualizarDisponibilidad(fechaCita);
+        cantidadCitas++;
+        this.id = cantidadCitas;
     }
 
     public static void actualizarDisponibilidad(Date fechaCita){
@@ -77,4 +80,11 @@ public class Cita {
         return ans;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
 }

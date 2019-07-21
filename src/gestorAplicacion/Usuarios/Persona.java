@@ -4,6 +4,7 @@ import gestorAplicacion.prestacion.*;
 import java.util.Date;
 public class Persona {
 
+    private static int cantidadPersonas;
     private int id;
     private String nombre;
     private String email;
@@ -20,6 +21,8 @@ public class Persona {
         this.email = email;
         this.nombreUsuario = usuario;
         this.contraseña = contraseña;
+        cantidadPersonas++;
+        this.id = cantidadPersonas;
     }
     
     public int getId() {
