@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import BaseDatos.Data;
+import gestorAplicacion.Usuarios.Persona;
 
 
 public class IniciarSesion extends OpcionDeMenu {
@@ -21,21 +22,10 @@ public class IniciarSesion extends OpcionDeMenu {
         System.out.print("Ingrese su usuario: ");
         String usuario = br.readLine();
         System.out.print("Ingrese su contraseña: ");
-        String contraseña = br.readLine();
-        if(Data.usuarios.containsKey(usuario)){
-            if(Data.usuarios.get(usuario).getKey().equals(contraseña)){
-
-            }
-            else{
-                System.out.println("¡datos incorrectos!");
-                pedirDatos();
-            }
-        }
-        else{
-            System.out.println("¡datos incorrectos!");
-            pedirDatos();
-        }
+        String key = br.readLine();
+        System.out.println(Persona.login(usuario,key));
     }
+
     public String toString(){
         return "Iniciar Sesion";
     }

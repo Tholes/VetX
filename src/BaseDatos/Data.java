@@ -38,7 +38,7 @@ public class Data{
 
     public static void cargarClientes(String ruta){
         try {
-            BufferedReader br = new BufferedReader(new FileReader(ruta+"usuario.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(ruta+"cliente.txt"));
             String line;
 
             while ((line = br.readLine()) != null){
@@ -60,7 +60,7 @@ public class Data{
 
     public static void cargarAdministradores(String ruta){
         try {
-            BufferedReader br = new BufferedReader(new FileReader(ruta+"administradores.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(ruta+"administrador.txt"));
             String line;
             while ((line = br.readLine()) != null){
                 if(!line.isEmpty()){
@@ -70,6 +70,7 @@ public class Data{
                     String usuario = administrador[2];
                     String key = administrador[3];
                     usuarios.put(usuario, new Administrador(nombre,email,usuario,key));
+                    System.out.println(usuario);
                 }
             }
             br.close();
@@ -241,42 +242,50 @@ public class Data{
     }
 
     public static void guardarDatos(){
+        crearArchivos();
         String ruta = System.getProperty("user+dir")+"\\src\\temp\\";
-        crearArchivos(ruta);
-        guardarDatosUsuario(ruta);
-        guardarMenus(ruta);
-        guardarCitas(ruta);
-        guardarMascotas(ruta);
-        guardarClinica(ruta);
+        guardarDatosUsuario();
+        guardarMenus();
+        guardarCitas();
+        guardarMascotas();
+        guardarClinica();
     }
 
-    public static void crearArchivos(String ruta){
+    public static void crearArchivos(){
+
         try{
+            String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
             File directorio = new File(ruta);
             if(!directorio.exists()){
                 directorio.mkdir();
             }
+
             File administrador = new File(ruta+"administrador.txt");
             File cita = new File(ruta+"cita.txt");
             File mascota = new File(ruta+"mascota.txt");
-            File menuUsuario = new File(ruta+"menuUsuario");
+            File menuUsuario = new File(ruta+"menuUsuario.txt");
             File procedimiento = new File(ruta+"procedimiento.txt");
-            File usuario = new File(ruta +"usuario.txt");
+            File cliente = new File(ruta +"cliente.txt");
             File veterinario = new File(ruta+"veterinario.txt");
+            File hospitalizados = new File(ruta+"hospitalizados.txt");
+
             administrador.createNewFile();
             cita.createNewFile();
             mascota.createNewFile();
             menuUsuario.createNewFile();
             procedimiento.createNewFile();
-            usuario.createNewFile();
+            cliente.createNewFile();
             veterinario.createNewFile();
-        } catch (IOException e){
+            hospitalizados.createNewFile();
 
+        } catch (IOException e){
+            System.out.println(e);
         }
     }
 
-    public static void guardarDatosUsuario(String ruta){
+    public static void guardarDatosUsuario(){
         try{
+            String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
             PrintWriter outCliente = new PrintWriter(new FileWriter(ruta+"cliente.txt"));
             PrintWriter outVeterinario = new PrintWriter(new FileWriter(ruta+"veterinario.txt"));
             PrintWriter outAdministrador = new PrintWriter(new FileWriter(ruta+"administrador.txt"));
@@ -286,7 +295,6 @@ public class Data{
                 line += persona.getEmail()+";";
                 line += persona.getNombreUsuario()+";";
                 line += persona.getKey();
-
                 if (persona instanceof Cliente){
                     outCliente.println(line);
                 }
@@ -304,20 +312,20 @@ public class Data{
                     line += persona.getKey();
                     outVeterinario.println(line);
                 }
-
             }
+
             outAdministrador.close();
             outCliente.close();
             outVeterinario.close();
         } catch (Exception e){
-
+            System.out.println(e);
         }
-
 
     }
 
-    public static void guardarMenus(String ruta){
+    public static void guardarMenus(){
         try {
+            String ruta = System.getProperty("user+dir")+"\\src\\temp\\";
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"menuUsuario"));
             String line ="";
             line += "cliente;";
@@ -343,9 +351,10 @@ public class Data{
         }
     }
 
-    public static void guardarCitas(String ruta){
+    public static void guardarCitas(){
 
         try {
+            String ruta = System.getProperty("user+dir")+"\\src\\temp\\";
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"cita.txt"));
             for (Map.Entry<Integer,Cita> cita : citas.entrySet()) {
                 Cita citaProxima = cita.getValue();
@@ -364,8 +373,9 @@ public class Data{
 
     }
 
-    public static void guardarMascotas(String ruta){
+    public static void guardarMascotas(){
         try {
+            String ruta = System.getProperty("user+dir")+"\\src\\temp\\";
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"mascota.txt"));
             for (Map.Entry<Integer,Mascota>  indice : mascotas.entrySet()) {
                 String line = Integer.toString(indice.getKey())+";";
@@ -383,8 +393,9 @@ public class Data{
         }
     }
 
-    public static void guardarClinica(String ruta){
+    public static void guardarClinica(){
         try {
+            String ruta = System.getProperty("user+dir")+"\\src\\temp\\";
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"hospitalizados.txt"));
             for (Map.Entry<Integer,Mascota> hospitalizadas : hospitalizados.entrySet()) {
                 String line = Integer.toString(hospitalizadas.getKey())+";";
@@ -396,7 +407,6 @@ public class Data{
 
         }
     }
-
 
 }
 

@@ -3,7 +3,6 @@ import BaseDatos.Data;
 import gestorAplicacion.Animales.Mascota;
 import gestorAplicacion.prestacion.Cita;
 import UIMain.Main;
-import java.io.IOException;
 import java.util.Date;
 public class Persona {
 
@@ -94,24 +93,15 @@ public class Persona {
         return Data.usuarios.get(usuario);
     }
 
-    public static String login(String usuario, String contraseña){
+    public static String login(String usuario, String key){
         Persona persona = Persona.fromUsuarioGetPersona(usuario);
         if(persona != null){
-            if(persona.getNombreUsuario().equals(usuario) && persona.getKey().equals(contraseña)){
+            if(persona.getNombreUsuario().equals(usuario) && persona.getKey().equals(key)){
                 Main.setUsuarioActivo(persona);
                 return "Bienvenido "+ persona.getNombre();
             }
         }
         return "Datos ingresados no validos.";
-    }
-
-    public static void registrarCliente(String nombre, String email, String usuario, String contraseña){
-        Cliente cliente = new Cliente(nombre, email, usuario, contraseña);
-
-        //Su menú sería el de cliente (Data.menuCliente).
-
-        Data.usuarios.put(usuario,cliente);
-
     }
 
     public static void registrarVeterinario(String nombre,String email,String especialidad,byte experiencia ,int sueldo , long idTarjetaProfesional ,String usuario,String key){
@@ -125,5 +115,9 @@ public class Persona {
         Data.usuarios.remove(nombreUsuario);
         this.finalize();
 
+    }
+
+    public void registrarse(){
+        //Se sobreescribira en cada clase hija
     }
 }

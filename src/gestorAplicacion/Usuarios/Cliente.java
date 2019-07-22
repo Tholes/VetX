@@ -3,6 +3,7 @@ package gestorAplicacion.Usuarios;
 import java.util.ArrayList;
 
 import BaseDatos.Data;
+import UIMain.Main;
 import gestorAplicacion.Animales.*;
 import gestorAplicacion.prestacion.*;
 import java.util.Date;
@@ -124,4 +125,14 @@ public class Cliente extends Persona {
         this.finalize();
     }
 
+    public static String registrarse(String nombre, String email, String usuario,String key) {
+
+        if(!Data.usuarios.containsKey(usuario)){
+            Cliente cliente = new Cliente(nombre,email,usuario,key);
+            Data.usuarios.put(usuario,cliente);
+            Main.setUsuarioActivo(cliente);
+            return "Registro completo.";
+        }
+        return "Nombre de usuario existente";
+    }
 }

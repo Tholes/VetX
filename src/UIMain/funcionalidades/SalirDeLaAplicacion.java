@@ -1,5 +1,6 @@
 package UIMain.funcionalidades;
 
+import BaseDatos.Data;
 import UIMain.OpcionDeMenu;
 
 import java.io.IOException;
@@ -8,7 +9,9 @@ public class SalirDeLaAplicacion extends OpcionDeMenu {
 
     @Override
     public void ejecutar() throws IOException {
-
+        Data.guardarDatos();
+        System.out.println("Saliendo...");
+        System.exit(0);
     }
 
     @Override

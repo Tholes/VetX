@@ -2,26 +2,39 @@ package UIMain;
 
 import BaseDatos.Data;
 import UIMain.funcionalidades.*;
-import gestorAplicacion.Usuarios.Administrador;
-import gestorAplicacion.Usuarios.Cliente;
 import gestorAplicacion.Usuarios.Persona;
 import gestorAplicacion.Usuarios.Veterinario;
-
 
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 public class Main {
 
     private static Persona usuarioActivo;
     private static MenuDeConsola menu;
-
+    private static MenuDeConsola menuPorDefecto;
     public static void main(String[] args) throws IOException {
         inicializarDatos();
-        menu = new MenuDeConsola(new Veterinario());
-        menu.lanzarMenu();
+        while(true){
+            try{
+                if(Main.usuarioActivo != null){
+                    menu = new MenuDeConsola(usuarioActivo);
+                    menu.lanzarMenu();
+                }
+                else {
+                    menuPorDefecto.lanzarMenu();
+                }
+            }
+
+            catch (Exception e){
+                System.out.println(e);
+                Data.guardarDatos();
+                System.out.println("Saliendo...");
+                System.exit(0);
+            }
+        }
     }
 
     public static void inicializarDatos(){
@@ -32,7 +45,7 @@ public class Main {
             add(new Registrarse());
             add(new SalirDeLaAplicacion());
         }};
-        menu = (new MenuDeConsola(opcionesInvitado));
+        menuPorDefecto = (new MenuDeConsola(opcionesInvitado));
     }
 
     public static Persona getUsuarioActivo() {

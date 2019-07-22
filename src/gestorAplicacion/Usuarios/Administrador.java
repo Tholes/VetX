@@ -1,6 +1,7 @@
 package gestorAplicacion.Usuarios;
 
 import BaseDatos.Data;
+import UIMain.Main;
 
 public class Administrador extends Persona {
 
@@ -35,5 +36,16 @@ public class Administrador extends Persona {
         Persona persona = Persona.fromUsuarioGetPersona(usuario);
         Data.usuarios.remove(usuario);
         persona.borrarMiCuenta();
+    }
+
+    public static String registrarse(String nombre, String email, String usuario,String key) {
+
+        if(!Data.usuarios.containsKey(usuario)){
+            Administrador admin = new Administrador(nombre,email,usuario,key);
+            Data.usuarios.put(usuario,admin);
+            Main.setUsuarioActivo(admin);
+            return "Registro completo.";
+        }
+        return "Nombre de usuario existente";
     }
 }

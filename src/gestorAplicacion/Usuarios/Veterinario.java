@@ -3,6 +3,7 @@ package gestorAplicacion.Usuarios;
 import java.util.ArrayList;
 
 import BaseDatos.Data;
+import UIMain.Main;
 import gestorAplicacion.prestacion.Cita;
 
 public class Veterinario extends Persona {
@@ -18,8 +19,8 @@ public class Veterinario extends Persona {
         super();
     }
 
-    public Veterinario(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional,String usuario, String contraseña) {
-        super(nombre,email,usuario,contraseña);
+    public Veterinario(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional,String usuario, String key) {
+        super(nombre,email,usuario,key);
         this.especialidad = especialidad;
         this.experiencia = experiencia;
         this.sueldo = sueldo;
@@ -86,4 +87,13 @@ public class Veterinario extends Persona {
         return "Soy " + super.getNombre() + " mi email es: " + super.getEmail() + " mi especialidad es: " + especialidad + " tengo " + experiencia + " años de experiencia";
     }
 
+    public static String registrarse(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional,String usuario, String key) {
+        if(!Data.usuarios.containsKey(usuario)){
+            Veterinario vet = new Veterinario(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key);
+            Data.usuarios.put(usuario,vet);
+            Main.setUsuarioActivo(vet);
+            return "Registro completo.";
+        }
+        return "Nombre de usuario existente";
+    }
 }
