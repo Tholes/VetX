@@ -24,7 +24,7 @@ public class Data{
     public static ArrayList<Integer> menuCliente = new ArrayList<>();
     public static ArrayList<Integer> menuVeterinario = new ArrayList<>();
     public static ArrayList<Integer> menuAdministrador = new ArrayList<>();
-
+    public static ArrayList<Veterinario> veterinarios =new ArrayList<>();
     public static void cargarDatos(){
         String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
         cargarClientes(ruta);
