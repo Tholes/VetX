@@ -1,9 +1,9 @@
 package UIMain.funcionalidades;
-//Opción de menú 13
+//Opción de menú 10
 import UIMain.OpcionDeMenu;
 import java.util.Scanner;
 
-public class registrarMascota extends OpcionDeMenu {
+public class RegistrarMascota extends OpcionDeMenu {
 
     Scanner in = new Scanner(System.in);
 
@@ -24,11 +24,11 @@ public class registrarMascota extends OpcionDeMenu {
         String raza = in.nextLine();
         
         /*
-        
         Para registrarlo primero tendríamos que saber
         quien está activo
-        
         */
+
+
     }
 
     public String toString() {

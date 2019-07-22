@@ -1,8 +1,8 @@
 package UIMain.funcionalidades;
-//Opción de menú 3
+//Opción de menú 5
 import UIMain.OpcionDeMenu;
 
-public class cambiarFechaCita extends OpcionDeMenu{
+public class DarDeAlta extends OpcionDeMenu{
     public void ejecutar(){
 
     }

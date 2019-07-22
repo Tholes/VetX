@@ -1,8 +1,8 @@
 package UIMain.funcionalidades;
-//Opción de menú 6
+//Opción de menú 4
 import UIMain.OpcionDeMenu;
 
-public class contratarVeterinario extends OpcionDeMenu{
+public class ContratarVeterinario extends OpcionDeMenu{
 
     public void ejecutar(){
 

@@ -1,9 +1,12 @@
 package gestorAplicacion.Usuarios;
 
 import java.util.ArrayList;
+
+import BaseDatos.Data;
 import gestorAplicacion.Animales.*;
 import gestorAplicacion.prestacion.*;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Cliente extends Persona {
 
@@ -11,7 +14,8 @@ public class Cliente extends Persona {
     private final int id;
     private ArrayList<Mascota> mascotas = new ArrayList<>();
     private ArrayList<Servicio> servicios = new ArrayList<>();
-    private ArrayList<Cita> citasAsignadas = new ArrayList<>();
+
+    private HashMap<Cita,Mascota> citasAsignadas = new HashMap<>();
 
     public Cliente(String nombre, String email,String usuario ,String contraseña) {
         super(nombre,email,usuario,contraseña);
@@ -51,6 +55,7 @@ public class Cliente extends Persona {
     public ArrayList<Mascota> getMascotas(){
         return mascotas;
     }
+
     public void setMascota(Mascota Mascota) {
         mascotas.add(Mascota);
     }
@@ -75,7 +80,6 @@ public class Cliente extends Persona {
         return "Soy " + super.getNombre() + " mi correo es: " + super.getEmail() + " y tengo " + mascotas.size() + " mascotas";
     }
 
-  
     public void registrarMascota(String nombre,Date fechaNacimiento ,char sexo, String especie, String raza){
         Mascota mascota = new Mascota(nombre, fechaNacimiento, sexo, especie, raza, this);
         this.setMascota(mascota);
@@ -84,18 +88,35 @@ public class Cliente extends Persona {
 
     public boolean borrarMascota(Mascota mascota) throws Throwable{
         if(mascotas.contains(mascota)){
+            Data.mascotas.remove(mascota.getId());
             mascotas.remove(mascota);
             mascota.eliminarMascota();
+
             return true;
         }
         return false;
     }
 
-    public ArrayList<Cita> getCitasAsignadas() {
+    public void borrarTodasLasMascotas() throws Throwable{
+        while (!mascotas.isEmpty()){
+            Mascota mascota = mascotas.get(0);
+            mascota.eliminarMascota();
+        }
+    }
+
+    public HashMap<Cita,Mascota> getCitasAsignadas() {
         return citasAsignadas;
     }
 
-    public void citaAsignada(Cita cita){
-        citasAsignadas.add(cita);
+    public void citaAsignada(Cita cita, Mascota mascota){
+        citasAsignadas.put(cita,mascota);
     }
+
+    @Override
+    public void borrarMiCuenta() throws  Throwable{
+        borrarTodasLasMascotas();
+        Data.usuarios.remove(getNombreUsuario());
+        this.finalize();
+    }
+
 }

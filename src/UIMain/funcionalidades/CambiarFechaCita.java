@@ -1,9 +1,8 @@
 package UIMain.funcionalidades;
-//Opción de menú 4
+//Opción de menú 1
 import UIMain.OpcionDeMenu;
 
-public class cancelarCita extends OpcionDeMenu{
-
+public class CambiarFechaCita extends OpcionDeMenu{
     public void ejecutar(){
 
     }
@@ -11,5 +10,4 @@ public class cancelarCita extends OpcionDeMenu{
     public String toString(){
         return "a";
     }
-
 }

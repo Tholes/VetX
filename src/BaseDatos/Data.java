@@ -1,7 +1,5 @@
 package BaseDatos;
 
-import UIMain.OpcionDeMenu;
-import com.sun.rmi.rmid.ExecPermission;
 import gestorAplicacion.Animales.Mascota;
 import gestorAplicacion.Usuarios.Administrador;
 import gestorAplicacion.Usuarios.Cliente;
@@ -9,10 +7,7 @@ import gestorAplicacion.Usuarios.Veterinario;
 import gestorAplicacion.prestacion.Cita;
 import gestorAplicacion.Usuarios.Persona;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.io.FileReader;
@@ -26,9 +21,9 @@ public class Data{
     public static HashMap<Integer,Mascota > mascotas = new HashMap<>();
     public static HashMap<Integer, Cita> citas = new HashMap<>();
     public static HashMap<Integer,Mascota> hospitalizados = new HashMap<>();
-    public static String[] menuCliente;
-    public static String[] menuVeterinario;
-    public static String[] menuAdministrador;
+    public static ArrayList<Integer> menuCliente;
+    public static ArrayList<Integer> menuVeterinario;
+    public static ArrayList<Integer> menuAdministrador;
 
     public static void cargarDatos(){
         String ruta = System.getProperty("user.dir")+"\\src\\temp";
@@ -51,8 +46,8 @@ public class Data{
                     String nombre = cliente[0];
                     String email = cliente[1];
                     String usuario = cliente[2];
-                    String contraseña = cliente[3];
-                    usuarios.put(usuario, new Cliente(nombre,email,usuario,contraseña));
+                    String key = cliente[3];
+                    usuarios.put(usuario, new Cliente(nombre,email,usuario,key));
                 }
             }
             br.close();
@@ -71,8 +66,8 @@ public class Data{
                     String nombre = administrador[0];
                     String email = administrador[1];
                     String usuario = administrador[2];
-                    String contraseña = administrador[3];
-                    usuarios.put(usuario, new Administrador(nombre,email,usuario,contraseña));
+                    String key = administrador[3];
+                    usuarios.put(usuario, new Administrador(nombre,email,usuario,key));
                 }
             }
             br.close();
@@ -97,9 +92,9 @@ public class Data{
                         int sueldo = Integer.parseInt(veterinario[4]);
                         long idTarjetaProfesional = Long.parseLong(veterinario[5]);
                         String usuario = veterinario[6];
-                        String contraseña = veterinario[7];
+                        String key = veterinario[7];
 
-                        usuarios.put(usuario, new Veterinario(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,contraseña));
+                        usuarios.put(usuario, new Veterinario(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key));
                     }
                     else if(veterinario.length == 6) {
                         String nombre = veterinario[0];
@@ -108,9 +103,9 @@ public class Data{
                         byte experiencia = Byte.parseByte(veterinario[3]);
                         long idTarjetaProfesional = Long.parseLong(veterinario[5]);
                         String usuario = veterinario[6];
-                        String contraseña = veterinario[7];
+                        String key = veterinario[7];
 
-                        usuarios.put(usuario, new Veterinario(nombre,email,experiencia,idTarjetaProfesional,usuario,contraseña));
+                        usuarios.put(usuario, new Veterinario(nombre,email,experiencia,idTarjetaProfesional,usuario,key));
                     }else{
                         //error de registro
                     }
@@ -168,7 +163,9 @@ public class Data{
                     int año = Integer.parseInt(fechaCitaString[2]);
                     int mes = Integer.parseInt(fechaCitaString[1]);
                     int dia = Integer.parseInt(fechaCitaString[0]);
-                    Date fecha = new Date(año,mes,dia);
+                    int hora = Integer.parseInt(fechaCitaString[3]);
+                    int minuto = Integer.parseInt(fechaCitaString[4]);
+                    Date fecha = new Date(año,mes,dia,hora,minuto);
                     Veterinario veterinario = (Veterinario) usuarios.get(cita[1]);
                     Cliente cliente = (Cliente) usuarios.get(cita[2]);
                     citas.put(id,new Cita(fecha,veterinario,cliente));
@@ -192,15 +189,22 @@ public class Data{
                     String[] menu = line.split(";");
                     String rol = menu[0];
                     if(rol.equals("cliente")){
-                        menuCliente = Arrays.copyOfRange(menu,1,menu.length);
+                        for (int i = 1; i < menu.length-1; i++) {
+                            menuCliente.add(Integer.parseInt(menu[i]));
+                        }
+
                         //uiMain.MenuDeConsola.newMenu();
                     }
                     else if(rol.equals("veterinario")){
-                        menuVeterinario = Arrays.copyOfRange(menu,1,menu.length);
 
+                        for (int i = 1; i < menu.length-1; i++) {
+                            menuVeterinario.add(Integer.parseInt(menu[i]));
+                        }
                     }
                     else if(rol.equals("administrador")){
-                        menuAdministrador = Arrays.copyOfRange(menu,1,menu.length);
+                        for (int i = 1; i < menu.length-1; i++) {
+                            menuAdministrador.add(Integer.parseInt(menu[i]));
+                        }
                     }
 
                 }
@@ -232,8 +236,8 @@ public class Data{
     }
 
     public static void guardarDatos(){
-        crearArchivos();
         String ruta = System.getProperty("user+dir")+"\\src\\temp";
+        crearArchivos(ruta);
         guardarDatosUsuario(ruta);
         guardarMenus(ruta);
         guardarCitas(ruta);
@@ -276,7 +280,7 @@ public class Data{
                 String line = persona.getNombre()+";";
                 line += persona.getEmail()+";";
                 line += persona.getNombreUsuario()+";";
-                line += persona.getContraseña();
+                line += persona.getKey();
 
                 if (persona instanceof Cliente){
                     outCliente.println(line);
@@ -292,7 +296,7 @@ public class Data{
                     line += ((Veterinario) persona).getSueldo()+";";
                     line += ((Veterinario) persona).getIdProfesional()+";";
                     line += persona.getNombreUsuario()+";";
-                    line += persona.getContraseña();
+                    line += persona.getKey();
                     outVeterinario.println(line);
                 }
 
@@ -312,20 +316,21 @@ public class Data{
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"menuUsuario"));
             String line ="";
             line += "cliente;";
-            for (int i = 0; i < menuCliente.length-1 ; i++) {
-                line += menuCliente[i]+";";
+            for (int i = 0; i < menuCliente.size()-1 ; i++) {
+                line += menuCliente.get(i)+";";
             }
-            line += menuCliente[menuCliente.length-1]+"\n";
+            line += menuCliente.get(menuCliente.size()-1)+"\n";
             line += "veterinario;";
-            for (int i = 0; i < menuVeterinario.length-1 ; i++) {
-                line += menuVeterinario[i]+";";
+            for (int i = 0; i < menuVeterinario.size()-1 ; i++) {
+                line += menuVeterinario.get(i)+";";
             }
-            line += menuVeterinario[menuVeterinario.length-1]+"\n";
+            line += menuVeterinario.get(menuVeterinario.size()-1)+"\n";
             line += "administrador;";
-            for (int i = 0; i < menuAdministrador.length-1; i++) {
-                line += menuAdministrador[i]+";";
+
+            for (int i = 0; i < menuAdministrador.size()-1; i++) {
+                line += menuAdministrador.get(i)+";";
             }
-            line += menuAdministrador[menuAdministrador.length-1];
+            line += menuAdministrador.get(menuAdministrador.size()-1);
             out.println(line);
             out.close();
         } catch (Exception e){
@@ -334,11 +339,15 @@ public class Data{
     }
 
     public static void guardarCitas(String ruta){
+
         try {
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"cita.txt"));
             for (Map.Entry<Integer,Cita> cita : citas.entrySet()) {
                 Cita citaProxima = cita.getValue();
                 String line = Integer.toString(citaProxima.getId())+";";
+                Date fecha = citaProxima.getFechaCita();
+                line += fecha.getDay()+"/"+fecha.getMonth()+"/" +fecha.getYear()+"/"
+                        +fecha.getHours()+"/" +fecha.getMinutes()+";";
                 line += citaProxima.getCliente().getNombreUsuario()+";";
                 line += citaProxima.getVeterinario().getNombreUsuario();
                 out.println(line);
@@ -382,7 +391,6 @@ public class Data{
 
         }
     }
-
 
 }
 

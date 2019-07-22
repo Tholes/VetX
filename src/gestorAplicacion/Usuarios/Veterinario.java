@@ -2,6 +2,7 @@ package gestorAplicacion.Usuarios;
 
 import java.util.ArrayList;
 
+import BaseDatos.Data;
 import gestorAplicacion.prestacion.Cita;
 
 public class Veterinario extends Persona {
@@ -80,6 +81,5 @@ public class Veterinario extends Persona {
     public String toString() {
         return "Soy " + super.getNombre() + " mi email es: " + super.getEmail() + " mi especialidad es: " + especialidad + " tengo " + experiencia + " años de experiencia";
     }
-
 
 }

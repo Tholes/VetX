@@ -1,9 +1,9 @@
 package UIMain.funcionalidades;
-//Opción de menú 14
+//Opción de menú 11
 import UIMain.OpcionDeMenu;
 import gestorAplicacion.prestacion.Cita;
 
-public class verDisponibilidad extends OpcionDeMenu{
+public class VerDisponibilidad extends OpcionDeMenu{
 
     public void ejecutar(){
         System.out.println(Cita.getDisponibilidad());

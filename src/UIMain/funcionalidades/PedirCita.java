@@ -1,17 +1,17 @@
 package UIMain.funcionalidades;
-//Opción de menú 12
+//Opción de menú 9
 import UIMain.OpcionDeMenu;
-import UIMain.funcionalidades.verDisponibilidad;
 import gestorAplicacion.Usuarios.Administrador;
 import gestorAplicacion.Usuarios.Cliente;
 import gestorAplicacion.prestacion.Cita;
 import java.util.Date;
 import java.util.Scanner;
 
-public class pedirCita extends OpcionDeMenu {
+public class PedirCita extends OpcionDeMenu {
 
     Scanner in = new Scanner(System.in);
-    verDisponibilidad fechasDisponibles = new verDisponibilidad();
+    VerDisponibilidad fechasDisponibles = new VerDisponibilidad();
+
 
     public void ejecutar() {
         Date fecha = pedirFecha();
@@ -20,8 +20,8 @@ public class pedirCita extends OpcionDeMenu {
         Cree el método estatico asignarVeterinario() por comodidad,
         luego deberemos re pensar cómo asignaremos un veterinario 
         */
-        Veterinario veterinarioAsignado = Administrador.asignarVeterinario();
-        Cita cita = new Cita(fecha, veterinarioAsginado, cliente);
+        //Veterinario veterinarioAsignado = Administrador.asignarVeterinario();
+        //Cita cita = new Cita(fecha, veterinarioAsginado, cliente);
     }
 
 
@@ -34,12 +34,13 @@ public class pedirCita extends OpcionDeMenu {
         int mes = in.nextInt();
         System.out.print("Ingrese el día: ");
         int dia = in.nextInt();
-        Cliente cliente = new Cliente();//Ejemplo
+
+        /*Cliente cliente = new Cliente();//Ejemplo
         if(!cliente.pedirCita(año, mes, dia)){
             System.out.println("La fecha no se encuentra disponible, por favor: ");
             return pedirFecha();
-        }
-        
+        }*/
+        return null;
     }
 
     public String toString() {
