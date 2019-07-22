@@ -4,6 +4,9 @@ import BaseDatos.Data;
 
 public class Administrador extends Persona {
 
+    public Administrador(){
+
+    }
     public Administrador(String nombre, String email, String usuario, String key){
         super(nombre, email, usuario, key);
     }

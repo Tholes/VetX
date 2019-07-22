@@ -21,12 +21,12 @@ public class Data{
     public static HashMap<Integer,Mascota > mascotas = new HashMap<>();
     public static HashMap<Integer, Cita> citas = new HashMap<>();
     public static HashMap<Integer,Mascota> hospitalizados = new HashMap<>();
-    public static ArrayList<Integer> menuCliente;
-    public static ArrayList<Integer> menuVeterinario;
-    public static ArrayList<Integer> menuAdministrador;
+    public static ArrayList<Integer> menuCliente = new ArrayList<>();
+    public static ArrayList<Integer> menuVeterinario = new ArrayList<>();
+    public static ArrayList<Integer> menuAdministrador = new ArrayList<>();
 
     public static void cargarDatos(){
-        String ruta = System.getProperty("user.dir")+"\\src\\temp";
+        String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
         cargarClientes(ruta);
         cargarAdministradores(ruta);
         cargarVeterinarios(ruta);
@@ -38,9 +38,11 @@ public class Data{
 
     public static void cargarClientes(String ruta){
         try {
-            BufferedReader br = new BufferedReader(new FileReader(ruta+"cliente.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(ruta+"usuario.txt"));
             String line;
+
             while ((line = br.readLine()) != null){
+
                 if(!line.isEmpty()){
                     String[] cliente = line.split(";");
                     String nombre = cliente[0];
@@ -52,7 +54,7 @@ public class Data{
             }
             br.close();
         } catch (Exception e){
-
+            System.out.println(e);
         }
     }
 
@@ -189,20 +191,22 @@ public class Data{
                     String[] menu = line.split(";");
                     String rol = menu[0];
                     if(rol.equals("cliente")){
-                        for (int i = 1; i < menu.length-1; i++) {
+                        for (int i = 1; i < menu.length; i++) {
                             menuCliente.add(Integer.parseInt(menu[i]));
                         }
 
                         //uiMain.MenuDeConsola.newMenu();
                     }
+
                     else if(rol.equals("veterinario")){
 
-                        for (int i = 1; i < menu.length-1; i++) {
+                        for (int i = 1; i < menu.length; i++) {
                             menuVeterinario.add(Integer.parseInt(menu[i]));
                         }
                     }
+
                     else if(rol.equals("administrador")){
-                        for (int i = 1; i < menu.length-1; i++) {
+                        for (int i = 1; i < menu.length; i++) {
                             menuAdministrador.add(Integer.parseInt(menu[i]));
                         }
                     }
@@ -210,6 +214,7 @@ public class Data{
                 }
             }
             br.close();
+
         }catch (Exception e){
 
         }
@@ -236,7 +241,7 @@ public class Data{
     }
 
     public static void guardarDatos(){
-        String ruta = System.getProperty("user+dir")+"\\src\\temp";
+        String ruta = System.getProperty("user+dir")+"\\src\\temp\\";
         crearArchivos(ruta);
         guardarDatosUsuario(ruta);
         guardarMenus(ruta);
@@ -391,6 +396,7 @@ public class Data{
 
         }
     }
+
 
 }
 

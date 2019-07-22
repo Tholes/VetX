@@ -17,6 +17,11 @@ public class Cliente extends Persona {
 
     private HashMap<Cita,Mascota> citasAsignadas = new HashMap<>();
 
+    public Cliente(){
+        super();
+        id = 0;
+    }
+
     public Cliente(String nombre, String email,String usuario ,String contraseña) {
         super(nombre,email,usuario,contraseña);
         cantidadClientes++;

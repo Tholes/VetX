@@ -12,6 +12,7 @@ import java.util.Scanner;
 import BaseDatos.Data;
 import UIMain.funcionalidades.*;
 import gestorAplicacion.Usuarios.Administrador;
+import gestorAplicacion.Usuarios.Cliente;
 import gestorAplicacion.Usuarios.Persona;
 import gestorAplicacion.Usuarios.Veterinario;
 
@@ -43,24 +44,28 @@ public class MenuDeConsola {
 
     public MenuDeConsola(Persona cliente){
 
-        if(cliente instanceof Administrador){
+        if(cliente instanceof Cliente){
             ArrayList<Integer> indiceOpciones = Data.menuCliente;
             for (int i = 0; i <indiceOpciones.size() ; i++) {
+
                 menuUsuario.add(listaOpciones.get(indiceOpciones.get(i)));
             }
         }
+
         else if(cliente instanceof Veterinario){
             ArrayList<Integer> indiceOpciones = Data.menuVeterinario;
             for (int i = 0; i <indiceOpciones.size() ; i++) {
                 menuUsuario.add(listaOpciones.get(indiceOpciones.get(i)));
             }
         }
+
         else if(cliente instanceof Administrador){
             ArrayList<Integer> indiceOpciones = Data.menuAdministrador;
-            for (int i = 0; i <indiceOpciones.size() ; i++) {
+            for (int i = 0; i < indiceOpciones.size() ; i++) {
                 menuUsuario.add(listaOpciones.get(indiceOpciones.get(i)));
             }
         }
+
     }
 
     public MenuDeConsola(ArrayList<OpcionDeMenu> menu){
