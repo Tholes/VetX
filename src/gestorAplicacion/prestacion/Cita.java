@@ -33,7 +33,6 @@ public class Cita {
     }
 
     public static String getDisponibilidad() {
-        
         String ans = "----------------------------------------------------------\n";
         for (int i = 0; i < disponibilidad.size() ; i++) {
             int year = disponibilidad.get(i).getYear();
@@ -44,6 +43,13 @@ public class Cita {
         ans += "----------------------------------------------------------\n";
         return ans;
     }
+    public boolean getDisponibilidad(Date fechaCita) {
+        for (int i = 0; i < disponibilidad.size() ; i++){
+            if(disponibilidad.contains(fechaCita)){
+                return false;}
+        }return true;
+    }
+
 
     public void setFechaCita(Date fechaCita) {
         this.fechaCita = fechaCita;
