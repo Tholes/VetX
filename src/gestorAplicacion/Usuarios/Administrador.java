@@ -3,7 +3,10 @@ package gestorAplicacion.Usuarios;
 import BaseDatos.Data;
 import UIMain.Main;
 
+import java.util.ArrayList;
+
 public class Administrador extends Persona {
+
 
     public Administrador(){
 
@@ -12,9 +15,8 @@ public class Administrador extends Persona {
         super(nombre, email, usuario, key);
     }
 
-
-
     public static void contratarVeterinario(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idtarjetaProfesional, String usuario, String key){
+
         Veterinario nuevoVeterinario = new Veterinario(nombre, email, especialidad, experiencia, sueldo, idtarjetaProfesional, usuario, key) ;
         Data.usuarios.put(usuario, nuevoVeterinario);
 

@@ -33,6 +33,7 @@ public class RegistrarMascota extends OpcionDeMenu {
         char genero = in.next().charAt(0);
 
         System.out.println("Ingrese la especie de su mascota: ");
+        in.nextLine();
         String especie = in.nextLine();
 
         System.out.println("Ingrese la raza de su mascota: ");
