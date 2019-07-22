@@ -11,9 +11,12 @@ public class Administrador extends Persona {
         super(nombre, email, usuario, key);
     }
 
-    
-    public void contratarVeterinario(){
-        
+
+
+    public static void contratarVeterinario(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idtarjetaProfesional, String usuario, String key){
+        Veterinario nuevoVeterinario = new Veterinario(nombre, email, especialidad, experiencia, sueldo, idtarjetaProfesional, usuario, key) ;
+        Data.usuarios.put(usuario, nuevoVeterinario);
+
     }
     
     public void aprobarCitas(){

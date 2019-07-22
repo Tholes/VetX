@@ -2,6 +2,7 @@ package gestorAplicacion.prestacion;
 
 import java.util.ArrayList;
 
+import BaseDatos.Data;
 import gestorAplicacion.Animales.Mascota;
 
 public class Clinica {
@@ -12,7 +13,7 @@ public class Clinica {
     private long nit;
     private String comentarios;
     private String redesSociales;
-    private ArrayList<Mascota> mascotasHospitalizadas = new ArrayList<>();   
+    private static ArrayList<Mascota> mascotasHospitalizadas = new ArrayList<>();
 
     public String getNombre() {
         return nombreClinica;
@@ -62,9 +63,10 @@ public class Clinica {
         this.redesSociales = red;
     }
     
-    public void hospitalizarMascota(Mascota mascota){
+    public static void hospitalizarMascota(Mascota mascota){
         mascotasHospitalizadas.add(mascota);
-        mascota.setEstado(true, this);
+        mascota.setEstado(true, null);
+        Data.hospitalizados.put(mascota.getId(), mascota);
     }
 
     public boolean darDeAlta(Mascota mascota){

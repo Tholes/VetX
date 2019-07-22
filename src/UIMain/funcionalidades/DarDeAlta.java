@@ -5,6 +5,7 @@ import UIMain.OpcionDeMenu;
 public class DarDeAlta extends OpcionDeMenu{
     public void ejecutar(){
 
+
     }
 
     public String toString(){
