@@ -83,6 +83,7 @@ public class Mascota {
         this.estado = estado;
         this.clinica = clinica;
     }
+
     
     public void eliminarMascota() throws Throwable{
         this.finalize();

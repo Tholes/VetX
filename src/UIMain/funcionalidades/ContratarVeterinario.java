@@ -31,6 +31,7 @@ public class ContratarVeterinario extends OpcionDeMenu {
         long idtajetaProfesional = entrada.nextLong();
 
         System.out.println("Asignar nombre de usuario: ");
+        entrada.nextLine();
         String usuario = entrada.nextLine();
 
         System.out.println("Asignar contraseña: ");

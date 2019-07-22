@@ -14,6 +14,7 @@ public class Veterinario extends Persona {
     private int sueldo;
     private long idTarjetaProfesional;
     private ArrayList<Cita> citasAsignadas = new ArrayList<Cita>();
+    public static long sueldototal = 0;
 
     public Veterinario(){
         super();
@@ -25,6 +26,7 @@ public class Veterinario extends Persona {
         this.experiencia = experiencia;
         this.sueldo = sueldo;
         cantidadVeterinarios++;
+        sueldototal = sueldototal + sueldo;
         this.idTarjetaProfesional = idTarjetaProfesional;
     }
 
@@ -82,6 +84,7 @@ public class Veterinario extends Persona {
         
         return ans;
     }
+
     
     public String toString() {
         return "Soy " + super.getNombre() + " mi email es: " + super.getEmail() + " mi especialidad es: " + especialidad + " tengo " + experiencia + " años de experiencia";
