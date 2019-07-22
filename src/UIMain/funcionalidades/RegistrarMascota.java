@@ -32,6 +32,6 @@ public class RegistrarMascota extends OpcionDeMenu {
     }
 
     public String toString() {
-        return "a";
+        return "Registrar nueva mascota";
     }
 }

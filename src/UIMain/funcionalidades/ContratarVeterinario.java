@@ -9,6 +9,6 @@ public class ContratarVeterinario extends OpcionDeMenu{
     }
 
     public String toString(){
-        return "a";
+        return "Contratar Veterinario";
     }
 }

@@ -44,6 +44,6 @@ public class PedirCita extends OpcionDeMenu {
     }
 
     public String toString() {
-        return "a";
+        return "Pedir cita";
     }
 }

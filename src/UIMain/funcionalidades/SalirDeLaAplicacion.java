@@ -13,6 +13,6 @@ public class SalirDeLaAplicacion extends OpcionDeMenu {
 
     @Override
     public String toString() {
-        return null;
+        return "Salir de la aplicación";
     }
 }

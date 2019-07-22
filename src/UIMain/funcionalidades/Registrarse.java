@@ -13,6 +13,7 @@ public class Registrarse extends OpcionDeMenu {
 
     @Override
     public String toString() {
-        return null;
+        return "Registrarse";
     }
+
 }

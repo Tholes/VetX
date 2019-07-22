@@ -5,6 +5,7 @@ import UIMain.funcionalidades.*;
 import gestorAplicacion.Usuarios.Administrador;
 import gestorAplicacion.Usuarios.Cliente;
 import gestorAplicacion.Usuarios.Persona;
+import gestorAplicacion.Usuarios.Veterinario;
 
 
 import java.awt.*;
@@ -17,15 +18,11 @@ public class Main {
     private static Persona usuarioActivo;
     private static MenuDeConsola menu;
 
-
     public static void main(String[] args) throws IOException {
-
         inicializarDatos();
-        menu = new MenuDeConsola(new Administrador());
+        menu = new MenuDeConsola(new Veterinario());
         menu.lanzarMenu();
-
     }
-
 
     public static void inicializarDatos(){
         Data.cargarDatos();

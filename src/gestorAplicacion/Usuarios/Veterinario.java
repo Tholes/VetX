@@ -14,6 +14,10 @@ public class Veterinario extends Persona {
     private long idTarjetaProfesional;
     private ArrayList<Cita> citasAsignadas = new ArrayList<Cita>();
 
+    public Veterinario(){
+        super();
+    }
+
     public Veterinario(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional,String usuario, String contraseña) {
         super(nombre,email,usuario,contraseña);
         this.especialidad = especialidad;

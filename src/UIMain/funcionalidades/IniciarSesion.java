@@ -37,6 +37,6 @@ public class IniciarSesion extends OpcionDeMenu {
         }
     }
     public String toString(){
-        return "a";
+        return "Iniciar Sesion";
     }
 }

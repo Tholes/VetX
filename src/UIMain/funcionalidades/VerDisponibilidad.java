@@ -9,6 +9,6 @@ public class VerDisponibilidad extends OpcionDeMenu{
         System.out.println(Cita.getDisponibilidad());
     }
     public String toString(){
-        return "a";
+        return "Ver disponibilidad";
     }
 }

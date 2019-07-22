@@ -7,6 +7,6 @@ public class CerrarSesion extends OpcionDeMenu{
     
     }
     public String toString(){
-        return "a";
+        return "Cerrar Sesion";
     }
 }

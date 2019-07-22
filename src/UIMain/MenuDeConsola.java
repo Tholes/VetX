@@ -19,18 +19,18 @@ import gestorAplicacion.Usuarios.Veterinario;
 public class MenuDeConsola {
 
     public static HashMap<Integer,OpcionDeMenu> listaOpciones = new HashMap<Integer,OpcionDeMenu>(){{
-        put(1,new CambiarFechaCita());
-        put(2, new CancelarCita());
-        put(3,new CerrarSesion());
-        put(4, new ContratarVeterinario());
-        put(5, new DarDeAlta());
-        put(6,new DarPermisos());
-        put(7,new HospitalizarMascota());
-        put(8, new IniciarSesion());
-        put(9, new PedirCita());
-        put(10, new RegistrarMascota());
+        put(1, new IniciarSesion());
+        put(2, new VerDisponibilidad());
+        put(3, new PedirCita());
+        put(4, new CambiarFechaCita());
+        put(5, new CancelarCita());
+        put(6, new ContratarVeterinario());
+        put(7, new RegistrarMascota());
+        put(8, new HospitalizarMascota());
+        put(9, new DarDeAlta());
+        put(10, new DarPermisos());
         put(11, new Registrarse());
-        put(12, new VerDisponibilidad());
+        put(12, new CerrarSesion());
         put(13, new SalirDeLaAplicacion());
     }};
 
@@ -47,7 +47,6 @@ public class MenuDeConsola {
         if(cliente instanceof Cliente){
             ArrayList<Integer> indiceOpciones = Data.menuCliente;
             for (int i = 0; i <indiceOpciones.size() ; i++) {
-
                 menuUsuario.add(listaOpciones.get(indiceOpciones.get(i)));
             }
         }
@@ -88,7 +87,7 @@ public class MenuDeConsola {
         Scanner in = new Scanner(System.in);
         System.out.println("Menu: ");
         for (int i = 0;i < menuUsuario.size(); i++) {
-            System.out.println((i+1)+". "+menuUsuario.get(0));
+            System.out.println((i+1)+". "+menuUsuario.get(i));
         }
         System.out.print("Ingrese una opción: ");
         int opcion = in.nextInt();
@@ -98,7 +97,7 @@ public class MenuDeConsola {
     public void verOpciones(){
         System.out.println("Opciones de Menu: ");
         for (int i = 0; i < menuUsuario.size(); i++) {
-            System.out.println((i+1)+" "+menuUsuario.get(0));
+            System.out.println((i+1)+" "+menuUsuario.get(i));
         }
     }
 

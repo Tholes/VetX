@@ -8,6 +8,6 @@ public class HospitalizarMascota extends OpcionDeMenu{
     }
 
     public String toString(){
-        return "a";
+        return "Hospitalizar Mascota";
     }
 }
