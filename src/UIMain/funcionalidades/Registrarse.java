@@ -16,61 +16,63 @@ public class Registrarse extends OpcionDeMenu {
 
         System.out.print("Ingrese su rol dentro de la veterinaria(1: Cliente, 2: Veterinario,3: Administrador): ");
         int rol= Integer.parseInt(br.readLine());
-        switch (rol){
-            case 1:
-                registrarCliente();
-            case 2:
-                registrarVeterinario();
-            case 3:
-                registrarAdministrador();
+
+        if(rol == 1){
+            registrarCliente();
         }
+        else if(rol == 2){
+            registrarVeterinario();
+        }
+        else if(rol == 3){
+            registrarAdministrador();
+        }
+
     }
 
     public void registrarCliente() throws IOException{
 
         System.out.print("Ingresar tu nombre: ");
-        String nombre = br.readLine();
+        String nombre = br.readLine().trim();
         System.out.print("Ingresa tu email: ");
-        String email = br.readLine();
+        String email = br.readLine().trim();
         System.out.print("Ingresa tu usuario: ");
-        String usuario = br.readLine();
+        String usuario = br.readLine().trim();
         System.out.print("Ingresa tu key: ");
-        String key = br.readLine();
+        String key = br.readLine().trim();
         System.out.print(Cliente.registrarse(nombre,email,usuario,key));
     }
 
     public void registrarAdministrador() throws  IOException{
         System.out.print("Ingresar tu nombre: ");
-        String nombre = br.readLine();
+        String nombre = br.readLine().trim();
         System.out.print("Ingresa tu email: ");
-        String email = br.readLine();
+        String email = br.readLine().trim();
         System.out.print("Ingresa tu usuario: ");
-        String usuario = br.readLine();
+        String usuario = br.readLine().trim();
         System.out.print("Ingresa tu key: ");
-        String key = br.readLine();
+        String key = br.readLine().trim().trim();
         System.out.print(Administrador.registrarse(nombre,email,usuario,key));
     }
 
     public void registrarVeterinario() throws IOException{
 
         System.out.print("Ingresar tu nombre: ");
-        String nombre = br.readLine();
+        String nombre = br.readLine().trim();
         System.out.print("Ingresa tu email: ");
-        String email = br.readLine();
+        String email = br.readLine().trim();
         System.out.print("Ingresa tu especialidad: ");
-        String especialidad = br.readLine();
+        String especialidad = br.readLine().trim();
         System.out.print("Ingresa años de experiencia: ");
-        byte experiencia = Byte.parseByte(br.readLine());
+        byte experiencia = Byte.parseByte(br.readLine().trim());
         System.out.print("Ingresa tu sueldo: ");
-        int sueldo = Integer.parseInt(br.readLine());
-        System.out.println("Ingresa el id de tu tarjeta profesional: ");
-        long idTarjetaProfesional = Long.parseLong(br.readLine());
+        int sueldo = Integer.parseInt(br.readLine().trim());
+        System.out.print("Ingresa el id de tu tarjeta profesional: ");
+        long idTarjetaProfesional = Long.parseLong(br.readLine().trim());
         System.out.print("Ingresa tu usuario: ");
-        String usuario = br.readLine();
+        String usuario = br.readLine().trim();
         System.out.print("Ingresa tu key: ");
-        String key = br.readLine();
+        String key = br.readLine().trim();
         System.out.print(Veterinario.registrarse(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key));
-
     }
     @Override
     public String toString() {
