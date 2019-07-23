@@ -1,6 +1,7 @@
 
 package UIMain;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.SQLOutput;
@@ -24,23 +25,28 @@ public class MenuDeConsola {
         put(3, new PedirCita());
         put(4, new CambiarFechaCita());
         put(5, new CancelarCita());
-        put(6, new ContratarVeterinario());
-        put(7, new RegistrarMascota());
-        put(8, new HospitalizarMascota());
-        put(9, new DarDeAlta());
-        put(10, new DarPermisos());
-        put(11, new Registrarse());
-        put(12, new CerrarSesion());
-        put(13, new SalirDeLaAplicacion());
+        put(6, new SueldoVeterinarios());
+        put(7, new ContratarVeterinario());
+        put(8, new ListadoMascotas());
+        put(9, new RegistrarMascota());
+        put(10, new HospitalizarMascota());
+        put(11, new DarDeAlta());
+        put(12, new DarPermisos());
+        put(13, new Registrarse());
+        put(14, new CerrarSesion());
+        put(15, new SalirDeLaAplicacion());
     }};
 
     private Persona usuario;
     public ArrayList<OpcionDeMenu> menuUsuario = new ArrayList<>();
 
-    public MenuDeConsola(Persona usuario, ArrayList<OpcionDeMenu> menu){
+    public MenuDeConsola(Persona usuario, ArrayList<Integer> menu){
         this.usuario = usuario;
-        this.menuUsuario = menu;
+        for (int i = 0; i < menu.size(); i++) {
+                menuUsuario.add(listaOpciones.get(menu.get(i)));
+        }
     }
+
 
     public MenuDeConsola(Persona cliente){
 

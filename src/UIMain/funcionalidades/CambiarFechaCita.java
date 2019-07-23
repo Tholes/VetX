@@ -29,7 +29,7 @@ public class CambiarFechaCita extends OpcionDeMenu{
         int min = in.nextInt();
         Date fecha = new Date(año, mes, dia, hora, min);
         Veterinario veterinario=null;
-        veterinario.vetDiponible(fecha);
+        //veterinario.vetDisponible(fecha);
         Cita cita = new Cita(fecha,veterinario,cliente);
         System.out.println("Ingrese nombre la mascota");
         String nombreMascota = in.nextLine();

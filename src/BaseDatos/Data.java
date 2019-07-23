@@ -25,6 +25,7 @@ public class Data{
     public static ArrayList<Integer> menuVeterinario = new ArrayList<>();
     public static ArrayList<Integer> menuAdministrador = new ArrayList<>();
     public static ArrayList<Veterinario> veterinarios =new ArrayList<>();
+
     public static void cargarDatos(){
         String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
         cargarClientes(ruta);
@@ -70,7 +71,6 @@ public class Data{
                     String usuario = administrador[2];
                     String key = administrador[3];
                     usuarios.put(usuario, new Administrador(nombre,email,usuario,key));
-                    System.out.println(usuario);
                 }
             }
             br.close();
@@ -87,32 +87,16 @@ public class Data{
             while ((line = br.readLine()) != null){
                 if(!line.isEmpty()){
                     String[] veterinario = line.split(";");
-                    if(veterinario.length == 8){
-                        String nombre = veterinario[0];
-                        String email = veterinario[1];
-                        String especialidad = veterinario[2];
-                        byte experiencia = Byte.parseByte(veterinario[3]);
-                        int sueldo = Integer.parseInt(veterinario[4]);
-                        long idTarjetaProfesional = Long.parseLong(veterinario[5]);
-                        String usuario = veterinario[6];
-                        String key = veterinario[7];
-
-                        usuarios.put(usuario, new Veterinario(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key));
-                    }
-                    else if(veterinario.length == 6) {
-                        String nombre = veterinario[0];
-                        String email = veterinario[1];
-                        String especialidad = veterinario[2];
-                        byte experiencia = Byte.parseByte(veterinario[3]);
-                        long idTarjetaProfesional = Long.parseLong(veterinario[5]);
-                        String usuario = veterinario[6];
-                        String key = veterinario[7];
-
-                        usuarios.put(usuario, new Veterinario(nombre,email,experiencia,idTarjetaProfesional,usuario,key));
-                    }else{
-                        //error de registro
-                    }
-
+                    String nombre = veterinario[0];
+                    String email = veterinario[1];
+                    String especialidad = veterinario[2];
+                    byte experiencia = Byte.parseByte(veterinario[3]);
+                    int sueldo = Integer.parseInt(veterinario[4]);
+                    long idTarjetaProfesional = Long.parseLong(veterinario[5]);
+                    String usuario = veterinario[6];
+                    String key = veterinario[7];
+                    usuarios.put(usuario, new Veterinario(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key));
+                    veterinarios.add((Veterinario) usuarios.get(usuario));
                 }
             }
             br.close();
@@ -167,10 +151,9 @@ public class Data{
                     int mes = Integer.parseInt(fechaCitaString[1]);
                     int dia = Integer.parseInt(fechaCitaString[0]);
                     int hora = Integer.parseInt(fechaCitaString[3]);
-                    int minuto = Integer.parseInt(fechaCitaString[4]);
-                    Date fecha = new Date(año,mes,dia,hora,minuto);
-                    Veterinario veterinario = (Veterinario) usuarios.get(cita[1]);
-                    Cliente cliente = (Cliente) usuarios.get(cita[2]);
+                    Date fecha = new Date(año,mes,dia,hora,0);
+                    Veterinario veterinario = (Veterinario) usuarios.get(cita[2]);
+                    Cliente cliente = (Cliente) usuarios.get(cita[3]);
                     citas.put(id,new Cita(fecha,veterinario,cliente));
                 }
             }
@@ -243,7 +226,7 @@ public class Data{
 
     public static void guardarDatos(){
         crearArchivos();
-        String ruta = System.getProperty("user+dir")+"\\src\\temp\\";
+        String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
         guardarDatosUsuario();
         guardarMenus();
         guardarCitas();
@@ -256,6 +239,7 @@ public class Data{
         try{
             String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
             File directorio = new File(ruta);
+
             if(!directorio.exists()){
                 directorio.mkdir();
             }
@@ -318,15 +302,18 @@ public class Data{
             outCliente.close();
             outVeterinario.close();
         } catch (Exception e){
-            System.out.println(e);
         }
 
     }
 
     public static void guardarMenus(){
         try {
-            String ruta = System.getProperty("user+dir")+"\\src\\temp\\";
-            PrintWriter out = new PrintWriter(new FileWriter(ruta+"menuUsuario"));
+
+            String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
+            PrintWriter out = new PrintWriter(new FileWriter(ruta+"menuUsuario.txt"));
+            Collections.sort(menuCliente);
+            Collections.sort(menuVeterinario);
+            Collections.sort(menuAdministrador);
             String line ="";
             line += "cliente;";
             for (int i = 0; i < menuCliente.size()-1 ; i++) {
@@ -347,35 +334,35 @@ public class Data{
             out.println(line);
             out.close();
         } catch (Exception e){
-
+            System.out.println(e);
         }
     }
 
     public static void guardarCitas(){
 
         try {
-            String ruta = System.getProperty("user+dir")+"\\src\\temp\\";
+            String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"cita.txt"));
             for (Map.Entry<Integer,Cita> cita : citas.entrySet()) {
                 Cita citaProxima = cita.getValue();
                 String line = Integer.toString(citaProxima.getId())+";";
                 Date fecha = citaProxima.getFechaCita();
                 line += fecha.getDay()+"/"+fecha.getMonth()+"/" +fecha.getYear()+"/"
-                        +fecha.getHours()+"/" +fecha.getMinutes()+";";
+                        +fecha.getHours()+"/" +";";
                 line += citaProxima.getCliente().getNombreUsuario()+";";
                 line += citaProxima.getVeterinario().getNombreUsuario();
                 out.println(line);
             }
             out.close();
         } catch (Exception e){
-
+            System.out.println(e);
         }
 
     }
 
     public static void guardarMascotas(){
         try {
-            String ruta = System.getProperty("user+dir")+"\\src\\temp\\";
+            String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"mascota.txt"));
             for (Map.Entry<Integer,Mascota>  indice : mascotas.entrySet()) {
                 String line = Integer.toString(indice.getKey())+";";
@@ -389,13 +376,13 @@ public class Data{
             }
             out.close();
         } catch (Exception e){
-
+            System.out.println(e);
         }
     }
 
     public static void guardarClinica(){
         try {
-            String ruta = System.getProperty("user+dir")+"\\src\\temp\\";
+            String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"hospitalizados.txt"));
             for (Map.Entry<Integer,Mascota> hospitalizadas : hospitalizados.entrySet()) {
                 String line = Integer.toString(hospitalizadas.getKey())+";";

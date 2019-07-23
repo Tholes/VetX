@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import BaseDatos.Data;
 import UIMain.Main;
+import UIMain.MenuDeConsola;
+import UIMain.OpcionDeMenu;
 import gestorAplicacion.Animales.*;
 import gestorAplicacion.prestacion.*;
 import java.util.Date;
@@ -135,5 +137,12 @@ public class Cliente extends Persona {
             return "Registro completo.";
         }
         return "Nombre de usuario existente";
+    }
+
+    public static MenuDeConsola getMenu(Cliente cliente){
+        ArrayList<Integer> indiceOpciones = Data.menuCliente;
+        MenuDeConsola menuUsuario = new MenuDeConsola(cliente,indiceOpciones);
+        return menuUsuario;
+
     }
 }

@@ -64,7 +64,7 @@ public class Persona {
         return false;
     }
 
-    public boolean pedirCita(int year,int mes, int dia){
+    public static boolean pedirCita(int year,int mes, int dia, Cliente cliente){
         Date fecha = new Date(year,mes,dia); 
         if(Cita.getDisponibilidad().contains((CharSequence) fecha)){
             return true;

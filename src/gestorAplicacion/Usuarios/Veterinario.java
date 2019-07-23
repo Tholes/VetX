@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import BaseDatos.Data;
 import UIMain.Main;
+import UIMain.MenuDeConsola;
 import gestorAplicacion.prestacion.Cita;
 
 public class Veterinario extends Persona {
@@ -34,6 +35,7 @@ public class Veterinario extends Persona {
     Cómo no todos los veterinarios tienen una especialidad, los consideraremos cómo generales
     y ganan un sueldo mínimo
     */
+
     public Veterinario(String nombre, String email, byte experiencia, long idTarjetaProfesional, String usuario, String contraseña) {
         this(nombre, email,"general", experiencia, 828116, idTarjetaProfesional,usuario,contraseña);
     }
@@ -85,7 +87,6 @@ public class Veterinario extends Persona {
         return ans;
     }
 
-    
     public String toString() {
         return "Soy " + super.getNombre() + " mi email es: " + super.getEmail() + " mi especialidad es: " + especialidad + " tengo " + experiencia + " años de experiencia";
     }
@@ -98,5 +99,12 @@ public class Veterinario extends Persona {
             return "Registro completo.";
         }
         return "Nombre de usuario existente";
+    }
+
+    public static MenuDeConsola getMenu(Veterinario veterinario){
+        ArrayList<Integer> indiceOpciones = Data.menuCliente;
+        MenuDeConsola menuUsuario = new MenuDeConsola(veterinario,indiceOpciones);
+        return menuUsuario;
+
     }
 }

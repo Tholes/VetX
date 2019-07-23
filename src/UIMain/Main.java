@@ -40,7 +40,6 @@ public class Main {
 
     public static void inicializarDatos(){
         Data.cargarDatos();
-
         ArrayList<OpcionDeMenu> opcionesInvitado = new ArrayList<OpcionDeMenu>(){{
             add(new IniciarSesion());
             add(new Registrarse());

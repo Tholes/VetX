@@ -1,21 +1,24 @@
 package UIMain.funcionalidades;
 //Opción de menú 9
+import UIMain.Main;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Usuarios.Administrador;
 import gestorAplicacion.Usuarios.Cliente;
-import gestorAplicacion.prestacion.Cita;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Date;
-import java.util.Scanner;
+import gestorAplicacion.Usuarios.Persona;
 
 public class PedirCita extends OpcionDeMenu {
 
-    Scanner in = new Scanner(System.in);
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     VerDisponibilidad fechasDisponibles = new VerDisponibilidad();
 
-
-    public void ejecutar() {
-        Date fecha = pedirFecha();
+    public void ejecutar()throws IOException {
+        Date fecha = pedirFecha(Main.getUsuarioActivo());
         System.out.println("Su cita fue solicitada con exito, se le asignará un veterinario");
+
         /*
         Cree el método estatico asignarVeterinario() por comodidad,
         luego deberemos re pensar cómo asignaremos un veterinario 
@@ -25,22 +28,40 @@ public class PedirCita extends OpcionDeMenu {
     }
 
 
-    public Date pedirFecha() {
+    public Date pedirFecha(Cliente cliente) throws IOException {
         fechasDisponibles.ejecutar();
         System.out.println("Ingrese una fecha que se encuentre disponible: ");
-        System.out.print("Ingrese el año: ");
-        int año = in.nextInt();
-        System.out.print("Ingrese el mes: ");
-        int mes = in.nextInt();
         System.out.print("Ingrese el día: ");
-        int dia = in.nextInt();
+        int dia = Integer.parseInt(br.readLine());
+        System.out.print("Ingrese el mes: ");
+        int mes = Integer.parseInt(br.readLine());
+        System.out.print("Ingrese el año: ");
+        int año = Integer.parseInt(br.readLine());
 
-        /*Cliente cliente = new Cliente();//Ejemplo
-        if(!cliente.pedirCita(año, mes, dia)){
+        if(!cliente.pedirCita(año, mes, dia,cliente)){
             System.out.println("La fecha no se encuentra disponible, por favor: ");
-            return pedirFecha();
-        }*/
+            return pedirFecha(cliente);
+        }
         return null;
+    }
+
+    public Date pedirFecha(Persona admin) throws IOException{
+
+        System.out.println("Ingrese el nombre de usuario del cliente: ");
+        String usuario = br.readLine();
+        System.out.print("Ingrese el día: ");
+        int dia = Integer.parseInt(br.readLine());
+        System.out.print("Ingrese el mes: ");
+        int mes = Integer.parseInt(br.readLine());
+        System.out.print("Ingrese el año: ");
+        int año = Integer.parseInt(br.readLine());
+        Cliente cliente = (Cliente) Persona.fromUsuarioGetPersona(usuario);
+        if(!cliente.pedirCita(año, mes, dia,cliente)){
+            System.out.println("La fecha no se encuentra disponible, por favor: ");
+            return pedirFecha(cliente);
+        }
+        return null;
+
     }
 
     public String toString() {

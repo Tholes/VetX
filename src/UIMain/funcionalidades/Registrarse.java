@@ -50,7 +50,7 @@ public class Registrarse extends OpcionDeMenu {
         System.out.print("Ingresa tu usuario: ");
         String usuario = br.readLine().trim();
         System.out.print("Ingresa tu key: ");
-        String key = br.readLine().trim().trim();
+        String key = br.readLine().trim();
         System.out.print(Administrador.registrarse(nombre,email,usuario,key));
     }
 
