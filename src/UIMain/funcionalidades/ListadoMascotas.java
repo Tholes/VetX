@@ -10,6 +10,7 @@ public class ListadoMascotas extends OpcionDeMenu {
 
     }
 
+
     @Override
     public String toString() {
         return "Ver listado de mascotas";

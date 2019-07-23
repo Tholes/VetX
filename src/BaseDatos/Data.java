@@ -134,6 +134,7 @@ public class Data{
             /*
             * Un posible error, es que el dueño no exista (por ingresar mal el dato a la base de datos).
             * */
+            System.out.println(e);
         }
 
     }
@@ -367,7 +368,8 @@ public class Data{
             for (Map.Entry<Integer,Mascota>  indice : mascotas.entrySet()) {
                 String line = Integer.toString(indice.getKey())+";";
                 line += indice.getValue().getNombre()+";";
-                line += indice.getValue().getFechaNacimiento()+";";
+                Date fecha = indice.getValue().getFechaNacimiento();
+                line += fecha.getYear()+"/"+fecha.getMonth()+"/"+fecha.getDay()+";";
                 line += indice.getValue().getSexo()+";";
                 line += indice.getValue().getEspecie()+";";
                 line += indice.getValue().getRaza()+";";

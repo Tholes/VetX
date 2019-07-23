@@ -43,9 +43,8 @@ public class RegistrarMascota extends OpcionDeMenu {
         String nombreUsuario = in.nextLine();
 
         Cliente amo = (Cliente) Data.usuarios.get(nombreUsuario);
-
-
         Persona.registrarMascota(nombre, fechaNacimiento, genero, especie, raza, amo);
+
 
         /*
 

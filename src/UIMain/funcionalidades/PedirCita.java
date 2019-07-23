@@ -2,6 +2,7 @@ package UIMain.funcionalidades;
 //Opción de menú 9
 import UIMain.Main;
 import UIMain.OpcionDeMenu;
+import gestorAplicacion.Usuarios.Administrador;
 import gestorAplicacion.Usuarios.Cliente;
 
 import java.io.BufferedReader;
@@ -18,18 +19,10 @@ public class PedirCita extends OpcionDeMenu {
     public void ejecutar()throws IOException {
         Date fecha = pedirFecha(Main.getUsuarioActivo());
         System.out.println("Su cita fue solicitada con exito, se le asignará un veterinario");
-
-        /*
-        Cree el método estatico asignarVeterinario() por comodidad,
-        luego deberemos re pensar cómo asignaremos un veterinario 
-        */
-        //Veterinario veterinarioAsignado = Administrador.asignarVeterinario();
-        //Cita cita = new Cita(fecha, veterinarioAsginado, cliente);
     }
 
 
     public Date pedirFecha(Cliente cliente) throws IOException {
-        fechasDisponibles.ejecutar();
         System.out.println("Ingrese una fecha que se encuentre disponible: ");
         System.out.print("Ingrese el día: ");
         int dia = Integer.parseInt(br.readLine());
@@ -47,6 +40,10 @@ public class PedirCita extends OpcionDeMenu {
 
     public Date pedirFecha(Persona admin) throws IOException{
 
+        if(admin instanceof Cliente){
+            pedirFecha((Cliente) admin);
+        }
+
         System.out.println("Ingrese el nombre de usuario del cliente: ");
         String usuario = br.readLine();
         System.out.print("Ingrese el día: ");
@@ -61,7 +58,6 @@ public class PedirCita extends OpcionDeMenu {
             return pedirFecha(cliente);
         }
         return null;
-
     }
 
     public String toString() {

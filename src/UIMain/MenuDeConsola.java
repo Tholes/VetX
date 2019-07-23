@@ -32,9 +32,10 @@ public class MenuDeConsola {
         put(10, new HospitalizarMascota());
         put(11, new DarDeAlta());
         put(12, new DarPermisos());
-        put(13, new Registrarse());
-        put(14, new CerrarSesion());
-        put(15, new SalirDeLaAplicacion());
+        put(13, new QuitarPermisos());
+        put(14, new Registrarse());
+        put(15, new CerrarSesion());
+        put(16, new SalirDeLaAplicacion());
     }};
 
     private Persona usuario;
@@ -106,5 +107,10 @@ public class MenuDeConsola {
             System.out.println((i+1)+" "+menuUsuario.get(i));
         }
     }
-
+    public static void verOpcionesCompletas(){
+        System.out.println("Opciones de Menu: ");
+        for (int i = 1; i <= listaOpciones.size(); i++) {
+            System.out.println((i)+" "+listaOpciones.get(i));
+        }
+    }
 }

@@ -64,8 +64,9 @@ public class Cliente extends Persona {
         return mascotas;
     }
 
-    public void setMascota(Mascota Mascota) {
-        mascotas.add(Mascota);
+    public void setMascota(Mascota mascota) {
+        mascotas.add(mascota);
+        Data.mascotas.put(mascota.getId(),mascota);
     }
 
     public String getServicios() {
