@@ -1,6 +1,8 @@
 package gestorAplicacion.prestacion;
 import java.util.ArrayList;
 import java.util.Date;
+
+import BaseDatos.Data;
 import gestorAplicacion.Usuarios.*;
 
 public class Cita {
@@ -24,6 +26,13 @@ public class Cita {
         disponibilidad.remove(fechaCita);
     }
 
+    public Veterinario veterinarioDisponible(Date fecha){
+        if (veterinario.fechaCitaDisponible(fecha)){
+            return veterinario;
+        }else {
+            return null;
+        }
+    }
     public Date getFechaCita() {
         return fechaCita;
     }
@@ -43,7 +52,7 @@ public class Cita {
         ans += "----------------------------------------------------------\n";
         return ans;
     }
-    public boolean getDisponibilidad(Date fechaCita) {
+    public static boolean getDisponibilidad(Date fechaCita) {
         for (int i = 0; i < disponibilidad.size() ; i++){
             if(disponibilidad.contains(fechaCita)){
                 return false;}
@@ -54,6 +63,8 @@ public class Cita {
     public void setFechaCita(Date fechaCita) {
         this.fechaCita = fechaCita;
     }
+
+
 
     public boolean nuevaFechaCita(Date fecha){
         if(disponibilidad.contains(fecha)){
@@ -92,5 +103,9 @@ public class Cita {
 
     public Cliente getCliente() {
         return cliente;
+    }
+
+    public boolean aprobarCita(Date fecha){
+        return veterinario.fechaCitaDisponible(fecha);
     }
 }
