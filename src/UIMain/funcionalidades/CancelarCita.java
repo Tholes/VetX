@@ -3,6 +3,7 @@ package UIMain.funcionalidades;
 import BaseDatos.Data;
 import UIMain.OpcionDeMenu;
 import gestorAplicacion.Usuarios.Cliente;
+import gestorAplicacion.prestacion.Cita;
 
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class CancelarCita extends OpcionDeMenu{
         if(cliente.getCitasAsignadas().isEmpty()==true){
             System.out.println("No tenia citas");
         }else{
-            cliente.getCitasAsignadas().clear();
+
             System.out.println("Cita Cancelada");
         }
     }

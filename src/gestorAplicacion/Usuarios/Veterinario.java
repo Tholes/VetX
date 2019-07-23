@@ -1,6 +1,7 @@
 package gestorAplicacion.Usuarios;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import BaseDatos.Data;
 import UIMain.Main;
@@ -38,6 +39,16 @@ public class Veterinario extends Persona {
 
     public Veterinario(String nombre, String email, byte experiencia, long idTarjetaProfesional, String usuario, String contraseña) {
         this(nombre, email,"general", experiencia, 828116, idTarjetaProfesional,usuario,contraseña);
+    }
+    public boolean fechaCitaDisponible(Date fecha){
+        return citasAsignadas.contains(fecha);
+    }
+    public Veterinario veterinarioDisponible(Date fecha){
+        for(int i=0;i<Data.veterinarios.size();i++){
+            if(Data.veterinarios.get(i).fechaCitaDisponible(fecha)){
+                return Data.veterinarios.get(i);
+            }
+        }return null;
     }
 
     public static int getCantidadVeterinarios() {
