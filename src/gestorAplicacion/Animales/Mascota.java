@@ -25,7 +25,6 @@ public class Mascota {
         this.fechaNacimiento = fechaNacimiento;
         cantidadPacientes++;
         this.id = cantidadPacientes;
-        System.out.println(id);
     } 
     
     public int getId() {
@@ -92,7 +91,7 @@ public class Mascota {
 
     @Override
     public String toString(){
-        return "Mi nombre es "+nombre+" soy un/a "+raza+" soy de sexo: "+sexo+" nací el "+fechaNacimiento+" mi dueño es: "+amo.getNombre();
+        return "Mi nombre es "+nombre+" soy un/a "+ this.especie +" soy de sexo: "+sexo+" nací el "+fechaNacimiento.getDay()+"/"+fechaNacimiento.getMonth()+"/"+fechaNacimiento.getYear()+" mi dueño es: "+amo.getNombre();
     }
 
 }

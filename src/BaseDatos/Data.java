@@ -123,10 +123,11 @@ public class Data{
                     Date fechaNacimiento = new Date(año,mes,dia);
                     char sexo = mascota[3].charAt(0);
                     String especie = mascota[4];
-                    String raza = mascota[2];
+                    String raza = mascota[5];
                     String usuarioDueño = mascota[6];
                     Cliente dueño = (Cliente) usuarios.get(usuarioDueño);
-                    mascotas.put(Id,new Mascota(nombre,fechaNacimiento,sexo,especie,raza,dueño));
+                    Mascota can = new Mascota(nombre,fechaNacimiento,sexo,especie,raza,dueño);
+                    dueño.setMascota(can);
                 }
             }
             br.close();

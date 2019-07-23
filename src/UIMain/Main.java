@@ -4,9 +4,6 @@ import BaseDatos.Data;
 import UIMain.funcionalidades.*;
 
 import gestorAplicacion.Usuarios.Persona;
-import gestorAplicacion.Usuarios.Veterinario;
-
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 

@@ -48,13 +48,13 @@ public class Cliente extends Persona {
         }
         else if (mascotas.size() == 1) {
             listadoMascotas += "Su mascota es: \n";
-            listadoMascotas += mascotas.get(0);
+            listadoMascotas += mascotas.get(0)+"\n";
             listadoMascotas += "----------------------------------------------------------\n";
             return listadoMascotas;
         }
         listadoMascotas = "Sus mascotas son: \n";
         for (int i = 0; i < mascotas.size(); i++) {
-            listadoMascotas += mascotas.get(i);
+            listadoMascotas += mascotas.get(i)+"\n";
         }
         listadoMascotas += "----------------------------------------------------------\n";
         return listadoMascotas;

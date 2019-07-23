@@ -21,7 +21,6 @@ public class PedirCita extends OpcionDeMenu {
         System.out.println("Su cita fue solicitada con exito, se le asignará un veterinario");
     }
 
-
     public Date pedirFecha(Cliente cliente) throws IOException {
         System.out.println("Ingrese una fecha que se encuentre disponible: ");
         System.out.print("Ingrese el día: ");
