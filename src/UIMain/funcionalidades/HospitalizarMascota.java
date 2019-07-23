@@ -10,9 +10,12 @@ public class HospitalizarMascota extends OpcionDeMenu{
     Scanner entrada = new Scanner (System.in);
 
     public void ejecutar(){
-        System.out.println("Ingrese id de la mascota: ");
+
+        System.out.println("Ingresar el Id de la mascota que se va a hospitalizar");
         int id = entrada.nextInt();
-        Clinica.hospitalizarMascota(Data.mascotas.get(id));
+        Mascota mascota = (Mascota) Data.mascotas.get(id);
+        Clinica.hospitalizarMascota(mascota);
+
 
     }
 

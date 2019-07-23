@@ -25,7 +25,6 @@ public class Mascota {
         this.fechaNacimiento = fechaNacimiento;
         cantidadPacientes++;
         this.id = cantidadPacientes;
-        System.out.println(id);
     } 
     
     public int getId() {
