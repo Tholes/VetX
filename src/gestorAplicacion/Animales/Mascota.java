@@ -11,12 +11,12 @@ public class Mascota {
     private String raza;
     private String especie;
     private char sexo; //valores definidos de M/H (Macho/Hembra)
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private Cliente amo;
     private boolean estado;
     private Clinica clinica;
 
-    public Mascota(String nombre, Date fechaNacimiento, char sexo , String especie, String raza, Cliente amo){
+    public Mascota(String nombre, String fechaNacimiento, char sexo , String especie, String raza, Cliente amo){
         this.nombre = nombre;
         this.raza = raza;
         this.sexo = sexo;
@@ -59,11 +59,11 @@ public class Mascota {
         return especie;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -84,14 +84,13 @@ public class Mascota {
         this.clinica = clinica;
     }
 
-    
     public void eliminarMascota() throws Throwable{
         this.finalize();
     }
 
     @Override
     public String toString(){
-        return "Mi nombre es "+nombre+" soy un/a "+ this.especie +" soy de sexo: "+sexo+" nací el "+fechaNacimiento.getDay()+"/"+fechaNacimiento.getMonth()+"/"+fechaNacimiento.getYear()+" mi dueño es: "+amo.getNombre();
+        return "Mi nombre es "+nombre+" soy un/a "+ this.especie +" soy de sexo: "+sexo+" nací el "+fechaNacimiento+ " mi dueño es: "+amo.getNombre();
     }
 
 }

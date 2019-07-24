@@ -90,7 +90,7 @@ public class Cliente extends Persona {
         return "Soy " + super.getNombre() + " mi correo es: " + super.getEmail() + " y tengo " + mascotas.size() + " mascotas";
     }
 
-    public void registrarMascota(String nombre,Date fechaNacimiento ,char sexo, String especie, String raza){
+    public void registrarMascota(String nombre,String fechaNacimiento ,char sexo, String especie, String raza){
         Mascota mascota = new Mascota(nombre, fechaNacimiento, sexo, especie, raza, this);
         this.setMascota(mascota);
 

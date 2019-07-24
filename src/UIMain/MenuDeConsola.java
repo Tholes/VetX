@@ -98,8 +98,14 @@ public class MenuDeConsola {
             System.out.println((i+1)+". "+menuUsuario.get(i));
         }
         System.out.print("Ingrese una opción: ");
-        int opcion = in.nextInt();
-        menuUsuario.get((opcion-1)).ejecutar();
+        try {
+            int opcion = in.nextInt();
+            menuUsuario.get((opcion-1)).ejecutar();
+        } catch (Exception e){
+            System.out.println("Opción incorrecta, ingrese un número.");
+            lanzarMenu();
+        }
+
     }
     
     public void verOpciones(){
