@@ -78,6 +78,8 @@ public class RegistrarMascota extends OpcionDeMenu {
         System.out .println("Ingrese dueño de la mascota: ");
         String nombreUsuario = in.nextLine();
 
+        System.out.println("*** Un nueva mascota a ingresado como paciente a la clínica.");
+
         Cliente amo = (Cliente) Data.usuarios.get(nombreUsuario);
         Persona.registrarMascota(nombre, fechaNacimiento, genero, especie, raza, amo);
     }

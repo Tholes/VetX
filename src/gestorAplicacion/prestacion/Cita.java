@@ -22,9 +22,9 @@ public class Cita {
         this.veterinario = veterinario;
         this.cliente = cliente;
         this.mascota = mascota;
+        actualizarDisponibilidad(fechaCita);
         cantidadCitas++;
         this.id = cantidadCitas;
-
     }
 
     public static void actualizarDisponibilidad(String fecha){
@@ -110,6 +110,5 @@ public class Cita {
         cliente.setCita(cita,mascota);
         Data.citas.put(cita.getId(),cita);
     }
-
 
 }

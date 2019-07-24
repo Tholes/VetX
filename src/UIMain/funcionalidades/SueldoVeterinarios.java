@@ -7,7 +7,7 @@ import java.io.IOException;
 public class SueldoVeterinarios extends OpcionDeMenu {
     @Override
     public void ejecutar() {
-        System.out.println("***La nomina por mes de los veterinario es: " + Veterinario.sueldototal + "pesos por mes");
+        System.out.println("*** La nomina por mes de los veterinario es: " + Veterinario.sueldototal + " pesos por mes");
     }
 
     @Override

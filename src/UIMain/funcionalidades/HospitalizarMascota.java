@@ -19,7 +19,7 @@ public class HospitalizarMascota extends OpcionDeMenu{
         if(!cliente.getMascotas().contains(opcion)){
             Mascota mascota = cliente.getMascotas().get(opcion);
             Clinica.hospitalizarMascota(mascota);
-            System.out.println("La mascota ha sido hospitalizada.");
+            System.out.println("*** La mascota ha sido hospitalizada.");
         }
         else{
             System.out.println("Numero incorrecto");

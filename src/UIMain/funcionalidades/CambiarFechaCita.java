@@ -69,7 +69,6 @@ public class CambiarFechaCita extends OpcionDeMenu{
                 Thread.sleep(3000);
                 Main.setUsuarioActivo(Main.getUsuarioActivo());
             }else{
-
                 System.out.print("Ingrese el número de la cita que desee cambiar su fecha: ");
                 int opcion = in.nextInt();
                 System.out.println(Cita.getDisponibilidad());
@@ -94,10 +93,10 @@ public class CambiarFechaCita extends OpcionDeMenu{
 
             }
         }
-
     }
 
     public String toString(){
         return "Cambiar fecha de una cita";
     }
+
 }

@@ -1,2 +1,3 @@
 cesar millan;cesar@vetX.com;caninos;15;8281160;5816521;cesar;millan
 cris;cris;nada;0;0;54846;vet;vet
+mayra;ma@vetx;general;3;9087654;2000000001;ma;789456

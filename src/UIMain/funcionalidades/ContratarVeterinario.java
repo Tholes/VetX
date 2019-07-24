@@ -37,6 +37,8 @@ public class ContratarVeterinario extends OpcionDeMenu {
         System.out.println("Asignar contraseña: ");
         String key = entrada.nextLine();
 
+        System.out.println("***Un nuevo veterinario hace parte del personal médico de la clínica.");
+
         Administrador.contratarVeterinario(nombre, email, especialidad, experiencia, sueldo, idtajetaProfesional, usuario, key);
 
 
