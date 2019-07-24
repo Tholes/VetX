@@ -109,7 +109,7 @@ public class Veterinario extends Persona {
             Veterinario vet = new Veterinario(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key);
             Data.usuarios.put(usuario,vet);
             Main.setUsuarioActivo(vet);
-            return "Registro completo.";
+            return "Registro completo.\n";
         }
         return "Nombre de usuario existente";
     }

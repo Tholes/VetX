@@ -19,9 +19,9 @@ public class IniciarSesion extends OpcionDeMenu {
     }
 
     public void pedirDatos() throws IOException{
-        System.out.print("Ingrese su usuario: ");
+        System.out.println("Ingrese su usuario: ");
         String usuario = br.readLine();
-        System.out.print("Ingrese su contraseña: ");
+        System.out.println("Ingrese su contraseña: ");
         String key = br.readLine();
         System.out.println(Persona.login(usuario,key));
     }

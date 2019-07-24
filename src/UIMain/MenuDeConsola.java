@@ -91,14 +91,15 @@ public class MenuDeConsola {
         this.usuario = usuario;
     }
 
-    public void lanzarMenu() throws Throwable {
+    public void lanzarMenu() throws IOException, InterruptedException {
         Scanner in = new Scanner(System.in);
-        System.out.println("Menu: ");
+        System.out.println("\t\t\tMenu");
         for (int i = 0;i < menuUsuario.size(); i++) {
             System.out.println((i+1)+". "+menuUsuario.get(i));
         }
         System.out.print("Ingrese una opción: ");
         int opcion = in.nextInt();
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         menuUsuario.get((opcion-1)).ejecutar();
     }
     

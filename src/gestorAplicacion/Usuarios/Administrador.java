@@ -50,4 +50,9 @@ public class Administrador extends Persona {
         }
         return "Nombre de usuario existente";
     }
+
+    @Override
+    public String toString() {
+        return "Administrador{} " + super.toString();
+    }
 }
