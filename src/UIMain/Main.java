@@ -4,6 +4,8 @@ import BaseDatos.Data;
 import UIMain.funcionalidades.*;
 
 import gestorAplicacion.Usuarios.Persona;
+import gestorAplicacion.prestacion.Cita;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -15,6 +17,7 @@ public class Main {
     private static MenuDeConsola menuPorDefecto;
     public static void main(String[] args) throws IOException, Throwable {
         inicializarDatos();
+
         while(true){
             try{
                 if(Main.usuarioActivo != null){
@@ -37,6 +40,19 @@ public class Main {
 
     public static void inicializarDatos(){
         Data.cargarDatos();
+        System.out.println(
+                " .----------------.  .----------------.  .----------------.  .----------------. \n" +
+                        "| .--------------. || .--------------. || .--------------. || .--------------. |\n" +
+                        "| | ____   ____  | || |  _________   | || |  _________   | || |  ____  ____  | |\n" +
+                        "| ||_  _| |_  _| | || | |_   ___  |  | || | |  _   _  |  | || | |_  _||_  _| | |\n" +
+                        "| |  \\ \\   / /   | || |   | |_  \\_|  | || | |_/ | | \\_|  | || |   \\ \\  / /   | |\n" +
+                        "| |   \\ \\ / /    | || |   |  _|  _   | || |     | |      | || |    > `' <    | |\n" +
+                        "| |    \\ ' /     | || |  _| |___/ |  | || |    _| |_     | || |  _/ /'`\\ \\_  | |\n" +
+                        "| |     \\_/      | || | |_________|  | || |   |_____|    | || | |____||____| | |\n" +
+                        "| |              | || |              | || |              | || |              | |\n" +
+                        "| '--------------' || '--------------' || '--------------' || '--------------' |\n" +
+                        " '----------------'  '----------------'  '----------------'  '----------------'"
+        );
         ArrayList<OpcionDeMenu> opcionesInvitado = new ArrayList<OpcionDeMenu>(){{
             add(new IniciarSesion());
             add(new Registrarse());
