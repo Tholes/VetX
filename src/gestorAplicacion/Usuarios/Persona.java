@@ -4,7 +4,6 @@ import gestorAplicacion.Animales.Mascota;
 import gestorAplicacion.prestacion.Cita;
 import UIMain.Main;
 
-import java.util.Date;
 public class Persona {
 
     private static int cantidadPersonas;
@@ -52,7 +51,7 @@ public class Persona {
         this.email = email;
     }
 
-    public static void registrarMascota(String nombre,Date fechaNacimiento ,char sexo, String especie, String raza, Cliente cliente){
+    public static void registrarMascota(String nombre,String fechaNacimiento ,char sexo, String especie, String raza, Cliente cliente){
         Mascota mascota = new Mascota(nombre, fechaNacimiento, sexo, especie, raza, cliente);
         cliente.setMascota(mascota);
     }

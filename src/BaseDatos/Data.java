@@ -118,10 +118,10 @@ public class Data{
                     int Id = Integer.parseInt(mascota[0]);
                     String nombre = mascota[1];
                     String[] fechaNacimientoString = mascota[2].split("/");
-                    int año = Integer.parseInt(fechaNacimientoString[0]);
+                    int dia = Integer.parseInt(fechaNacimientoString[0]);
                     int mes = Integer.parseInt(fechaNacimientoString[1]);
-                    int dia = Integer.parseInt(fechaNacimientoString[2]);
-                    Date fechaNacimiento = new Date(año,mes,dia);
+                    int año = Integer.parseInt(fechaNacimientoString[2]);
+                    String fechaNacimiento = dia+"/"+mes+"/"+año;
                     char sexo = mascota[3].charAt(0);
                     String especie = mascota[4];
                     String raza = mascota[5];
@@ -377,8 +377,8 @@ public class Data{
             for (Map.Entry<Integer,Mascota>  indice : mascotas.entrySet()) {
                 String line = Integer.toString(indice.getKey())+";";
                 line += indice.getValue().getNombre()+";";
-                Date fecha = indice.getValue().getFechaNacimiento();
-                line += fecha.getYear()+"/"+fecha.getMonth()+"/"+fecha.getDay()+";";
+                String fecha = indice.getValue().getFechaNacimiento();
+                line += fecha+";";
                 line += indice.getValue().getSexo()+";";
                 line += indice.getValue().getEspecie()+";";
                 line += indice.getValue().getRaza()+";";
