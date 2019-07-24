@@ -1,5 +1,6 @@
 package UIMain.funcionalidades;
 //Opción de menú 8
+import BaseDatos.in;
 import UIMain.OpcionDeMenu;
 
 import java.io.BufferedReader;
@@ -20,9 +21,9 @@ public class IniciarSesion extends OpcionDeMenu {
 
     public void pedirDatos() throws IOException{
         System.out.print("Ingrese su usuario: ");
-        String usuario = br.readLine();
+        String usuario = in.next();
         System.out.print("Ingrese su contraseña: ");
-        String key = br.readLine();
+        String key = in.next();
         System.out.println(Persona.login(usuario,key));
     }
 

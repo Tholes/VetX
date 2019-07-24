@@ -5,6 +5,8 @@ import UIMain.funcionalidades.*;
 
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import gestorAplicacion.Usuarios.Persona;
+import gestorAplicacion.prestacion.Cita;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -20,6 +22,7 @@ public class Main {
         System.out.println("POR FAVOR ELIGE UNA DE LAS SIGUIENTES OPCIONES: ");
         System.out.println("");
         inicializarDatos();
+
         while(true){
             try{
                 if(Main.usuarioActivo != null){
@@ -42,6 +45,19 @@ public class Main {
 
     public static void inicializarDatos(){
         Data.cargarDatos();
+        System.out.println(
+                " .----------------.  .----------------.  .----------------.  .----------------. \n" +
+                        "| .--------------. || .--------------. || .--------------. || .--------------. |\n" +
+                        "| | ____   ____  | || |  _________   | || |  _________   | || |  ____  ____  | |\n" +
+                        "| ||_  _| |_  _| | || | |_   ___  |  | || | |  _   _  |  | || | |_  _||_  _| | |\n" +
+                        "| |  \\ \\   / /   | || |   | |_  \\_|  | || | |_/ | | \\_|  | || |   \\ \\  / /   | |\n" +
+                        "| |   \\ \\ / /    | || |   |  _|  _   | || |     | |      | || |    > `' <    | |\n" +
+                        "| |    \\ ' /     | || |  _| |___/ |  | || |    _| |_     | || |  _/ /'`\\ \\_  | |\n" +
+                        "| |     \\_/      | || | |_________|  | || |   |_____|    | || | |____||____| | |\n" +
+                        "| |              | || |              | || |              | || |              | |\n" +
+                        "| '--------------' || '--------------' || '--------------' || '--------------' |\n" +
+                        " '----------------'  '----------------'  '----------------'  '----------------'"
+        );
         ArrayList<OpcionDeMenu> opcionesInvitado = new ArrayList<OpcionDeMenu>(){{
             add(new IniciarSesion());
             add(new Registrarse());
