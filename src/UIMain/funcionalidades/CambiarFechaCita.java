@@ -90,6 +90,7 @@ public class CambiarFechaCita extends OpcionDeMenu{
                     citaAnterior.cambiarCita(fecha,veterinario);
                     System.out.println("Cita modificada exitosamente...");
                 }
+
             }
         }
     }

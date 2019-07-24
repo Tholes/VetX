@@ -17,9 +17,7 @@ public class Main {
     private static MenuDeConsola menu;
     private static MenuDeConsola menuPorDefecto;
     public static void main(String[] args) throws IOException, Throwable {
-        System.out.println("BIENVENIDO A NUESTRA CLÍNICA!");
-        System.out.println("GRACIAS POR PREFERIR NUESTROS SERVICIOS.");
-        System.out.println("POR FAVOR ELIGE UNA DE LAS SIGUIENTES OPCIONES: ");
+
         System.out.println("");
         inicializarDatos();
 
@@ -58,6 +56,14 @@ public class Main {
                         "| '--------------' || '--------------' || '--------------' || '--------------' |\n" +
                         " '----------------'  '----------------'  '----------------'  '----------------'"
         );
+
+        System.out.println("");
+        System.out.println("BIENVENIDO A NUESTRA CLÍNICA!");
+        System.out.println("GRACIAS POR PREFERIR NUESTROS SERVICIOS.");
+        System.out.println("POR FAVOR ELIGE UNA DE LAS SIGUIENTES OPCIONES ");
+        System.out.println("");
+
+
         ArrayList<OpcionDeMenu> opcionesInvitado = new ArrayList<OpcionDeMenu>(){{
             add(new IniciarSesion());
             add(new Registrarse());

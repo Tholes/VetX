@@ -1,3 +1,2 @@
 1;lulu;2002/11/3;M;perro;french;dan
 2;max;2004/7/3;H;perro;french;dan
-3;lolo;2017/0/2;M;felino;luser;dan
