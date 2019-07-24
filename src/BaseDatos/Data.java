@@ -6,6 +6,7 @@ import gestorAplicacion.Usuarios.Cliente;
 import gestorAplicacion.Usuarios.Veterinario;
 import gestorAplicacion.prestacion.Cita;
 import gestorAplicacion.Usuarios.Persona;
+import gestorAplicacion.prestacion.Clinica;
 
 import java.util.*;
 import java.io.BufferedReader;
@@ -149,18 +150,23 @@ public class Data{
                     String[] cita = line.split(";");
                     int id = Integer.parseInt(cita[0]);
                     String[] fechaCitaString = cita[1].split("/");
-                    int año = Integer.parseInt(fechaCitaString[2]);
+                    int año = Integer.parseInt(fechaCitaString[0]);
                     int mes = Integer.parseInt(fechaCitaString[1]);
-                    int dia = Integer.parseInt(fechaCitaString[0]);
+                    int dia = Integer.parseInt(fechaCitaString[2]);
                     int hora = Integer.parseInt(fechaCitaString[3]);
-                    Date fecha = new Date(año,mes,dia,hora,0);
+                    String fecha = dia+"/"+mes+"/"+dia+"/"+hora;
                     Veterinario veterinario = (Veterinario) usuarios.get(cita[2]);
                     Cliente cliente = (Cliente) usuarios.get(cita[3]);
-                    citas.put(id,new Cita(fecha,veterinario,cliente));
+                    Mascota mascota = mascotas.get(Integer.parseInt(cita[4]));
+                    Cita aux = new Cita(fecha,veterinario,cliente,mascota);
+                    citas.put(id,aux);
+                    cliente.setCita(aux,mascota);
                 }
             }
             br.close();
         } catch (Exception e){
+            System.out.println("Acá?");
+            System.out.println(e);
             /*
             * Un posible error, es que el usuario de veterinario o cliente esté escrito diferente.
             * */
@@ -215,7 +221,9 @@ public class Data{
                     String[] datos = line.split(";");
                     int id = Integer.parseInt(datos[0]);
                     String nombre = datos[1];
-                    hospitalizados.put(id,mascotas.get(id));
+                    Mascota mascota= mascotas.get(id);
+                    hospitalizados.put(id,mascota);
+                    Clinica.getMascotasHospitalizadas().add(mascota);
                 }
             }
         } catch (Exception e){
@@ -347,12 +355,12 @@ public class Data{
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"cita.txt"));
             for (Map.Entry<Integer,Cita> cita : citas.entrySet()) {
                 Cita citaProxima = cita.getValue();
-                String line = Integer.toString(citaProxima.getId())+";";
-                Date fecha = citaProxima.getFechaCita();
-                line += fecha.getDay()+"/"+fecha.getMonth()+"/" +fecha.getYear()+"/"
-                        +fecha.getHours()+"/" +";";
+                String line = citaProxima.getId()+";";
+                String fecha = citaProxima.getFechaCita()+";";
+                line += fecha;
+                line += citaProxima.getVeterinario().getNombreUsuario()+";";
                 line += citaProxima.getCliente().getNombreUsuario()+";";
-                line += citaProxima.getVeterinario().getNombreUsuario();
+                line += citaProxima.getMascota().getId();
                 out.println(line);
             }
             out.close();

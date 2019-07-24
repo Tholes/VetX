@@ -13,7 +13,7 @@ public class Main {
     private static Persona usuarioActivo;
     private static MenuDeConsola menu;
     private static MenuDeConsola menuPorDefecto;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, Throwable {
         inicializarDatos();
         while(true){
             try{

@@ -1,63 +1,83 @@
 package UIMain.funcionalidades;
-//Opción de menú 9
+import BaseDatos.in;
 import UIMain.Main;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Usuarios.Administrador;
+import gestorAplicacion.Animales.Mascota;
 import gestorAplicacion.Usuarios.Cliente;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Date;
 import gestorAplicacion.Usuarios.Persona;
+import gestorAplicacion.Usuarios.Veterinario;
+import gestorAplicacion.prestacion.Cita;
 
 public class PedirCita extends OpcionDeMenu {
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     VerDisponibilidad fechasDisponibles = new VerDisponibilidad();
 
-    public void ejecutar()throws IOException {
-        Date fecha = pedirFecha(Main.getUsuarioActivo());
+    public void ejecutar() throws IOException, InterruptedException {
+        pedirFecha(Main.getUsuarioActivo());
         System.out.println("Su cita fue solicitada con exito, se le asignará un veterinario");
     }
 
-    public Date pedirFecha(Cliente cliente) throws IOException {
-        System.out.println("Ingrese una fecha que se encuentre disponible: ");
+    public void pedirFecha(Cliente cliente) throws IOException, InterruptedException {
+        System.out.println(Cita.getDisponibilidad());
+        ListadoMascotas.listado(cliente);
+        System.out.print("Ingrese el número de la mascota a la cual le desea pedir cita: ");
+        int opcion = in.nextInt()-1;
+        Mascota mascota = cliente.getMascotas().get(opcion);
+        System.out.println("Ingrese los datos de la nueva cita: ");
         System.out.print("Ingrese el día: ");
-        int dia = Integer.parseInt(br.readLine());
+        int dia = in.nextInt();
         System.out.print("Ingrese el mes: ");
-        int mes = Integer.parseInt(br.readLine());
+        int mes = in.nextInt();
         System.out.print("Ingrese el año: ");
-        int año = Integer.parseInt(br.readLine());
+        int año = in.nextInt();
+        System.out.print("Ingrese la hora: ");
+        int hora = in.nextInt();
 
-        if(!cliente.pedirCita(año, mes, dia,cliente)){
+        String fecha = dia+"/"+mes+"/"+año+"/"+hora+"/";
+        if(Cita.getDisponibilidad(fecha)){
             System.out.println("La fecha no se encuentra disponible, por favor: ");
-            return pedirFecha(cliente);
+            pedirFecha(cliente);
         }
-        return null;
-    }
+        Veterinario veterinario = Veterinario.veterinarioDisponible(fecha);
+        Cita.nuevaCita(fecha,veterinario,cliente,mascota);
 
-    public Date pedirFecha(Persona admin) throws IOException{
+    }
+    public void pedirFecha(Persona admin) throws IOException, InterruptedException {
 
         if(admin instanceof Cliente){
             pedirFecha((Cliente) admin);
         }
+        else
+        {
+            Cliente cliente = ListadoMascotas.listado(admin);
+            System.out.print("Ingrese el número de la mascota a la cual le desea pedir cita: ");
+            int opcion = in.nextInt()-1;
+            Mascota mascota = cliente.getMascotas().get(opcion);
+            System.out.println("Ingrese los datos de la nueva cita: ");
+            System.out.print("Ingrese el día: ");
+            int dia = in.nextInt();
+            System.out.print("Ingrese el mes: ");
+            int mes = in.nextInt();
+            System.out.print("Ingrese el año: ");
+            int año = in.nextInt();
+            System.out.print("Ingrese la hora: ");
+            int hora = in.nextInt();
 
-        System.out.println("Ingrese el nombre de usuario del cliente: ");
-        String usuario = br.readLine();
-        System.out.print("Ingrese el día: ");
-        int dia = Integer.parseInt(br.readLine());
-        System.out.print("Ingrese el mes: ");
-        int mes = Integer.parseInt(br.readLine());
-        System.out.print("Ingrese el año: ");
-        int año = Integer.parseInt(br.readLine());
-        Cliente cliente = (Cliente) Persona.fromUsuarioGetPersona(usuario);
-        if(!cliente.pedirCita(año, mes, dia,cliente)){
-            System.out.println("La fecha no se encuentra disponible, por favor: ");
-            return pedirFecha(cliente);
+            String fecha = dia+"/"+mes+"/"+año+"/"+hora+"/";
+            if(Cita.getDisponibilidad(fecha)){
+                System.out.println("La fecha no se encuentra disponible, por favor: ");
+                pedirFecha(cliente);
+            }
+            Veterinario veterinario = Veterinario.veterinarioDisponible(fecha);
+            Cita.nuevaCita(fecha,veterinario,cliente,mascota);
+
         }
-        return null;
-    }
+            }
 
     public String toString() {
         return "Pedir cita";

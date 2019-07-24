@@ -1,5 +1,6 @@
 package gestorAplicacion.Usuarios;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import BaseDatos.Data;
@@ -17,8 +18,8 @@ public class Cliente extends Persona {
     private final int id;
     private ArrayList<Mascota> mascotas = new ArrayList<>();
     private ArrayList<Servicio> servicios = new ArrayList<>();
-
     private HashMap<Cita,Mascota> citasAsignadas = new HashMap<>();
+    private ArrayList<Cita> citas = new ArrayList<>();
 
     public Cliente(){
         super();
@@ -48,13 +49,13 @@ public class Cliente extends Persona {
         }
         else if (mascotas.size() == 1) {
             listadoMascotas += "Su mascota es: \n";
-            listadoMascotas += mascotas.get(0)+"\n";
+            listadoMascotas += "1. "+mascotas.get(0)+"\n";
             listadoMascotas += "----------------------------------------------------------\n";
             return listadoMascotas;
         }
         listadoMascotas = "Sus mascotas son: \n";
         for (int i = 0; i < mascotas.size(); i++) {
-            listadoMascotas += mascotas.get(i)+"\n";
+            listadoMascotas += (i+1)+". "+mascotas.get(i)+"\n";
         }
         listadoMascotas += "----------------------------------------------------------\n";
         return listadoMascotas;
@@ -117,9 +118,28 @@ public class Cliente extends Persona {
         return citasAsignadas;
     }
 
+    public String getCitasSiguientes(){
 
-    public void citaAsignada(Cita cita, Mascota mascota){
+        String ans;
+        if(citas.isEmpty()){
+            return "El cliente no tiene citas";
+        }
+
+        ans= "Citas del cliente: \n";
+        for (int i = 0; i < citas.size(); i++) {
+            ans += (i+1)+" "+citas.get(i)+"\n";
+        }
+        return ans;
+
+    }
+
+    public ArrayList<Cita> getCitas() {
+        return citas;
+    }
+
+    public void setCita(Cita cita, Mascota mascota){
         citasAsignadas.put(cita,mascota);
+        citas.add(cita);
     }
 
     @Override
@@ -145,5 +165,14 @@ public class Cliente extends Persona {
         MenuDeConsola menuUsuario = new MenuDeConsola(cliente,indiceOpciones);
         return menuUsuario;
 
+    }
+
+    public boolean cancelarCita(Cita cita) throws Throwable{
+        if(citas.contains(cita)){
+            citas.remove(cita);
+            cita.cancelarCita();
+            return true;
+        }
+        return false;
     }
 }

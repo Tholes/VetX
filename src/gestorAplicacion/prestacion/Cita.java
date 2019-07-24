@@ -1,39 +1,37 @@
 package gestorAplicacion.prestacion;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import BaseDatos.Data;
+import gestorAplicacion.Animales.Mascota;
 import gestorAplicacion.Usuarios.*;
 
 public class Cita {
-    private int cantidadCitas;
-    private Date fechaCita;
+    private static int cantidadCitas;
+    private String fechaCita;
     private Veterinario veterinario;
     private Cliente cliente;
-    private static ArrayList<Date> disponibilidad; 
+    private static ArrayList<String> disponibilidad = new ArrayList<>();
     private Procedimiento procedimiento;
     private int id;
-    public Cita(Date fechaCita, Veterinario veterinario, Cliente cliente) {
+    private Mascota mascota;
+
+    public Cita(String fechaCita, Veterinario veterinario, Cliente cliente, Mascota mascota) {
         this.fechaCita = fechaCita;
         this.veterinario = veterinario;
         this.cliente = cliente;
-        actualizarDisponibilidad(fechaCita);
+        this.mascota = mascota;
         cantidadCitas++;
         this.id = cantidadCitas;
+
     }
 
-    public static void actualizarDisponibilidad(Date fechaCita){
-        disponibilidad.remove(fechaCita);
+    public static void actualizarDisponibilidad(String fecha){
+        disponibilidad.add(fecha);
     }
 
-    public Veterinario veterinarioDisponible(Date fecha){
-        if (veterinario.fechaCitaDisponible(fecha)){
-            return veterinario;
-        }else {
-            return null;
-        }
-    }
-    public Date getFechaCita() {
+    public String getFechaCita() {
         return fechaCita;
     }
 
@@ -42,41 +40,24 @@ public class Cita {
     }
 
     public static String getDisponibilidad() {
-        String ans = "----------------------------------------------------------\n";
+        String ans = "--------------------- FECHAS NO DISPONIBLES ------------------------------\n";
         for (int i = 0; i < disponibilidad.size() ; i++) {
-            int year = disponibilidad.get(i).getYear();
-            int mes = disponibilidad.get(i).getMonth();
-            int dia = disponibilidad.get(i).getDay();
-            ans += year+"/"+mes+"/"+dia +"\n";
+            ans += (i+1)+" "+disponibilidad.get(i) +"\n";
         }
-        ans += "----------------------------------------------------------\n";
+        ans += "--------------------------------------------------------------------------\n";
         return ans;
     }
-    public static boolean getDisponibilidad(Date fechaCita) {
-        for (int i = 0; i < disponibilidad.size() ; i++){
-            if(disponibilidad.contains(fechaCita)){
-                return false;}
-        }return true;
+
+    public static boolean getDisponibilidad(String fechaCita) {
+        return disponibilidad.contains(fechaCita);
     }
 
-
-    public void setFechaCita(Date fechaCita) {
+    public void setFechaCita(String fechaCita) {
         this.fechaCita = fechaCita;
     }
 
-
-
-    public boolean nuevaFechaCita(Date fecha){
-        if(disponibilidad.contains(fecha)){
-            disponibilidad.add(fechaCita);
-            disponibilidad.remove(fecha);
-            fechaCita = fecha;    
-            return true;
-        }
-        return false;
-    }
-    
     public void cancelarCita() throws Throwable{
+        Data.citas.remove(id);
         this.finalize();
     }
 
@@ -84,16 +65,17 @@ public class Cita {
         this.veterinario = veterinario;
     }
 
-    public static void setDisponibilidad(ArrayList<Date> nuevasFechas) {
+    public static void setDisponibilidad(ArrayList<String> nuevasFechas) {
         disponibilidad = nuevasFechas;
     }
 
     @Override
     public String toString(){
         String ans;
-        ans = "Sr "+cliente.getNombre()+" informaci�n sobre su cita:\n";
-        ans += "Fecha: "+fechaCita.getYear()+"/"+fechaCita.getMonth()+"/"+fechaCita.getDay()+"\n";
-        ans += "Veterinario: " + veterinario.toString()+"\n";
+        ans = "Sr "+cliente.getNombre()+" información sobre su cita:\n";
+        ans += "Fecha: "+fechaCita+"\n";
+        ans += "Mascota: "+mascota.getNombre()+"\n";
+        ans += "Veterinario: " + veterinario.getNombre()+"\n";
         return ans;
     }
 
@@ -105,7 +87,29 @@ public class Cita {
         return cliente;
     }
 
-    public boolean aprobarCita(Date fecha){
+    public boolean aprobarCita(String fecha){
         return veterinario.fechaCitaDisponible(fecha);
     }
+
+    public void cambiarCita(String fecha, Veterinario vet){
+        this.fechaCita = fecha;
+        this.veterinario = vet;
+    }
+
+    public Mascota getMascota() {
+        return mascota;
+    }
+
+    public void setMascota(Mascota mascota) {
+        this.mascota = mascota;
+    }
+
+    public static void nuevaCita(String fechaCita, Veterinario veterinario, Cliente cliente, Mascota mascota){
+        Cita cita = new Cita(fechaCita, veterinario, cliente, mascota);
+        veterinario.asignarCita(cita);
+        cliente.setCita(cita,mascota);
+        Data.citas.put(cita.getId(),cita);
+    }
+
+
 }

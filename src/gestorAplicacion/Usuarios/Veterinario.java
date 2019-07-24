@@ -40,12 +40,14 @@ public class Veterinario extends Persona {
     public Veterinario(String nombre, String email, byte experiencia, long idTarjetaProfesional, String usuario, String contraseña) {
         this(nombre, email,"general", experiencia, 828116, idTarjetaProfesional,usuario,contraseña);
     }
-    public boolean fechaCitaDisponible(Date fecha){
+
+    public boolean fechaCitaDisponible(String fecha){
         return citasAsignadas.contains(fecha);
     }
-    public Veterinario veterinarioDisponible(Date fecha){
+
+    public static Veterinario veterinarioDisponible(String fecha){
         for(int i=0;i<Data.veterinarios.size();i++){
-            if(Data.veterinarios.get(i).fechaCitaDisponible(fecha)){
+            if(!Data.veterinarios.get(i).fechaCitaDisponible(fecha)){
                 return Data.veterinarios.get(i);
             }
         }return null;

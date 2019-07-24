@@ -3,6 +3,7 @@ import BaseDatos.Data;
 import gestorAplicacion.Animales.Mascota;
 import gestorAplicacion.prestacion.Cita;
 import UIMain.Main;
+
 import java.util.Date;
 public class Persona {
 
@@ -59,14 +60,6 @@ public class Persona {
     public boolean borrarMascota(Mascota mascota, Cliente cliente) throws Throwable {
         if(cliente.getMascotas().contains(mascota)){
             cliente.borrarMascota(mascota);
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean pedirCita(int year,int mes, int dia, Cliente cliente){
-        Date fecha = new Date(year,mes,dia); 
-        if(Cita.getDisponibilidad().contains((CharSequence) fecha)){
             return true;
         }
         return false;

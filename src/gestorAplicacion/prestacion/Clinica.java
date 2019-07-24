@@ -69,14 +69,30 @@ public class Clinica {
         Data.hospitalizados.put(mascota.getId(), mascota);
     }
 
-    public boolean darDeAlta(Mascota mascota){
-
+    public static void darDeAlta(Mascota mascota){
         if(mascotasHospitalizadas.contains(mascota)){
             mascota.setEstado(false, null);
             mascotasHospitalizadas.remove(mascota);
-            return true;
+            Data.hospitalizados.remove(mascota.getId());
         }
-        return false;
+    }
+
+    public static String mascotasEnfermas(){
+        if(mascotasHospitalizadas.size() == 0){
+            return "No hay mascotas hospitalizadas.";
+        }else {
+            String ans =  "********************* Mascotas hospitalizadas ************\n";
+            for (int i = 0; i < mascotasHospitalizadas.size(); i++) {
+                ans += (i+1)+" "+ mascotasHospitalizadas.get(i)+"\n";
+            }
+            ans += "*************************************************";
+            return ans;
+        }
+
+    }
+
+    public static ArrayList<Mascota> getMascotasHospitalizadas(){
+        return mascotasHospitalizadas;
     }
 
 }

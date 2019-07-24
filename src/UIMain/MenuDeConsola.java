@@ -24,18 +24,19 @@ public class MenuDeConsola {
         put(2, new VerDisponibilidad());
         put(3, new PedirCita());
         put(4, new CambiarFechaCita());
-        put(5, new CancelarCita());
-        put(6, new SueldoVeterinarios());
-        put(7, new ContratarVeterinario());
-        put(8, new ListadoMascotas());
-        put(9, new RegistrarMascota());
-        put(10, new HospitalizarMascota());
-        put(11, new DarDeAlta());
-        put(12, new DarPermisos());
-        put(13, new QuitarPermisos());
-        put(14, new Registrarse());
-        put(15, new CerrarSesion());
-        put(16, new SalirDeLaAplicacion());
+        put(5, new ConsultarCitas());
+        put(6, new CancelarCita());
+        put(7, new SueldoVeterinarios());
+        put(8, new ContratarVeterinario());
+        put(9, new ListadoMascotas());
+        put(10, new RegistrarMascota());
+        put(11, new HospitalizarMascota());
+        put(12, new DarDeAlta());
+        put(13, new DarPermisos());
+        put(14, new QuitarPermisos());
+        put(15, new Registrarse());
+        put(16, new CerrarSesion());
+        put(17, new SalirDeLaAplicacion());
     }};
 
     private Persona usuario;
@@ -90,7 +91,7 @@ public class MenuDeConsola {
         this.usuario = usuario;
     }
 
-    public void lanzarMenu() throws IOException {
+    public void lanzarMenu() throws Throwable {
         Scanner in = new Scanner(System.in);
         System.out.println("Menu: ");
         for (int i = 0;i < menuUsuario.size(); i++) {
