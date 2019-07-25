@@ -13,16 +13,17 @@ public class IniciarSesion extends OpcionDeMenu {
 
     private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    public void ejecutar() throws IOException {
+    public void ejecutar() throws IOException, InterruptedException {
         pedirDatos();
 
     }
 
-    public void pedirDatos() throws IOException{
+    public void pedirDatos() throws IOException, InterruptedException {
         System.out.print("Ingrese su usuario: ");
         String usuario = in.next();
         System.out.print("Ingrese su contraseña: ");
         String key = in.next();
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         System.out.println(Persona.login(usuario,key));
     }
 

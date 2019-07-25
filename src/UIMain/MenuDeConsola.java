@@ -89,13 +89,14 @@ public class MenuDeConsola {
 
     public void lanzarMenu() throws Throwable {
         Scanner in = new Scanner(System.in);
-        System.out.println("\t\t\tMenu");
+        System.out.println("\t\t\tMenu: ");
         for (int i = 0;i < menuUsuario.size(); i++) {
             System.out.println((i+1)+". "+menuUsuario.get(i));
         }
         System.out.print("Ingrese una opción: ");
         try {
             int opcion = in.nextInt();
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             menuUsuario.get((opcion-1)).ejecutar();
         } catch (Exception e){
             System.out.println("Opción incorrecta, ingrese un número.");

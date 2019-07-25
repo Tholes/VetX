@@ -90,7 +90,7 @@ public class Persona {
         if(persona != null){
             if(persona.getNombreUsuario().equals(usuario) && persona.getKey().equals(key)){
                 Main.setUsuarioActivo(persona);
-                return "Bienvenido "+ persona.getNombre();
+                return "\t\tBienvenido "+ persona.getNombre();
             }
         }
         return "Datos ingresados no validos.";
