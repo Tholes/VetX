@@ -80,6 +80,6 @@ public class PedirCita extends OpcionDeMenu {
             }
 
     public String toString() {
-        return "Pedir cita";
+        return "Pedir cita.";
     }
 }

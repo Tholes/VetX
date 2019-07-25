@@ -11,7 +11,7 @@ public class CerrarSesion extends OpcionDeMenu{
         Main.setUsuarioActivo(null);
     }
     public String toString(){
-        return "Cerrar Sesion";
+        return "Cerrar Sesion.";
     }
 
 }

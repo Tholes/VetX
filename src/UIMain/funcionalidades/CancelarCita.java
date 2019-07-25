@@ -56,7 +56,7 @@ public class CancelarCita extends OpcionDeMenu{
     }
 
     public String toString(){
-        return "Cancelar Cita";
+        return "Cancelar cita.";
     }
 
 }

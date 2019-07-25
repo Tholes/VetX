@@ -39,6 +39,6 @@ public class ConsultarCitas extends OpcionDeMenu {
 
     @Override
     public String toString() {
-        return "Consultar citas";
+        return "Consultar citas.";
     }
 }

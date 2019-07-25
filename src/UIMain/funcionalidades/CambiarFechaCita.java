@@ -96,7 +96,7 @@ public class CambiarFechaCita extends OpcionDeMenu{
     }
 
     public String toString(){
-        return "Cambiar fecha de una cita";
+        return "Cambiar fecha de una cita.";
     }
 
 }

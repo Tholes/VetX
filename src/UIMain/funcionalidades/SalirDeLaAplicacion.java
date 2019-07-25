@@ -16,6 +16,6 @@ public class SalirDeLaAplicacion extends OpcionDeMenu {
 
     @Override
     public String toString() {
-        return "Salir de la aplicación";
+        return "Salir de la aplicación.";
     }
 }

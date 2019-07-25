@@ -45,6 +45,6 @@ public class ContratarVeterinario extends OpcionDeMenu {
     }
 
     public String toString() {
-        return "Contratar un nuevo veterinario";
+        return "Contratar un nuevo veterinario.";
     }
 }

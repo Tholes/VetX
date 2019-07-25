@@ -76,7 +76,7 @@ public class Registrarse extends OpcionDeMenu {
     }
     @Override
     public String toString() {
-        return "Registrarse";
+        return "Registrarse.";
     }
 
 

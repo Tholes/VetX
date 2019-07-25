@@ -87,7 +87,7 @@ public class DarPermisos extends OpcionDeMenu{
         System.out.println("**********************************************************");
     }
     public String toString(){
-        return "Dar permisos";
+        return "Dar permisos.";
     }
 
 }

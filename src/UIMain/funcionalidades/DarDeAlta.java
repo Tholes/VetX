@@ -28,6 +28,6 @@ public class DarDeAlta extends OpcionDeMenu{
     }
 
     public String toString(){
-        return "Dar de alta";
+        return "Dar de alta.";
     }
 }

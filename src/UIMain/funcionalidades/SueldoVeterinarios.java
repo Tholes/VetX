@@ -12,6 +12,6 @@ public class SueldoVeterinarios extends OpcionDeMenu {
 
     @Override
     public String toString() {
-        return "Nomina de veterinarios";
+        return "Nomina de veterinarios.";
     }
 }

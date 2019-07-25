@@ -86,6 +86,6 @@ public class RegistrarMascota extends OpcionDeMenu {
 
     @Override
     public String toString() {
-        return "registrar una nueva mascota";
+        return "registrar una nueva mascota.";
     }
 }
