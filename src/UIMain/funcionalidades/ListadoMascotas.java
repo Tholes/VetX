@@ -6,14 +6,11 @@ import UIMain.OpcionDeMenu;
 import gestorAplicacion.Usuarios.Cliente;
 import gestorAplicacion.Usuarios.Persona;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class ListadoMascotas extends OpcionDeMenu {
 
     @Override
-    public void ejecutar() throws IOException {
+    public void ejecutar() throws Throwable {
         listado(Main.getUsuarioActivo());
     }
 
@@ -22,18 +19,32 @@ public class ListadoMascotas extends OpcionDeMenu {
         return usuario;
     }
 
-    public static Cliente listado(Persona usuario) throws IOException{
+    public static Cliente listado(Persona usuario) throws Throwable {
 
         if(usuario instanceof Cliente){
             listado((Cliente) usuario);
         }
 
-        System.out.println();
-        System.out.println("Ingrese el usuario de la persona: ");
+        System.out.print("Ingrese el usuario de la persona:\n" +
+                "Escriba 'Salir' Para regresar al menú. \n");
         String username = in.next();
+
+        if(username.equals("salir")){
+            System.out.println("Regresando al menú...");
+            Main.getMenu().lanzarMenu();
+        }
+
         Cliente cliente = (Cliente) Cliente.fromUsuarioGetPersona(username);
-        System.out.println(cliente.mascotasRegistradas());
-        return cliente;
+        if(cliente != null){
+            System.out.println(cliente.mascotasRegistradas());
+            Thread.sleep(1000);
+            return cliente;
+        }
+        else{
+            System.out.println("Usuario no encontrado.");
+            ListadoMascotas.listado(Main.getUsuarioActivo());
+        }
+        return null;
     }
 
     @Override

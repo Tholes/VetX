@@ -75,9 +75,6 @@ public class MenuDeConsola {
         this.menuUsuario = menu;
     }
 
-    public ArrayList<OpcionDeMenu> getMenuUsuario() {
-        return menuUsuario;
-    }
 
     public Persona getUsuario() {
         return usuario;
@@ -88,6 +85,8 @@ public class MenuDeConsola {
     }
 
     public void lanzarMenu() throws Throwable {
+
+        Thread.sleep(2000);
         Scanner in = new Scanner(System.in);
         System.out.println("\t\t\tMenu: ");
         for (int i = 0;i < menuUsuario.size(); i++) {
@@ -99,7 +98,6 @@ public class MenuDeConsola {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             menuUsuario.get((opcion-1)).ejecutar();
         } catch (Exception e){
-            System.out.println("Opción incorrecta, ingrese un número.");
             lanzarMenu();
         }
 

@@ -1,15 +1,12 @@
 package gestorAplicacion.Usuarios;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import BaseDatos.Data;
 import UIMain.Main;
 import UIMain.MenuDeConsola;
-import UIMain.OpcionDeMenu;
 import gestorAplicacion.Animales.*;
 import gestorAplicacion.prestacion.*;
-import java.util.Date;
 import java.util.HashMap;
 
 public class Cliente extends Persona {

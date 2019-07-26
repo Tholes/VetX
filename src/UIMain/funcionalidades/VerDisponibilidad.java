@@ -1,5 +1,4 @@
 package UIMain.funcionalidades;
-//Opción de menú 11
 import UIMain.OpcionDeMenu;
 import gestorAplicacion.prestacion.Cita;
 
@@ -11,4 +10,5 @@ public class VerDisponibilidad extends OpcionDeMenu{
     public String toString(){
         return "Ver fechas no disponibles.";
     }
+
 }

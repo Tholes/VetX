@@ -17,13 +17,13 @@ import java.io.IOException;
 public class QuitarPermisos extends OpcionDeMenu {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     @Override
-    public void ejecutar() throws IOException {
+    public void ejecutar() throws Throwable {
         System.out.println();
         System.out.println("**********************************************************");
         System.out.println("" +
                 "*Para quitar permisos a los Clientes introduzca el 1.               *\n" +
                 "*Para quitar permisos a los Veterinarios introduzca el 2.           *\n" +
-                "*Para regresar al menu de opciones introduzca cualquier otro número.*");
+                "*Escriba 'Salir' Para regresar al menú.                             *");
 
         int opcion = Integer.parseInt(br.readLine());
         if(opcion == 1){
@@ -34,7 +34,8 @@ public class QuitarPermisos extends OpcionDeMenu {
         }
         else
         {
-            Main.setUsuarioActivo(Main.getUsuarioActivo());
+            System.out.println("Regresando al menú...");
+            Main.getMenu().lanzarMenu();
         }
     }
 

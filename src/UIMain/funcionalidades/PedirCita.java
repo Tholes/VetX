@@ -17,7 +17,7 @@ public class PedirCita extends OpcionDeMenu {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     VerDisponibilidad fechasDisponibles = new VerDisponibilidad();
 
-    public void ejecutar() throws IOException, InterruptedException {
+    public void ejecutar() throws Throwable {
         pedirFecha(Main.getUsuarioActivo());
         System.out.println("Su cita fue solicitada con exito, se le asignará un veterinario");
     }
@@ -25,7 +25,8 @@ public class PedirCita extends OpcionDeMenu {
     public void pedirFecha(Cliente cliente) throws IOException, InterruptedException {
         System.out.println(Cita.getDisponibilidad());
         ListadoMascotas.listado(cliente);
-        System.out.print("Ingrese el número de la mascota a la cual le desea pedir cita: ");
+        System.out.println("Ingrese el número de la mascota a la cual le desea pedir cita: \n" +
+                "Escriba 'Salir' Para regresar al menú. ");
         int opcion = in.nextInt()-1;
         Mascota mascota = cliente.getMascotas().get(opcion);
         System.out.println("Ingrese los datos de la nueva cita: ");
@@ -43,11 +44,11 @@ public class PedirCita extends OpcionDeMenu {
             System.out.println("La fecha no se encuentra disponible, por favor: ");
             pedirFecha(cliente);
         }
+
         Veterinario veterinario = Veterinario.veterinarioDisponible(fecha);
         Cita.nuevaCita(fecha,veterinario,cliente,mascota);
-
     }
-    public void pedirFecha(Persona admin) throws IOException, InterruptedException {
+    public void pedirFecha(Persona admin) throws Throwable {
 
         if(admin instanceof Cliente){
             pedirFecha((Cliente) admin);
@@ -55,7 +56,8 @@ public class PedirCita extends OpcionDeMenu {
         else
         {
             Cliente cliente = ListadoMascotas.listado(admin);
-            System.out.print("Ingrese el número de la mascota a la cual le desea pedir cita: ");
+            System.out.println("Ingrese el número de la mascota a la cual le desea pedir cita: " +
+                    " Escriba 'Salir' Para regresar al menú. ");
             int opcion = in.nextInt()-1;
             Mascota mascota = cliente.getMascotas().get(opcion);
             System.out.println("Ingrese los datos de la nueva cita: ");

@@ -6,13 +6,12 @@ import gestorAplicacion.prestacion.Clinica;
 
 import java.util.Scanner;
 
-import static BaseDatos.Data.hospitalizados;
-
 public class DarDeAlta extends OpcionDeMenu{
     Scanner in = new Scanner(System.in);
     public void ejecutar(){
         System.out.println(Clinica.mascotasEnfermas());
-        System.out.println("Ingresa el número de la máscota que darás de alta: ");
+        System.out.println("Ingresa el número de la máscota que darás de alta: \n" +
+                "Escriba 'Salir' Para regresar al menú. \n");
         int opcion = in.nextInt()-1;
         Mascota mascota = Clinica.getMascotasHospitalizadas().get(opcion);
         if(mascota != null){

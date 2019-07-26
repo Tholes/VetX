@@ -1,9 +1,8 @@
 package UIMain.funcionalidades;
-//Opción de menú 8
+import UIMain.Main;
 import UIMain.OpcionDeMenu;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import BaseDatos.in;
 import gestorAplicacion.Usuarios.Persona;
@@ -13,14 +12,19 @@ public class IniciarSesion extends OpcionDeMenu {
 
     private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    public void ejecutar() throws IOException, InterruptedException {
+    public void ejecutar() throws Throwable {
         pedirDatos();
 
     }
 
-    public void pedirDatos() throws IOException, InterruptedException {
+    public void pedirDatos() throws Throwable {
+        System.out.println("Escriba 'Salir' Para regresar al menú. ");
         System.out.print("Ingrese su usuario: ");
         String usuario = in.next();
+        if(usuario.equals("salir")){
+            System.out.println("Regresando al menú...");
+            Main.getMenu().lanzarMenu();
+        }
         System.out.print("Ingrese su contraseña: ");
         String key = in.next();
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();

@@ -3,7 +3,6 @@ package gestorAplicacion.Usuarios;
 import BaseDatos.Data;
 import UIMain.Main;
 
-import java.util.ArrayList;
 
 public class Administrador extends Persona {
 
@@ -21,12 +20,6 @@ public class Administrador extends Persona {
         Data.usuarios.put(usuario, nuevoVeterinario);
 
     }
-    
-    public void aprobarCitas(){
-        //Aquí creariamos los objetos de las clases citas
-    }
-
-    //Al pedir una cita, el administrador le va a asignar un veterinario a esa cita.
 
     public static void registrarAdministrador(String nombre, String email, String usuario, String key){
         Administrador admin = new Administrador(nombre, email, usuario, key);

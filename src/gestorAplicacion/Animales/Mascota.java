@@ -1,6 +1,5 @@
 package gestorAplicacion.Animales;
 
-import java.util.Date;
 import gestorAplicacion.Usuarios.*;
 import gestorAplicacion.prestacion.*;
 public class Mascota {

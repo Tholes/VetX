@@ -12,7 +12,6 @@ public class ConsultarCitas extends OpcionDeMenu {
     @Override
     public void ejecutar() throws IOException, InterruptedException {
 
-        //getCitasSiguientes()
         Persona usuario = Main.getUsuarioActivo();
         listar(usuario);
     }
@@ -21,16 +20,21 @@ public class ConsultarCitas extends OpcionDeMenu {
         System.out.println(usuario.getCitasSiguientes());
     }
 
-    public static Cliente listar(Persona usuario) throws  IOException{
+    public static Cliente listar(Persona usuario) throws IOException, InterruptedException {
 
         if( usuario instanceof Cliente){
             listar((Cliente) usuario);
         }
         else{
-            System.out.println("Ingrese el usuario de quien desea ver sus citas: ");
+            System.out.println("Ingrese el usuario de quien desea ver sus citas: \n" +
+                    "Si desea regresar al menú escriba: Salir \n");
             String username = in.next();
+            if(username.equals("salir")){
+                Main.setUsuarioActivo(Main.getUsuarioActivo());
+            }
             Cliente cliente = (Cliente) Persona.fromUsuarioGetPersona(username);
             System.out.println(cliente.getCitasSiguientes());
+            Thread.sleep(500);
             return cliente;
 
         }

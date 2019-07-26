@@ -2,7 +2,6 @@ package UIMain.funcionalidades;
 import UIMain.OpcionDeMenu;
 import gestorAplicacion.Usuarios.Veterinario;
 
-import java.io.IOException;
 
 public class SueldoVeterinarios extends OpcionDeMenu {
     @Override

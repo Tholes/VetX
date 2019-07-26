@@ -1,7 +1,6 @@
 package gestorAplicacion.Usuarios;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import BaseDatos.Data;
 import UIMain.Main;
@@ -15,7 +14,7 @@ public class Veterinario extends Persona {
     private byte experiencia;
     private int sueldo;
     private long idTarjetaProfesional;
-    private ArrayList<Cita> citasAsignadas = new ArrayList<Cita>();
+    public ArrayList<Cita> citasAsignadas = new ArrayList<Cita>();
     public static long sueldototal = 0;
 
     public Veterinario(){
@@ -42,7 +41,12 @@ public class Veterinario extends Persona {
     }
 
     public boolean fechaCitaDisponible(String fecha){
-        return citasAsignadas.contains(fecha);
+        for (int i = 0; i < citasAsignadas.size(); i++) {
+            if(citasAsignadas.get(i).getFechaCita().equals(fecha)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static Veterinario veterinarioDisponible(String fecha){
@@ -83,6 +87,12 @@ public class Veterinario extends Persona {
 
     public void setSueldo(int sueldo) {
         this.sueldo = sueldo;
+    }
+
+    public void eliminarCita(Cita cita){
+        if(citasAsignadas.contains(cita)){
+            citasAsignadas.remove(cita);
+        }
     }
 
     public void asignarCita(Cita cita){

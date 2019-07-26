@@ -3,9 +3,7 @@ package UIMain;
 import BaseDatos.Data;
 import UIMain.funcionalidades.*;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import gestorAplicacion.Usuarios.Persona;
-import gestorAplicacion.prestacion.Cita;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -84,7 +82,4 @@ public class Main {
         return menu;
     }
 
-    public static void setMenu(MenuDeConsola menuA) {
-        menu = menuA;
-    }
 }

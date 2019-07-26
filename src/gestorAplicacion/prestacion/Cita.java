@@ -1,7 +1,6 @@
 package gestorAplicacion.prestacion;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+
 
 import BaseDatos.Data;
 import gestorAplicacion.Animales.Mascota;
@@ -13,7 +12,6 @@ public class Cita {
     private Veterinario veterinario;
     private Cliente cliente;
     private static ArrayList<String> disponibilidad = new ArrayList<>();
-    private Procedimiento procedimiento;
     private int id;
     private Mascota mascota;
 
@@ -92,8 +90,12 @@ public class Cita {
     }
 
     public void cambiarCita(String fecha, Veterinario vet){
+        disponibilidad.remove(fechaCita);
+        vet.eliminarCita(this);
         this.fechaCita = fecha;
         this.veterinario = vet;
+        vet.asignarCita(this);
+        actualizarDisponibilidad(fecha);
     }
 
     public Mascota getMascota() {

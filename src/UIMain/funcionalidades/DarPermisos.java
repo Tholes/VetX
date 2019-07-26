@@ -1,12 +1,12 @@
 package UIMain.funcionalidades;
 import BaseDatos.Data;
+import BaseDatos.in;
 import UIMain.Main;
 import UIMain.MenuDeConsola;
 import UIMain.OpcionDeMenu;
 import gestorAplicacion.Usuarios.Cliente;
 import gestorAplicacion.Usuarios.Veterinario;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 
 public class DarPermisos extends OpcionDeMenu{
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public void ejecutar() throws IOException {
+    public void ejecutar() throws Throwable {
         System.out.println();
         System.out.println("**********************************************************");
         System.out.println("" +
@@ -22,7 +22,7 @@ public class DarPermisos extends OpcionDeMenu{
                 "*Para Otorgar permisos a los Veterinarios introduzca el 2           *\n" +
                 "*Para regresar al menu de opciones introduzca cualquier otro número.*");
 
-        int opcion = Integer.parseInt(br.readLine());
+        int opcion =in.nextInt();
         if(opcion == 1){
             modificarCliente();
         }
@@ -31,7 +31,7 @@ public class DarPermisos extends OpcionDeMenu{
         }
         else
         {
-            Main.setUsuarioActivo(Main.getUsuarioActivo());
+            Main.getMenu().lanzarMenu();
         }
 
     }
@@ -45,13 +45,9 @@ public class DarPermisos extends OpcionDeMenu{
         System.out.println();
         System.out.println("Introduzca la opción de Menú que desee agregar: ");
         MenuDeConsola.verOpcionesCompletas();
-        System.out.println("Para regresar al menú introduzca el numero 20");
-        Integer opcion = Integer.parseInt(br.readLine());
 
-        if(opcion == 20){
-            Main.setUsuarioActivo(Main.getUsuarioActivo());
-        }
-        else if(!Data.menuCliente.contains(opcion)){
+        Integer opcion = in.nextInt();
+        if(!Data.menuCliente.contains(opcion)){
             Data.menuCliente.add(opcion);
             System.out.println("Se ha agregado la opción "+ MenuDeConsola.listaOpciones.get(opcion) +" correctamente.");
         }
@@ -70,8 +66,7 @@ public class DarPermisos extends OpcionDeMenu{
         System.out.println();
         System.out.println("Introduzca la opción de Menú que desee agregar: ");
         MenuDeConsola.verOpcionesCompletas();
-        System.out.println("Para regresar al menú introduzca el numero 20");
-        Integer opcion = Integer.parseInt(br.readLine());
+        Integer opcion = in.nextInt();
 
         System.out.println(MenuDeConsola.listaOpciones.get(opcion));
         if(opcion == 20){

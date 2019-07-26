@@ -1,6 +1,5 @@
 package UIMain.funcionalidades;
-//Opción de menú 2
-import BaseDatos.Data;
+
 import UIMain.Main;
 import UIMain.OpcionDeMenu;
 import gestorAplicacion.Usuarios.Cliente;
@@ -19,7 +18,8 @@ public class CancelarCita extends OpcionDeMenu{
 
     public void eliminar(Cliente cliente) throws Throwable{
         ConsultarCitas.listar(cliente);
-        System.out.println("Ingrese el número de la cita: ");
+        System.out.println("Ingrese el número de la cita: " +
+                "Escriba 'Salir' Para regresar al menú.");
         int opcion = in.nextInt()-1;
         Cita cita = cliente.getCitas().get(opcion);
         if(cita != null){
@@ -40,13 +40,14 @@ public class CancelarCita extends OpcionDeMenu{
 
         else{
             Cliente cliente = ConsultarCitas.listar(usuario);
-            System.out.println("Ingrese el número de la cita: ");
+            System.out.println("Ingrese el número de la cita: \n" +
+                    "Escriba 'Salir' Para regresar al menú.");
             int opcion = in.nextInt()-1;
             Cita cita = cliente.getCitas().get(opcion);
             if(cita != null){
                 cliente.cancelarCita(cita);
                 System.out.println("Se ha borrado exitosamente...");
-                Thread.sleep(5000);
+                System.out.println("Regresando al menú...");
             }else{
                 System.out.println("El número ingresado no es correcto.");
                 ejecutar();

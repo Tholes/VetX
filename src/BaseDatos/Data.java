@@ -150,23 +150,23 @@ public class Data{
                     String[] cita = line.split(";");
                     int id = Integer.parseInt(cita[0]);
                     String[] fechaCitaString = cita[1].split("/");
-                    int año = Integer.parseInt(fechaCitaString[0]);
+                    int dia = Integer.parseInt(fechaCitaString[0]);
                     int mes = Integer.parseInt(fechaCitaString[1]);
-                    int dia = Integer.parseInt(fechaCitaString[2]);
+                    int año = Integer.parseInt(fechaCitaString[2]);
                     int hora = Integer.parseInt(fechaCitaString[3]);
-                    String fecha = dia+"/"+mes+"/"+dia+"/"+hora;
+                    String fecha = dia+"/"+mes+"/"+año+"/"+hora;
                     Veterinario veterinario = (Veterinario) usuarios.get(cita[2]);
                     Cliente cliente = (Cliente) usuarios.get(cita[3]);
                     Mascota mascota = mascotas.get(Integer.parseInt(cita[4]));
                     Cita aux = new Cita(fecha,veterinario,cliente,mascota);
                     citas.put(id,aux);
                     cliente.setCita(aux,mascota);
+                    veterinario.asignarCita(aux);
                 }
             }
             br.close();
         } catch (Exception e){
-            System.out.println("Acá?");
-            System.out.println(e);
+
             /*
             * Un posible error, es que el usuario de veterinario o cliente esté escrito diferente.
             * */
