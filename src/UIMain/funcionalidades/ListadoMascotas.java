@@ -25,24 +25,28 @@ public class ListadoMascotas extends OpcionDeMenu {
             listado((Cliente) usuario);
         }
 
-        System.out.print("Ingrese el usuario de la persona:\n" +
-                "Escriba 'Salir' Para regresar al menú. \n");
-        String username = in.next();
-
-        if(username.equals("salir")){
-            System.out.println("Regresando al menú...");
-            Main.getMenu().lanzarMenu();
-        }
-
-        Cliente cliente = (Cliente) Cliente.fromUsuarioGetPersona(username);
-        if(cliente != null){
-            System.out.println(cliente.mascotasRegistradas());
-            Thread.sleep(1000);
-            return cliente;
-        }
         else{
-            System.out.println("Usuario no encontrado.");
-            ListadoMascotas.listado(Main.getUsuarioActivo());
+
+            System.out.print("Ingrese el usuario de la persona:\n" +
+                    "Escriba 'Salir' Para regresar al menú. \n");
+            String username = in.next();
+
+            if(username.equals("salir")){
+                System.out.println("Regresando al menú...");
+                Main.getMenu().lanzarMenu();
+            }
+
+            Cliente cliente = (Cliente) Cliente.fromUsuarioGetPersona(username);
+            if(cliente != null){
+                System.out.println(cliente.mascotasRegistradas());
+                Thread.sleep(1000);
+                return cliente;
+            }
+            else{
+                System.out.println("Usuario no encontrado.");
+                ListadoMascotas.listado(Main.getUsuarioActivo());
+            }
+            return null;
         }
         return null;
     }
