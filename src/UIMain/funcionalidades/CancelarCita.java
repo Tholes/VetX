@@ -18,7 +18,7 @@ public class CancelarCita extends OpcionDeMenu{
 
     public void eliminar(Cliente cliente) throws Throwable{
         ConsultarCitas.listar(cliente);
-        System.out.println("Ingrese el número de la cita: " +
+        System.out.println("Ingrese el número de la cita: \n" +
                 "Escriba 'Salir' Para regresar al menú.");
         int opcion = in.nextInt()-1;
         Cita cita = cliente.getCitas().get(opcion);

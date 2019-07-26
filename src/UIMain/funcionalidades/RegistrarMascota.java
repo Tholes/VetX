@@ -7,7 +7,7 @@ import gestorAplicacion.Usuarios.Persona;
 import gestorAplicacion.Usuarios.Cliente;
 
 
-
+import java.io.IOException;
 import java.util.Date;
 public class RegistrarMascota extends OpcionDeMenu {
 
@@ -61,17 +61,16 @@ public class RegistrarMascota extends OpcionDeMenu {
         int dia = in.nextInt();
         String fechaNacimiento = dia+"/"+mes+"/"+año;
 
-        System.out.println("Ingrese el sexo de su mascota(M/H): ");
-        char genero = in.next().charAt(0);
+        //System.out.println("Ingrese el sexo de su mascota(M/H): ");
+        char genero = pedirElSexo().charAt(0);
 
         System.out.println("Ingrese la especie de su mascota: ");
-        in.nextLine();
         String especie = in.nextLine();
 
         System.out.println("Ingrese la raza de su mascota: ");
         String raza = in.nextLine();
 
-        System.out .println("Ingrese el nombre de usuario de la mascota: ");
+        System.out .println("Ingrese el nombre de usuario del dueño de la mascota: ");
         String nombreUsuario = in.nextLine();
 
 
@@ -84,6 +83,16 @@ public class RegistrarMascota extends OpcionDeMenu {
         else{
             ejecutar();
         }
+    }
+
+    public String pedirElSexo() throws IOException {
+        System.out.println("Ingrese el sexo de su mascota(M/H): ");
+        String sexo = in.next();
+        if(sexo.equals("h") || sexo.equals("m")){
+            return sexo;
+        }
+        System.out.println("caracter incorrecto.");
+        return pedirElSexo();
     }
 
     @Override

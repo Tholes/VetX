@@ -40,7 +40,7 @@ public class Cita {
     public static String getDisponibilidad() {
         String ans = "--------------------- FECHAS NO DISPONIBLES ------------------------------\n";
         for (int i = 0; i < disponibilidad.size() ; i++) {
-            ans += (i+1)+" "+disponibilidad.get(i) +"\n";
+            ans += (i+1)+". "+disponibilidad.get(i) +"\n";
         }
         ans += "--------------------------------------------------------------------------\n";
         return ans;

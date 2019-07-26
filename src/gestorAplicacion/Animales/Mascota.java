@@ -89,7 +89,7 @@ public class Mascota {
 
     @Override
     public String toString(){
-        return "Mi nombre es "+nombre+" soy un/a "+ this.especie +" soy de sexo: "+sexo+" nací el "+fechaNacimiento+ " mi dueño es: "+amo.getNombre();
+        return "Nombre: "+nombre+", especie: "+ especie;
     }
 
 }

@@ -39,7 +39,7 @@ public class Registrarse extends OpcionDeMenu {
         String usuario = in.nextLine();
         System.out.print("Ingresa tu key: ");
         String key = in.nextLine();
-        System.out.print(Cliente.registrarse(nombre,email,usuario,key));
+        System.out.println(Cliente.registrarse(nombre,email,usuario,key));
     }
 
     public void registrarAdministrador() throws  IOException{

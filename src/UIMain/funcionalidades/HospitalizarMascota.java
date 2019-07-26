@@ -3,7 +3,9 @@ import BaseDatos.in;
 import UIMain.Main;
 import UIMain.OpcionDeMenu;
 import gestorAplicacion.Animales.Mascota;
+import gestorAplicacion.Usuarios.Administrador;
 import gestorAplicacion.Usuarios.Cliente;
+import gestorAplicacion.Usuarios.Persona;
 import gestorAplicacion.prestacion.Clinica;
 import java.util.Scanner;
 public class HospitalizarMascota extends OpcionDeMenu{
@@ -11,7 +13,8 @@ public class HospitalizarMascota extends OpcionDeMenu{
 
     public void ejecutar() throws Throwable {
 
-        Cliente cliente = ListadoMascotas.listado(Main.getUsuarioActivo());
+        Administrador admin = new Administrador();
+        Cliente cliente = ListadoMascotas.listado(admin);
         System.out.println("Ingresa el número de la máscota que hospitalizarás: \n" +
                 "Escriba 'Salir' Para regresar al menú. ");
         int opcion = in.nextInt()-1;
