@@ -130,4 +130,9 @@ public class Veterinario extends Persona {
         return menuUsuario;
 
     }
+
+    public void eliminarme() throws Throwable {
+        citasAsignadas.clear();
+        super.eliminarme();
+    }
 }

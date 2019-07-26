@@ -31,8 +31,10 @@ public class MenuDeConsola {
         put(13, new DarPermisos());
         put(14, new QuitarPermisos());
         put(15, new Registrarse());
-        put(16, new CerrarSesion());
-        put(17, new SalirDeLaAplicacion());
+        put(16, new ListaUsuarios());
+        put(17, new EliminarUsuario());
+        put(18, new CerrarSesion());
+        put(19, new SalirDeLaAplicacion());
     }};
 
     private Persona usuario;

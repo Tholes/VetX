@@ -11,7 +11,7 @@ public class DarDeAlta extends OpcionDeMenu{
     public void ejecutar(){
         System.out.println(Clinica.mascotasEnfermas());
         System.out.println("Ingresa el número de la máscota que darás de alta: \n" +
-                "Escriba 'Salir' Para regresar al menú. \n");
+                "Escriba 'Salir' Para regresar al menú. ");
         int opcion = in.nextInt()-1;
         Mascota mascota = Clinica.getMascotasHospitalizadas().get(opcion);
         if(mascota != null){

@@ -4,6 +4,8 @@ import gestorAplicacion.Animales.Mascota;
 import gestorAplicacion.prestacion.Cita;
 import UIMain.Main;
 
+import java.util.Map;
+
 public class Persona {
 
     private static int cantidadPersonas;
@@ -111,5 +113,20 @@ public class Persona {
 
     public void registrarse(){
         //Se sobreescribira en cada clase hija
+    }
+
+    public void eliminarme() throws Throwable {
+        Data.usuarios.remove(id);
+        this.finalize();
+    }
+
+    public static String listaUsuarios(){
+        String ans = "Lista de usuarios: \n";
+        int i = 0;
+        for (Map.Entry<String, Persona> indice : Data.usuarios.entrySet()) {
+            Persona usuario = indice.getValue();
+            ans += (i++ + 1) + ". Nombre: " + usuario.getNombre() + ", Nombre de Usuario: " + usuario.getNombreUsuario() + "\n";
+        }
+        return ans;
     }
 }
