@@ -1,1 +1,4 @@
-cristian;cristian@gmail.com;ch;ch
+patricia osorio;patricia@gmail.com;patricia;patricia104
+mayra tejada;mayra@gmil.com;mayra;mayra101
+cristian henao;cristian@gmail.com;cristian;cristian102
+ricardo peñaloza;ricardo@gmail.com;ricardo;ricardo103
