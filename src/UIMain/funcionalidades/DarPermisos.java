@@ -47,8 +47,8 @@ public class DarPermisos extends OpcionDeMenu{
         MenuDeConsola.verOpcionesCompletas();
 
         Integer opcion = in.nextInt();
-        if(!Data.menuCliente.contains(opcion)){
-            Data.menuCliente.add(opcion);
+        if(!Cliente.menuCliente.contains(opcion)){
+            Cliente.menuCliente.add(opcion);
             System.out.println("Se ha agregado la opción "+ MenuDeConsola.listaOpciones.get(opcion) +" correctamente.");
         }
         else{
@@ -72,8 +72,8 @@ public class DarPermisos extends OpcionDeMenu{
         if(opcion == 20){
             Main.setUsuarioActivo(Main.getUsuarioActivo());
         }
-        else if(!Data.menuVeterinario.contains(opcion)){
-            Data.menuVeterinario.add(opcion);
+        else if(!Veterinario.menuVeterinario.contains(opcion)){
+            Veterinario.menuVeterinario.add(opcion);
             System.out.println("Se ha agregado la opción "+ MenuDeConsola.listaOpciones.get(opcion)+" correctamente.");
         }
         else{

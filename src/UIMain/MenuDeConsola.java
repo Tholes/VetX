@@ -38,6 +38,7 @@ public class MenuDeConsola {
     }};
 
     private Persona usuario;
+
     public ArrayList<OpcionDeMenu> menuUsuario = new ArrayList<>();
 
     public MenuDeConsola(Persona usuario, ArrayList<Integer> menu){
@@ -47,25 +48,24 @@ public class MenuDeConsola {
         }
     }
 
-
     public MenuDeConsola(Persona cliente){
 
         if(cliente instanceof Cliente){
-            ArrayList<Integer> indiceOpciones = Data.menuCliente;
+            ArrayList<Integer> indiceOpciones = Cliente.menuCliente;
             for (int i = 0; i <indiceOpciones.size() ; i++) {
                 menuUsuario.add(listaOpciones.get(indiceOpciones.get(i)));
             }
         }
 
         else if(cliente instanceof Veterinario){
-            ArrayList<Integer> indiceOpciones = Data.menuVeterinario;
+            ArrayList<Integer> indiceOpciones = Veterinario.menuVeterinario;
             for (int i = 0; i <indiceOpciones.size() ; i++) {
                 menuUsuario.add(listaOpciones.get(indiceOpciones.get(i)));
             }
         }
 
         else if(cliente instanceof Administrador){
-            ArrayList<Integer> indiceOpciones = Data.menuAdministrador;
+            ArrayList<Integer> indiceOpciones = Administrador.menuAdministrador;
             for (int i = 0; i < indiceOpciones.size() ; i++) {
                 menuUsuario.add(listaOpciones.get(indiceOpciones.get(i)));
             }
@@ -76,7 +76,6 @@ public class MenuDeConsola {
     public MenuDeConsola(ArrayList<OpcionDeMenu> menu){
         this.menuUsuario = menu;
     }
-
 
     public Persona getUsuario() {
         return usuario;
@@ -111,6 +110,7 @@ public class MenuDeConsola {
             System.out.println((i+1)+" "+menuUsuario.get(i));
         }
     }
+
     public static void verOpcionesCompletas(){
         System.out.println("Opciones de Menu: ");
         for (int i = 1; i <= listaOpciones.size(); i++) {

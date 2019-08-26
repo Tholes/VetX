@@ -1,5 +1,6 @@
 package gestorAplicacion.prestacion;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 import BaseDatos.Data;
@@ -7,6 +8,10 @@ import gestorAplicacion.Animales.Mascota;
 import gestorAplicacion.Usuarios.*;
 
 public class Cita {
+    /*
+     * Cada clase tendrá una lista estatica donde se almacenarán los objetos creados de esta clase
+     * */
+    public static HashMap<Integer, Cita> citas = new HashMap<>();
     private static int cantidadCitas;
     private String fechaCita;
     private Veterinario veterinario;
@@ -55,7 +60,7 @@ public class Cita {
     }
 
     public void cancelarCita() throws Throwable{
-        Data.citas.remove(id);
+        citas.remove(id);
         this.finalize();
     }
 
@@ -110,7 +115,14 @@ public class Cita {
         Cita cita = new Cita(fechaCita, veterinario, cliente, mascota);
         veterinario.asignarCita(cita);
         cliente.setCita(cita,mascota);
-        Data.citas.put(cita.getId(),cita);
+        citas.put(cita.getId(),cita);
     }
 
+    public static HashMap<Integer, Cita> getCitas() {
+        return citas;
+    }
+
+    public static void setCitas(HashMap<Integer, Cita> citas) {
+        Cita.citas = citas;
+    }
 }

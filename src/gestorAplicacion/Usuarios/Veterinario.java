@@ -8,7 +8,12 @@ import UIMain.MenuDeConsola;
 import gestorAplicacion.prestacion.Cita;
 
 public class Veterinario extends Persona {
-
+    /*
+     * Cada clase tendrá una lista estatica donde se almacenarán los objetos creados de esta clase
+     * */
+    public static  ArrayList<Integer> menuVeterinario = new ArrayList<>();
+    public ArrayList<Integer> menuPersonal = new ArrayList<>();
+    public static ArrayList<Veterinario> veterinarios =new ArrayList<>();
     private static int cantidadVeterinarios;
     private String especialidad;
     private byte experiencia;
@@ -50,9 +55,9 @@ public class Veterinario extends Persona {
     }
 
     public static Veterinario veterinarioDisponible(String fecha){
-        for(int i=0;i<Data.veterinarios.size();i++){
-            if(!Data.veterinarios.get(i).fechaCitaDisponible(fecha)){
-                return Data.veterinarios.get(i);
+        for(int i=0;i<veterinarios.size();i++){
+            if(!veterinarios.get(i).fechaCitaDisponible(fecha)){
+                return veterinarios.get(i);
             }
         }return null;
     }
@@ -115,9 +120,9 @@ public class Veterinario extends Persona {
     }
 
     public static String registrarse(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional,String usuario, String key) {
-        if(!Data.usuarios.containsKey(usuario)){
+        if(!usuarios.containsKey(usuario)){
             Veterinario vet = new Veterinario(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key);
-            Data.usuarios.put(usuario,vet);
+            usuarios.put(usuario,vet);
             Main.setUsuarioActivo(vet);
             return "Registro completo.\n";
         }
@@ -125,14 +130,37 @@ public class Veterinario extends Persona {
     }
 
     public static MenuDeConsola getMenu(Veterinario veterinario){
-        ArrayList<Integer> indiceOpciones = Data.menuCliente;
+        ArrayList<Integer> indiceOpciones = menuVeterinario;
         MenuDeConsola menuUsuario = new MenuDeConsola(veterinario,indiceOpciones);
         return menuUsuario;
-
     }
 
     public void eliminarme() throws Throwable {
         citasAsignadas.clear();
         super.eliminarme();
+    }
+
+    public static ArrayList<Integer> getMenuVeterinario() {
+        return menuVeterinario;
+    }
+
+    public static void setMenuVeterinario(ArrayList<Integer> menuVeterinario) {
+        Veterinario.menuVeterinario = menuVeterinario;
+    }
+
+    public ArrayList<Integer> getMenuPersonal() {
+        return menuPersonal;
+    }
+
+    public void setMenuPersonal(ArrayList<Integer> menuPersonal) {
+        this.menuPersonal = menuPersonal;
+    }
+
+    public static ArrayList<Veterinario> getVeterinarios() {
+        return veterinarios;
+    }
+
+    public static void setVeterinarios(ArrayList<Veterinario> veterinarios) {
+        Veterinario.veterinarios = veterinarios;
     }
 }

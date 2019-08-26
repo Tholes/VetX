@@ -32,7 +32,8 @@ public class Main {
 
             catch (Exception e){
                 System.out.println(e);
-                Data.guardarDatos();
+                Data guardar = new Data();
+                guardar.guardarDatos();
                 System.out.println("Saliendo...");
                 System.exit(0);
             }
@@ -40,7 +41,8 @@ public class Main {
     }
 
     public static void inicializarDatos(){
-        Data.cargarDatos();
+        Data cargar = new Data();
+        cargar.cargarDatos();
         System.out.println(
                 " .----------------.  .----------------.  .----------------.  .----------------. \n" +
                         "| .--------------. || .--------------. || .--------------. || .--------------. |\n" +
@@ -60,7 +62,6 @@ public class Main {
         System.out.println("GRACIAS POR PREFERIR NUESTROS SERVICIOS.");
         System.out.println("POR FAVOR ELIGE UNA DE LAS SIGUIENTES OPCIONES ");
         System.out.println("");
-
 
         ArrayList<OpcionDeMenu> opcionesInvitado = new ArrayList<OpcionDeMenu>(){{
             add(new IniciarSesion());

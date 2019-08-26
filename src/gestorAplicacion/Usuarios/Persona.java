@@ -4,10 +4,14 @@ import gestorAplicacion.Animales.Mascota;
 import gestorAplicacion.prestacion.Cita;
 import UIMain.Main;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Persona {
-
+     /*
+     * Cada clase tendrá una lista estatica donde se almacenarán los objetos creados de esta clase
+     * */
+    public static HashMap<String, Persona> usuarios = new HashMap<>();
     private static int cantidadPersonas;
     private int id;
     private String nombre;
@@ -55,7 +59,11 @@ public class Persona {
 
     public static void registrarMascota(String nombre,String fechaNacimiento ,char sexo, String especie, String raza, Cliente cliente){
         Mascota mascota = new Mascota(nombre, fechaNacimiento, sexo, especie, raza, cliente);
+
+        //Registramos una nueva mascota al usuario
         cliente.setMascota(mascota);
+
+        Mascota.registrarNuevaMascota(mascota);
     }
 
     public boolean borrarMascota(Mascota mascota, Cliente cliente) throws Throwable {
@@ -84,7 +92,7 @@ public class Persona {
     }
 
     public static Persona fromUsuarioGetPersona(String usuario){
-        return Data.usuarios.get(usuario);
+        return usuarios.get(usuario);
     }
 
     public static String login(String usuario, String key){
@@ -101,14 +109,13 @@ public class Persona {
     public static void registrarVeterinario(String nombre,String email,String especialidad,byte experiencia ,int sueldo , long idTarjetaProfesional ,String usuario,String key){
         Veterinario veterinario = new Veterinario(nombre, email, especialidad, experiencia,sueldo,idTarjetaProfesional,usuario,key);
         //Se le debe asignar el menú de Veterinarios (Data.menuVeterinario)
-        Data.usuarios.put(usuario,veterinario);
+        usuarios.put(usuario,veterinario);
 
     }
 
     public void borrarMiCuenta() throws Throwable {
-        Data.usuarios.remove(nombreUsuario);
+        usuarios.remove(nombreUsuario);
         this.finalize();
-
     }
 
     public void registrarse(){
@@ -116,17 +123,29 @@ public class Persona {
     }
 
     public void eliminarme() throws Throwable {
-        Data.usuarios.remove(id);
+        usuarios.remove(id);
         this.finalize();
     }
 
     public static String listaUsuarios(){
         String ans = "Lista de usuarios: \n";
         int i = 0;
-        for (Map.Entry<String, Persona> indice : Data.usuarios.entrySet()) {
+        for (Map.Entry<String, Persona> indice : usuarios.entrySet()) {
             Persona usuario = indice.getValue();
             ans += (i++ + 1) + ". Nombre: " + usuario.getNombre() + ", Nombre de Usuario: " + usuario.getNombreUsuario() + "\n";
         }
         return ans;
+    }
+
+    public static HashMap<String, Persona> getUsuarios() {
+        return usuarios;
+    }
+
+    public static void setUsuarios(HashMap<String, Persona> usuarios) {
+        Persona.usuarios = usuarios;
+    }
+
+    public static void registrarUsuario(Persona usuario){
+        usuarios.put(usuario.getNombreUsuario(),usuario);
     }
 }

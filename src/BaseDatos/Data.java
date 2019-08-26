@@ -3,31 +3,29 @@ package BaseDatos;
 import gestorAplicacion.Animales.Mascota;
 import gestorAplicacion.Usuarios.Administrador;
 import gestorAplicacion.Usuarios.Cliente;
+import gestorAplicacion.Usuarios.Persona;
 import gestorAplicacion.Usuarios.Veterinario;
 import gestorAplicacion.prestacion.Cita;
-import gestorAplicacion.Usuarios.Persona;
 import gestorAplicacion.prestacion.Clinica;
 
-import java.util.*;
-import java.io.BufferedReader;
-import java.io.PrintWriter;
-import java.io.FileReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.FileWriter;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Data{
 
-    public static HashMap<String, Persona> usuarios = new HashMap<>();
-    public static HashMap<Integer,Mascota > mascotas = new HashMap<>();
-    public static HashMap<Integer, Cita> citas = new HashMap<>();
-    public static HashMap<Integer,Mascota> hospitalizados = new HashMap<>();
-    public static ArrayList<Integer> menuCliente = new ArrayList<>();
-    public static ArrayList<Integer> menuVeterinario = new ArrayList<>();
-    public static ArrayList<Integer> menuAdministrador = new ArrayList<>();
-    public static ArrayList<Veterinario> veterinarios =new ArrayList<>();
+    public  HashMap<String, Persona> usuarios = new HashMap<>();
+    public  HashMap<Integer,Mascota > mascotas = new HashMap<>();
+    public  HashMap<Integer, Cita> citas = new HashMap<>();
+    public  HashMap<Integer,Mascota> hospitalizados = new HashMap<>();
+    public  ArrayList<Integer> menuCliente = new ArrayList<>();
+    public  ArrayList<Integer> menuVeterinario = new ArrayList<>();
+    public  ArrayList<Integer> menuAdministrador = new ArrayList<>();
+    public  ArrayList<Veterinario> veterinarios =new ArrayList<>();
 
-    public static void cargarDatos(){
+    public void cargarDatos(){
         String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
         cargarClientes(ruta);
         cargarAdministradores(ruta);
@@ -36,9 +34,18 @@ public class Data{
         cargarCitas(ruta);
         cargarMenuUsuarios(ruta);
         cargarClinica(ruta);
+
+        Persona.setUsuarios(usuarios);
+        Mascota.setMascotas(mascotas);
+        Cita.setCitas(citas);
+        Cliente.setMenuCliente(menuCliente);
+        Veterinario.setMenuVeterinario(menuVeterinario);
+        Administrador.setMenuAdministrador(menuAdministrador);
+        Clinica.setMascotasHospitalizadas(hospitalizados);
+        Veterinario.setVeterinarios(veterinarios);
     }
 
-    public static void cargarClientes(String ruta){
+    public void cargarClientes(String ruta){
         try {
             BufferedReader br = new BufferedReader(new FileReader(ruta+"cliente.txt"));
             String line;
@@ -60,7 +67,7 @@ public class Data{
         }
     }
 
-    public static void cargarAdministradores(String ruta){
+    public  void cargarAdministradores(String ruta){
         try {
             BufferedReader br = new BufferedReader(new FileReader(ruta+"administrador.txt"));
             String line;
@@ -81,7 +88,7 @@ public class Data{
 
     }
 
-    public static void cargarVeterinarios(String ruta){
+    public  void cargarVeterinarios(String ruta){
         try {
             BufferedReader br = new BufferedReader(new FileReader(ruta+"veterinario.txt"));
             String line;
@@ -108,7 +115,7 @@ public class Data{
 
     }
 
-    public static void cargarMascotas(String ruta){
+    public  void cargarMascotas(String ruta){
         try {
             BufferedReader br = new BufferedReader(new FileReader(ruta+"mascota.txt"));
             String line;
@@ -129,6 +136,7 @@ public class Data{
                     Cliente dueño = (Cliente) usuarios.get(usuarioDueño);
                     Mascota can = new Mascota(nombre,fechaNacimiento,sexo,especie,raza,dueño);
                     dueño.setMascota(can);
+                    mascotas.put(can.getId(),can);
                 }
             }
             br.close();
@@ -141,7 +149,7 @@ public class Data{
 
     }
 
-    public static void cargarCitas(String ruta){
+    public  void cargarCitas(String ruta){
         try{
             BufferedReader br = new BufferedReader(new FileReader(ruta+"cita.txt"));
             String line;
@@ -174,7 +182,7 @@ public class Data{
 
     }
 
-    public static void cargarMenuUsuarios(String ruta){
+    public  void cargarMenuUsuarios(String ruta){
         try{
             BufferedReader br = new BufferedReader(new FileReader(ruta+"menuUsuario.txt"));
             String line;
@@ -212,7 +220,7 @@ public class Data{
         }
     }
 
-    public static void cargarClinica(String ruta){
+    public  void cargarClinica(String ruta){
         try{
             BufferedReader br = new BufferedReader(new FileReader(ruta+"hospitalizados.txt"));
             String line;
@@ -223,7 +231,7 @@ public class Data{
                     String nombre = datos[1];
                     Mascota mascota= mascotas.get(id);
                     hospitalizados.put(id,mascota);
-                    Clinica.getMascotasHospitalizadas().add(mascota);
+                    Clinica.getMascotasHospitalizadas().put(mascota.getId(),mascota);
                 }
             }
         } catch (Exception e){
@@ -234,7 +242,16 @@ public class Data{
         }
     }
 
-    public static void guardarDatos(){
+    public  void guardarDatos(){
+        usuarios = Persona.getUsuarios();
+        mascotas = Mascota.getMascotas();
+        citas = Cita.getCitas();
+        menuCliente = Cliente.getMenuCliente();
+        menuVeterinario = Veterinario.getMenuVeterinario();
+        menuAdministrador= Administrador.getMenuAdministrador();
+        hospitalizados = Clinica.getMascotasHospitalizadas();
+        veterinarios = Veterinario.getVeterinarios();
+
         crearArchivos();
         String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
         guardarDatosUsuario();
@@ -244,7 +261,7 @@ public class Data{
         guardarClinica();
     }
 
-    public static void crearArchivos(){
+    public  void crearArchivos(){
 
         try{
             String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
@@ -277,7 +294,7 @@ public class Data{
         }
     }
 
-    public static void guardarDatosUsuario(){
+    public  void guardarDatosUsuario(){
         try{
             String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
             PrintWriter outCliente = new PrintWriter(new FileWriter(ruta+"cliente.txt"));
@@ -316,7 +333,7 @@ public class Data{
 
     }
 
-    public static void guardarMenus(){
+    public  void guardarMenus(){
         try {
 
             String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
@@ -348,7 +365,7 @@ public class Data{
         }
     }
 
-    public static void guardarCitas(){
+    public  void guardarCitas(){
 
         try {
             String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
@@ -370,7 +387,7 @@ public class Data{
 
     }
 
-    public static void guardarMascotas(){
+    public  void guardarMascotas(){
         try {
             String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"mascota.txt"));
@@ -391,7 +408,7 @@ public class Data{
         }
     }
 
-    public static void guardarClinica(){
+    public  void guardarClinica(){
         try {
             String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
             PrintWriter out = new PrintWriter(new FileWriter(ruta+"hospitalizados.txt"));
@@ -406,5 +423,68 @@ public class Data{
         }
     }
 
+    public HashMap<String, Persona> getUsuarios() {
+        return usuarios;
+    }
+
+    public HashMap<Integer, Mascota> getMascotas() {
+        return mascotas;
+    }
+
+    public HashMap<Integer, Cita> getCitas() {
+        return citas;
+    }
+
+    public HashMap<Integer, Mascota> getHospitalizados() {
+        return hospitalizados;
+    }
+
+    public ArrayList<Integer> getMenuCliente() {
+        return menuCliente;
+    }
+
+    public ArrayList<Integer> getMenuVeterinario() {
+        return menuVeterinario;
+    }
+
+    public ArrayList<Integer> getMenuAdministrador() {
+        return menuAdministrador;
+    }
+
+    public ArrayList<Veterinario> getVeterinarios() {
+        return veterinarios;
+    }
+
+    public void setUsuarios(HashMap<String, Persona> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public void setMascotas(HashMap<Integer, Mascota> mascotas) {
+        this.mascotas = mascotas;
+    }
+
+    public void setCitas(HashMap<Integer, Cita> citas) {
+        this.citas = citas;
+    }
+
+    public void setHospitalizados(HashMap<Integer, Mascota> hospitalizados) {
+        this.hospitalizados = hospitalizados;
+    }
+
+    public void setMenuCliente(ArrayList<Integer> menuCliente) {
+        this.menuCliente = menuCliente;
+    }
+
+    public void setMenuVeterinario(ArrayList<Integer> menuVeterinario) {
+        this.menuVeterinario = menuVeterinario;
+    }
+
+    public void setMenuAdministrador(ArrayList<Integer> menuAdministrador) {
+        this.menuAdministrador = menuAdministrador;
+    }
+
+    public void setVeterinarios(ArrayList<Veterinario> veterinarios) {
+        this.veterinarios = veterinarios;
+    }
 }
 

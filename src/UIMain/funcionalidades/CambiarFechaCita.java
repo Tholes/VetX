@@ -67,7 +67,7 @@ public class CambiarFechaCita extends OpcionDeMenu{
                 Main.getMenu().lanzarMenu();
             }
 
-            Cliente cliente = (Cliente) Data.usuarios.get(nombreUsuario);
+            Cliente cliente = (Cliente) Persona.usuarios.get(nombreUsuario);
             System.out.println(cliente.getCitasSiguientes());
             if(cliente == null){
                 System.out.println("El usuario que ingresó no existe.");

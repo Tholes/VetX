@@ -11,6 +11,8 @@ import java.util.HashMap;
 
 public class Cliente extends Persona {
 
+    public static  ArrayList<Integer> menuCliente = new ArrayList<>();
+    public ArrayList<Integer> menuPersonal = new ArrayList<>();
     private static int cantidadClientes;
     private final int id;
     private ArrayList<Mascota> mascotas = new ArrayList<>();
@@ -64,7 +66,6 @@ public class Cliente extends Persona {
 
     public void setMascota(Mascota mascota) {
         mascotas.add(mascota);
-        Data.mascotas.put(mascota.getId(),mascota);
     }
 
     public String getServicios() {
@@ -95,10 +96,8 @@ public class Cliente extends Persona {
 
     public boolean borrarMascota(Mascota mascota) throws Throwable{
         if(mascotas.contains(mascota)){
-            Data.mascotas.remove(mascota.getId());
             mascotas.remove(mascota);
             mascota.eliminarMascota();
-
             return true;
         }
         return false;
@@ -142,15 +141,15 @@ public class Cliente extends Persona {
     @Override
     public void borrarMiCuenta() throws  Throwable{
         borrarTodasLasMascotas();
-        Data.usuarios.remove(getNombreUsuario());
+        usuarios.remove(getNombreUsuario());
         this.finalize();
     }
 
     public static String registrarse(String nombre, String email, String usuario,String key) {
 
-        if(!Data.usuarios.containsKey(usuario)){
+        if(!usuarios.containsKey(usuario)){
             Cliente cliente = new Cliente(nombre,email,usuario,key);
-            Data.usuarios.put(usuario,cliente);
+            usuarios.put(usuario,cliente);
             Main.setUsuarioActivo(cliente);
             return "Registro completo.";
         }
@@ -158,10 +157,9 @@ public class Cliente extends Persona {
     }
 
     public static MenuDeConsola getMenu(Cliente cliente){
-        ArrayList<Integer> indiceOpciones = Data.menuCliente;
+        ArrayList<Integer> indiceOpciones = menuCliente;
         MenuDeConsola menuUsuario = new MenuDeConsola(cliente,indiceOpciones);
         return menuUsuario;
-
     }
 
     public boolean cancelarCita(Cita cita) throws Throwable{
@@ -171,5 +169,21 @@ public class Cliente extends Persona {
             return true;
         }
         return false;
+    }
+
+    public static ArrayList<Integer> getMenuCliente() {
+        return menuCliente;
+    }
+
+    public static void setMenuCliente(ArrayList<Integer> menuCliente) {
+        Cliente.menuCliente = menuCliente;
+    }
+
+    public ArrayList<Integer> getMenuPersonal() {
+        return menuPersonal;
+    }
+
+    public void setMenuPersonal(ArrayList<Integer> menuPersonal) {
+        this.menuPersonal = menuPersonal;
     }
 }

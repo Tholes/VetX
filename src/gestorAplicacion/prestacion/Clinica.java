@@ -1,19 +1,23 @@
 package gestorAplicacion.prestacion;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import BaseDatos.Data;
 import gestorAplicacion.Animales.Mascota;
 
 public class Clinica {
-    
+
+    /*
+     * Cada clase tendrá una lista estatica donde se almacenarán los objetos creados de esta clase
+     * */
     private String nombreClinica;
     private String direccion;
     private long telefono;
     private long nit;
     private String comentarios;
     private String redesSociales;
-    private static ArrayList<Mascota> mascotasHospitalizadas = new ArrayList<>();
+    public static HashMap<Integer,Mascota> mascotasHospitalizadas = new HashMap<>();
 
     public String getNombre() {
         return nombreClinica;
@@ -64,16 +68,14 @@ public class Clinica {
     }
     
     public static void hospitalizarMascota(Mascota mascota){
-        mascotasHospitalizadas.add(mascota);
+        mascotasHospitalizadas.put(mascota.getId(),mascota);
         mascota.setEstado(true, null);
-        Data.hospitalizados.put(mascota.getId(), mascota);
     }
 
     public static void darDeAlta(Mascota mascota){
-        if(mascotasHospitalizadas.contains(mascota)){
+        if(mascotasHospitalizadas.containsValue(mascota)){
             mascota.setEstado(false, null);
             mascotasHospitalizadas.remove(mascota);
-            Data.hospitalizados.remove(mascota.getId());
         }
     }
 
@@ -91,10 +93,13 @@ public class Clinica {
 
     }
 
-    public static ArrayList<Mascota> getMascotasHospitalizadas(){
+    public static HashMap<Integer, Mascota> getMascotasHospitalizadas() {
         return mascotasHospitalizadas;
     }
 
+    public static void setMascotasHospitalizadas(HashMap<Integer, Mascota> mascotasHospitalizadas) {
+        Clinica.mascotasHospitalizadas = mascotasHospitalizadas;
+    }
 }
 
 

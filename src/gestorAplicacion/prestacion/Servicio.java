@@ -1,5 +1,12 @@
 package gestorAplicacion.prestacion;
+
+import java.util.HashMap;
+
 public class Servicio {
+    /*
+     * Cada clase tendrá una lista estatica donde se almacenarán los objetos creados de esta clase
+     * */
+    public static HashMap<Integer, Servicio>  serviciosPrestados = new HashMap<>();
     private String nombre;
     private int id;
 

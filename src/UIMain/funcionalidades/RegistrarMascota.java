@@ -45,43 +45,47 @@ public class RegistrarMascota extends OpcionDeMenu {
     }
 
     public void registrar(Persona admin) throws Throwable {
-
-        System.out.println("POR FAVOR INGRESE LOS SIGUIENTES DATOS DE LA MASCOTA. \n" +
-                "Para regresar escriba 'salir'.");
-        System.out.println("Ingrese el nombre de la mascota: ");
-        String nombre = in.nextLine();
-
-        if(nombre.equals("salir")){
-            Main.getMenu().lanzarMenu();
-            System.out.println("Regresando al menú...");
+        if(admin instanceof  Cliente){
+            registrar((Cliente) admin);
         }
-        System.out.println("Ingrese la fecha de nacimiento de su mascota(Año mes dia separados por un espacio: ");
-        int año = in.nextInt();
-        int mes = in.nextInt();
-        int dia = in.nextInt();
-        String fechaNacimiento = dia+"/"+mes+"/"+año;
+        else {
+            System.out.println("POR FAVOR INGRESE LOS SIGUIENTES DATOS DE LA MASCOTA. \n" +
+                    "Para regresar escriba 'salir'.");
+            System.out.println("Ingrese el nombre de la mascota: ");
+            String nombre = in.nextLine();
 
-        //System.out.println("Ingrese el sexo de su mascota(M/H): ");
-        char genero = pedirElSexo().charAt(0);
+            if(nombre.equals("salir")){
+                Main.getMenu().lanzarMenu();
+                System.out.println("Regresando al menú...");
+            }
+            System.out.println("Ingrese la fecha de nacimiento de su mascota(Año mes dia separados por un espacio: ");
+            int año = in.nextInt();
+            int mes = in.nextInt();
+            int dia = in.nextInt();
+            String fechaNacimiento = dia+"/"+mes+"/"+año;
 
-        System.out.println("Ingrese la especie de su mascota: ");
-        String especie = in.nextLine();
+            //System.out.println("Ingrese el sexo de su mascota(M/H): ");
+            char genero = pedirElSexo().charAt(0);
 
-        System.out.println("Ingrese la raza de su mascota: ");
-        String raza = in.nextLine();
+            System.out.println("Ingrese la especie de su mascota: ");
+            String especie = in.nextLine();
 
-        System.out .println("Ingrese el nombre de usuario del dueño de la mascota: ");
-        String nombreUsuario = in.nextLine();
+            System.out.println("Ingrese la raza de su mascota: ");
+            String raza = in.nextLine();
+
+            System.out .println("Ingrese el nombre de usuario del dueño de la mascota: ");
+            String nombreUsuario = in.nextLine();
 
 
-        Cliente amo = (Cliente) Data.usuarios.get(nombreUsuario);
-        if(amo != null){
-            Persona.registrarMascota(nombre, fechaNacimiento, genero, especie, raza, amo);
-            System.out.println("*** Un nueva mascota a ingresado como paciente a la clínica.");
-            System.out.println("Regresando al menú...");
-        }
-        else{
-            ejecutar();
+            Cliente amo = (Cliente) Persona.usuarios.get(nombreUsuario);
+            if(amo != null){
+                Persona.registrarMascota(nombre, fechaNacimiento, genero, especie, raza, amo);
+                System.out.println("*** Un nueva mascota a ingresado como paciente a la clínica.");
+                System.out.println("Regresando al menú...");
+            }
+            else{
+                ejecutar();
+            }
         }
     }
 

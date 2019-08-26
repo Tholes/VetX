@@ -16,7 +16,7 @@ public class EliminarUsuario extends OpcionDeMenu {
         if(opcion.equals("salir")){
             Main.getMenu().lanzarMenu();
         }
-        Persona usuario = Data.usuarios.get(opcion);
+        Persona usuario = Persona.usuarios.get(opcion);
         if(usuario == null){
             System.out.println("Usuario incorrecto. ");
             ejecutar();

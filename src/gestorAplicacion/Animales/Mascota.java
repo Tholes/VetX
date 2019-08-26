@@ -2,8 +2,14 @@ package gestorAplicacion.Animales;
 
 import gestorAplicacion.Usuarios.*;
 import gestorAplicacion.prestacion.*;
-public class Mascota {
 
+import java.util.HashMap;
+
+public class Mascota {
+    /*
+     * Cada clase tendrá una lista estatica donde se almacenarán los objetos creados de esta clase
+     * */
+    public static HashMap<Integer,Mascota > mascotas = new HashMap<>();
     private static int cantidadPacientes;
     private int id;
     private String nombre;
@@ -84,6 +90,7 @@ public class Mascota {
     }
 
     public void eliminarMascota() throws Throwable{
+        mascotas.remove(id);
         this.finalize();
     }
 
@@ -92,4 +99,15 @@ public class Mascota {
         return "Nombre: "+nombre+", especie: "+ especie;
     }
 
+    public static HashMap<Integer, Mascota> getMascotas() {
+        return mascotas;
+    }
+
+    public static void setMascotas(HashMap<Integer, Mascota> mascotas) {
+        Mascota.mascotas = mascotas;
+    }
+
+    public static void registrarNuevaMascota(Mascota mascota){
+        mascotas.put(mascota.getId(),mascota);
+    }
 }

@@ -54,8 +54,8 @@ public class QuitarPermisos extends OpcionDeMenu {
         if(opcion == 20){
             Main.setUsuarioActivo(Main.getUsuarioActivo());
         }
-        else if(Data.menuVeterinario.contains(opcion)){
-            Data.menuVeterinario.remove(opcion);
+        else if(Veterinario.menuVeterinario.contains(opcion)){
+            Veterinario.menuVeterinario.remove(opcion);
             System.out.println("Se ha eliminado la opción "+MenuDeConsola.listaOpciones.get(opcion) +" correctamente.");
         }
         else{
@@ -79,8 +79,8 @@ public class QuitarPermisos extends OpcionDeMenu {
         if(opcion == 20){
             Main.setUsuarioActivo(Main.getUsuarioActivo());
         }
-        else if(Data.menuCliente.contains(opcion)){
-            Data.menuCliente.remove(opcion);
+        else if(Cliente.menuCliente.contains(opcion)){
+            Cliente.menuCliente.remove(opcion);
             System.out.println("Se ha eliminado la opción "+ MenuDeConsola.listaOpciones.get(opcion)+" correctamente.");
         }
         else{

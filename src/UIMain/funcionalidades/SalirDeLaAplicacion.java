@@ -9,7 +9,8 @@ public class SalirDeLaAplicacion extends OpcionDeMenu {
 
     @Override
     public void ejecutar() throws IOException {
-        Data.guardarDatos();
+        Data guardar = new Data();
+        guardar.guardarDatos();
         System.out.println("Saliendo...");
         System.exit(0);
     }
