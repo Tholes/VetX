@@ -21,7 +21,6 @@ public class Cliente extends Persona {
     private ArrayList<Cita> citas = new ArrayList<>();
 
     public Cliente(){
-        super();
         id = 0;
     }
 
@@ -144,8 +143,9 @@ public class Cliente extends Persona {
         this.finalize();
     }
 
-    public String registrarse(String nombre, String email, String usuario,String key) {
+    /*Se le asigna por defecto un menú a cada Cliente, pero no será el menú final*/
 
+    public String registrarse(String nombre, String email, String usuario,String key) {
         if(!usuarios.containsKey(usuario)){
             Cliente cliente = new Cliente(nombre,email,usuario,key);
             usuarios.put(usuario,cliente);

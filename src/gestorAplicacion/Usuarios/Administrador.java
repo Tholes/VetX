@@ -14,6 +14,9 @@ public class Administrador extends Persona {
     public static ArrayList<Integer> menuAdministrador = new ArrayList<>();
     public ArrayList<Integer> menuPersonal = new ArrayList<>();
 
+    /*Este constructor vacíos nos ayuda cuando debemos llamar un método que no sea estatico.
+    * Se crea un objeto temporal administrador.*/
+
     public Administrador(){
 
     }
@@ -21,8 +24,9 @@ public class Administrador extends Persona {
         super(nombre, email, usuario, key);
     }
 
-    public static void contratarVeterinario(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idtarjetaProfesional, String usuario, String key){
+    /*Un veterinario puede ingresar él mismo los datos de un nuevo veterinario*/
 
+    public static void contratarVeterinario(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idtarjetaProfesional, String usuario, String key){
         Veterinario nuevoVeterinario = new Veterinario(nombre, email, especialidad, experiencia, sueldo, idtarjetaProfesional, usuario, key) ;
         usuarios.put(usuario, nuevoVeterinario);
 
@@ -39,9 +43,10 @@ public class Administrador extends Persona {
         usuarios.remove(usuario);
         persona.borrarMiCuenta();
     }
-    
-    public String registrarse(String nombre, String email, String usuario,String key) {
 
+    /*Se le asigna por defecto un menú a cada administrador, pero no será el menú final*/
+
+    public String registrarse(String nombre, String email, String usuario,String key) {
         if(!usuarios.containsKey(usuario)){
             Administrador admin = new Administrador(nombre,email,usuario,key);
             usuarios.put(usuario,admin);

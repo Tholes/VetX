@@ -26,6 +26,9 @@ public class Data{
     public  ArrayList<Veterinario> veterinarios =new ArrayList<>();
 
     public void cargarDatos(){
+        /*
+        * Se creará un objeto que usará este método especifico
+        * se toman los txt y la información se sube a la ram*/
         String ruta = System.getProperty("user.dir")+"\\src\\temp\\";
         cargarClientes(ruta);
         cargarAdministradores(ruta);
@@ -265,6 +268,12 @@ public class Data{
     }
 
     public  void guardarDatos(){
+
+        /*
+         * Se creará un objeto que usará este método especifico
+         * se toma la información en ram y se llevan a los txt
+         * Reconstruimos todo el txt, completo desde 0*/
+
         usuarios = Persona.getUsuarios();
         mascotas = Mascota.getMascotas();
         citas = Cita.getCitas();
@@ -463,7 +472,6 @@ public class Data{
 
         }
     }
-
 
 }
 
