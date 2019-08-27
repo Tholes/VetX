@@ -119,10 +119,11 @@ public class Veterinario extends Persona {
         return "Soy " + super.getNombre() + " mi email es: " + super.getEmail() + " mi especialidad es: " + especialidad + " tengo " + experiencia + " años de experiencia";
     }
 
-    public static String registrarse(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional,String usuario, String key) {
+    public String registrarse(String nombre, String email, String especialidad, byte experiencia, int sueldo, long idTarjetaProfesional,String usuario, String key) {
         if(!usuarios.containsKey(usuario)){
             Veterinario vet = new Veterinario(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key);
             usuarios.put(usuario,vet);
+            menuPersonal = getMenuVeterinario();
             Main.setUsuarioActivo(vet);
             return "Registro completo.\n";
         }

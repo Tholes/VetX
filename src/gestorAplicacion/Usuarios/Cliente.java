@@ -91,7 +91,6 @@ public class Cliente extends Persona {
     public void registrarMascota(String nombre,String fechaNacimiento ,char sexo, String especie, String raza){
         Mascota mascota = new Mascota(nombre, fechaNacimiento, sexo, especie, raza, this);
         this.setMascota(mascota);
-
     }
 
     public boolean borrarMascota(Mascota mascota) throws Throwable{
@@ -145,11 +144,12 @@ public class Cliente extends Persona {
         this.finalize();
     }
 
-    public static String registrarse(String nombre, String email, String usuario,String key) {
+    public String registrarse(String nombre, String email, String usuario,String key) {
 
         if(!usuarios.containsKey(usuario)){
             Cliente cliente = new Cliente(nombre,email,usuario,key);
             usuarios.put(usuario,cliente);
+            menuPersonal = getMenuCliente();
             Main.setUsuarioActivo(cliente);
             return "Registro completo.";
         }

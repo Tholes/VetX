@@ -110,7 +110,6 @@ public class Persona {
         Veterinario veterinario = new Veterinario(nombre, email, especialidad, experiencia,sueldo,idTarjetaProfesional,usuario,key);
         //Se le debe asignar el menú de Veterinarios (Data.menuVeterinario)
         usuarios.put(usuario,veterinario);
-
     }
 
     public void borrarMiCuenta() throws Throwable {
@@ -145,7 +144,4 @@ public class Persona {
         Persona.usuarios = usuarios;
     }
 
-    public static void registrarUsuario(Persona usuario){
-        usuarios.put(usuario.getNombreUsuario(),usuario);
-    }
 }

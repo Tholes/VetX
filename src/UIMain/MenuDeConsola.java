@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-
-import BaseDatos.Data;
 import UIMain.funcionalidades.*;
 import gestorAplicacion.Usuarios.Administrador;
 import gestorAplicacion.Usuarios.Cliente;
@@ -42,35 +40,35 @@ public class MenuDeConsola {
     public ArrayList<OpcionDeMenu> menuUsuario = new ArrayList<>();
 
     public MenuDeConsola(Persona usuario, ArrayList<Integer> menu){
+
         this.usuario = usuario;
         for (int i = 0; i < menu.size(); i++) {
                 menuUsuario.add(listaOpciones.get(menu.get(i)));
         }
     }
 
-    public MenuDeConsola(Persona cliente){
+    public MenuDeConsola(Persona usuario){
 
-        if(cliente instanceof Cliente){
-            ArrayList<Integer> indiceOpciones = Cliente.menuCliente;
+        if(usuario instanceof Cliente){
+            ArrayList<Integer> indiceOpciones = ((Cliente) usuario).getMenuPersonal();
             for (int i = 0; i <indiceOpciones.size() ; i++) {
                 menuUsuario.add(listaOpciones.get(indiceOpciones.get(i)));
             }
         }
 
-        else if(cliente instanceof Veterinario){
-            ArrayList<Integer> indiceOpciones = Veterinario.menuVeterinario;
+        else if(usuario instanceof Veterinario){
+            ArrayList<Integer> indiceOpciones = ((Veterinario) usuario).getMenuPersonal();
             for (int i = 0; i <indiceOpciones.size() ; i++) {
                 menuUsuario.add(listaOpciones.get(indiceOpciones.get(i)));
             }
         }
 
-        else if(cliente instanceof Administrador){
-            ArrayList<Integer> indiceOpciones = Administrador.menuAdministrador;
+        else if(usuario instanceof Administrador){
+            ArrayList<Integer> indiceOpciones = ((Administrador) usuario).getMenuPersonal();
             for (int i = 0; i < indiceOpciones.size() ; i++) {
                 menuUsuario.add(listaOpciones.get(indiceOpciones.get(i)));
             }
         }
-
     }
 
     public MenuDeConsola(ArrayList<OpcionDeMenu> menu){
@@ -86,8 +84,7 @@ public class MenuDeConsola {
     }
 
     public void lanzarMenu() throws Throwable {
-
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         Scanner in = new Scanner(System.in);
         System.out.println("\t\t\tMenu: ");
         for (int i = 0;i < menuUsuario.size(); i++) {
@@ -101,7 +98,6 @@ public class MenuDeConsola {
         } catch (Exception e){
             lanzarMenu();
         }
-
     }
     
     public void verOpciones(){

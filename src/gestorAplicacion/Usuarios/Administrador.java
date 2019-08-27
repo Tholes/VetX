@@ -40,11 +40,12 @@ public class Administrador extends Persona {
         persona.borrarMiCuenta();
     }
     
-    public static String registrarse(String nombre, String email, String usuario,String key) {
+    public String registrarse(String nombre, String email, String usuario,String key) {
 
         if(!usuarios.containsKey(usuario)){
             Administrador admin = new Administrador(nombre,email,usuario,key);
             usuarios.put(usuario,admin);
+            menuPersonal = getMenuAdministrador();
             Main.setUsuarioActivo(admin);
             return "Registro completo.";
         }

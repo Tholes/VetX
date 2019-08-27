@@ -84,6 +84,9 @@ public class Mascota {
         return estado;
     }
 
+    /* El booleano estado nos dice si está hospitalizado (true) o no (false) */
+
+
     public void setEstado(boolean estado, Clinica clinica) {
         this.estado = estado;
         this.clinica = clinica;

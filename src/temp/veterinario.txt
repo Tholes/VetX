@@ -1,3 +1,3 @@
-Felipe Fernandez;felipe@gmail.com;cirujano;3;3250456;9000000001;felipevet;vet501
-Luis Carlos;luisca@gmail.com;veterinario General;6;1800245;8000002;luiscarlosvet;vet502
-Adrian;adrian@gmail.com;cirujano;4;5647000;780000002;adrianvet;vet504
+Felipe Fernandez;felipe@gmail.com;cirujano;3;3250456;9000000001;felipevet;vet501;2/3/5/9/10/11/12/16/18/19
+Luis Carlos;luisca@gmail.com;veterinario General;6;1800245;8000002;luiscarlosvet;vet502;2/3/5/9/10/11/12/16/18/19
+Adrian;adrian@gmail.com;cirujano;4;5647000;780000002;adrianvet;vet504;2/3/5/9/10/11/12/16/18/19

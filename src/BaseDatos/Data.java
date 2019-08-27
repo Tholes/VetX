@@ -58,7 +58,14 @@ public class Data{
                     String email = cliente[1];
                     String usuario = cliente[2];
                     String key = cliente[3];
-                    usuarios.put(usuario, new Cliente(nombre,email,usuario,key));
+                    String[] menu = cliente[4].split("/");
+                    ArrayList<Integer> menuNew = new ArrayList<>();
+                    for (int i = 0; i < menu.length; i++) {
+                        menuNew.add(Integer.parseInt(menu[i]));
+                    }
+                    Cliente user =  new Cliente(nombre,email,usuario,key);
+                    usuarios.put(usuario,user);
+                    user.setMenuPersonal(menuNew);
                 }
             }
             br.close();
@@ -78,7 +85,15 @@ public class Data{
                     String email = administrador[1];
                     String usuario = administrador[2];
                     String key = administrador[3];
-                    usuarios.put(usuario, new Administrador(nombre,email,usuario,key));
+                    String[] menu = administrador[4].split("/");
+                    ArrayList<Integer> menuNew = new ArrayList<>();
+
+                    for (int i = 0; i < menu.length; i++) {
+                        menuNew.add(Integer.parseInt(menu[i]));
+                    }
+                    Administrador admin = new Administrador(nombre,email,usuario,key);
+                    usuarios.put(usuario, admin);
+                    admin.setMenuPersonal(menuNew);
                 }
             }
             br.close();
@@ -103,8 +118,15 @@ public class Data{
                     long idTarjetaProfesional = Long.parseLong(veterinario[5]);
                     String usuario = veterinario[6];
                     String key = veterinario[7];
-                    usuarios.put(usuario, new Veterinario(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key));
+                    String[] menu = veterinario[8].split("/");
+                    ArrayList<Integer> menuNew = new ArrayList<>();
+                    for (int i = 0; i < menu.length; i++) {
+                        menuNew.add(Integer.parseInt(menu[i]));
+                    }
+                    Veterinario vet =  new Veterinario(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key);
+                    usuarios.put(usuario,vet );
                     veterinarios.add((Veterinario) usuarios.get(usuario));
+                    vet.setMenuPersonal(menuNew);
                 }
             }
             br.close();
@@ -305,13 +327,25 @@ public class Data{
                 String line = persona.getNombre()+";";
                 line += persona.getEmail()+";";
                 line += persona.getNombreUsuario()+";";
-                line += persona.getKey();
+                line += persona.getKey()+";";
                 if (persona instanceof Cliente){
+                    ArrayList<Integer> menu = ((Cliente) persona).getMenuPersonal();
+                    for (int i = 0; i <menu.size()-1; i++) {
+                        line += menu.get(i)+"/";
+                    }
+                    line += menu.get(menu.size()-1);
                     outCliente.println(line);
                 }
+
                 else if (persona instanceof Administrador ){
+                    ArrayList<Integer> menu = ((Administrador) persona).getMenuPersonal();
+                    for (int i = 0; i <menu.size()-1; i++) {
+                        line += menu.get(i)+"/";
+                    }
+                    line += menu.get(menu.size()-1);
                     outAdministrador.println(line);
                 }
+
                 else if (persona instanceof Veterinario){
                     line = persona.getNombre()+";";
                     line += persona.getEmail()+";";
@@ -320,7 +354,12 @@ public class Data{
                     line += ((Veterinario) persona).getSueldo()+";";
                     line += ((Veterinario) persona).getIdProfesional()+";";
                     line += persona.getNombreUsuario()+";";
-                    line += persona.getKey();
+                    line += persona.getKey()+";";
+                    ArrayList<Integer> menu = ((Veterinario) persona).getMenuPersonal();
+                    for (int i = 0; i <menu.size()-1; i++) {
+                        line += menu.get(i)+"/";
+                    }
+                    line += menu.get(menu.size()-1);
                     outVeterinario.println(line);
                 }
             }
@@ -329,6 +368,8 @@ public class Data{
             outCliente.close();
             outVeterinario.close();
         } catch (Exception e){
+            System.out.println(" Mera vuelta");
+            System.out.println(e);
         }
 
     }
@@ -423,68 +464,6 @@ public class Data{
         }
     }
 
-    public HashMap<String, Persona> getUsuarios() {
-        return usuarios;
-    }
 
-    public HashMap<Integer, Mascota> getMascotas() {
-        return mascotas;
-    }
-
-    public HashMap<Integer, Cita> getCitas() {
-        return citas;
-    }
-
-    public HashMap<Integer, Mascota> getHospitalizados() {
-        return hospitalizados;
-    }
-
-    public ArrayList<Integer> getMenuCliente() {
-        return menuCliente;
-    }
-
-    public ArrayList<Integer> getMenuVeterinario() {
-        return menuVeterinario;
-    }
-
-    public ArrayList<Integer> getMenuAdministrador() {
-        return menuAdministrador;
-    }
-
-    public ArrayList<Veterinario> getVeterinarios() {
-        return veterinarios;
-    }
-
-    public void setUsuarios(HashMap<String, Persona> usuarios) {
-        this.usuarios = usuarios;
-    }
-
-    public void setMascotas(HashMap<Integer, Mascota> mascotas) {
-        this.mascotas = mascotas;
-    }
-
-    public void setCitas(HashMap<Integer, Cita> citas) {
-        this.citas = citas;
-    }
-
-    public void setHospitalizados(HashMap<Integer, Mascota> hospitalizados) {
-        this.hospitalizados = hospitalizados;
-    }
-
-    public void setMenuCliente(ArrayList<Integer> menuCliente) {
-        this.menuCliente = menuCliente;
-    }
-
-    public void setMenuVeterinario(ArrayList<Integer> menuVeterinario) {
-        this.menuVeterinario = menuVeterinario;
-    }
-
-    public void setMenuAdministrador(ArrayList<Integer> menuAdministrador) {
-        this.menuAdministrador = menuAdministrador;
-    }
-
-    public void setVeterinarios(ArrayList<Veterinario> veterinarios) {
-        this.veterinarios = veterinarios;
-    }
 }
 

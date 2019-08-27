@@ -39,7 +39,8 @@ public class Registrarse extends OpcionDeMenu {
         String usuario = in.nextLine();
         System.out.print("Ingresa tu key: ");
         String key = in.nextLine();
-        System.out.println(Cliente.registrarse(nombre,email,usuario,key));
+        Cliente cliente = new Cliente();
+        System.out.println(cliente.registrarse(nombre,email,usuario,key));
     }
 
     public void registrarAdministrador() throws  IOException{
@@ -51,7 +52,8 @@ public class Registrarse extends OpcionDeMenu {
         String usuario = in.nextLine();
         System.out.print("Ingresa tu key: ");
         String key = in.nextLine();
-        System.out.print(Administrador.registrarse(nombre,email,usuario,key));
+        Administrador admin = new Administrador();
+        System.out.print(admin.registrarse(nombre,email,usuario,key));
     }
 
     public void registrarVeterinario() throws IOException{
@@ -72,7 +74,8 @@ public class Registrarse extends OpcionDeMenu {
         String usuario = in.nextLine();
         System.out.print("Ingresa tu key: ");
         String key = in.nextLine();
-        System.out.print(Veterinario.registrarse(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key));
+        Veterinario vet = new Veterinario();
+        System.out.print(vet.registrarse(nombre,email,especialidad,experiencia,sueldo,idTarjetaProfesional,usuario,key));
     }
     @Override
     public String toString() {

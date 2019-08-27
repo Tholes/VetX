@@ -1,4 +1,4 @@
-patricia osorio;patricia@gmail.com;patricia;patricia104
-mayra tejada;mayra@gmil.com;mayra;mayra101
-cristian henao;cristian@gmail.com;cristian;cristian102
-ricardo peñaloza;ricardo@gmail.com;ricardo;ricardo103
+patricia osorio;patricia@gmail.com;patricia;patricia104;3/4/5/6/9/10/18/19
+mayra tejada;mayra@gmil.com;mayra;mayra101;3/4/5/6/9/10/18/19
+cristian henao;cristian@gmail.com;cristian;cristian102;3/4/5/6/9/10/18/19
+ricardo peñaloza;ricardo@gmail.com;ricardo;ricardo103;3/4/5/6/9/10/18/19
