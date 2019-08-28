@@ -3,11 +3,11 @@ package UIMain;
 import BaseDatos.Data;
 import UIMain.funcionalidades.*;
 
+import vista.VentanaPrincipal;
 import gestorAplicacion.Usuarios.Persona;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 
 public class Main {
 

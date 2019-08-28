@@ -1,12 +1,12 @@
 
-package Vista;
+package vista;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import UIMain.Main;
-import Control.Imagen;
-import Control.Bienvenidad;
+import control.loginControl.ControlBienvenida;
+import control.loginControl.ControlImagenes;
 
 public class VentanaPrincipal  extends JFrame{
 	
@@ -77,8 +77,6 @@ public class VentanaPrincipal  extends JFrame{
 		icono = new ImageIcon(imagen.getImage().getScaledInstance(B1.getWidth(), B1.getHeight(), Image.SCALE_DEFAULT));
 		B1.setIcon(icono);
 		
-	
-		
 		//Textos Principales
 		JTextArea Tinicial = new JTextArea("VETX es el modelo de una clínica veterinaria, donde puedes llevar a tu mascota y contar con los servicios de medicina general y los mejores veterinarios",10,20);
 		Tinicial.setLineWrap(true);
@@ -88,8 +86,8 @@ public class VentanaPrincipal  extends JFrame{
 		T3 = new JTextField(8);
 		
 		//Action listeners
-		B1.addActionListener(new Imagen());
-		L1.addMouseListener(new Bienvenidad());
+		B1.addActionListener(new ControlImagenes());
+		L1.addMouseListener(new ControlBienvenida());
 
 				
 		

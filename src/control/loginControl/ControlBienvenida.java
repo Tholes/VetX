@@ -1,5 +1,5 @@
 
-package Control;
+package control.loginControl;
 import java.awt.*;
 import java.awt.event.*;
 import UIMain.Main;

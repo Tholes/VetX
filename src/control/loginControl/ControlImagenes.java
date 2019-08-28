@@ -1,4 +1,4 @@
-package Control;
+package control.loginControl;
 import java.awt.event.*;
 
 import UIMain.Main;
@@ -15,7 +15,7 @@ public class ControlImagenes implements ActionListener {
 			}
 			else if(contador==3) {
 				contador = 0;
-				Main.ventanaLogin.cambiarImagen("CLICIMAGEN.png");
+				Main.ventanaLogin.cambiarImagen("CLICIMAGEN.PNG");
 			}
 		}
 } 
