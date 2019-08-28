@@ -14,6 +14,7 @@ public class Main {
     private static Persona usuarioActivo;
     private static MenuDeConsola menu;
     private static MenuDeConsola menuPorDefecto;
+    public static VentanaPrincipal ventanaLogin = new VentanaPrincipal();
     public static void main(String[] args) throws IOException, Throwable {
 
         System.out.println("");
