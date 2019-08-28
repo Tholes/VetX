@@ -93,7 +93,7 @@ public class VentanaPrincipal  extends JFrame{
 
 				
 		
-		//Hagamos el panel izquierdo (P1)
+		//haciiendo  el panel izquierdo (P1)
 		
 		P1.setLayout(new BorderLayout(10,10));
 		
