@@ -1,6 +1,5 @@
-
 package control.loginControl;
 
-public class ControlAdmin {
+public class ControlVet {
 
 }

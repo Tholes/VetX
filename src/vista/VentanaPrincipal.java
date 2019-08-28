@@ -73,6 +73,7 @@ public class VentanaPrincipal  extends JFrame{
 		B4 = new JButton("Salir");
 		B5 = new JButton("Veterinario");
 
+
 		//Imagen del Boton 1
 		B1 = new JButton();	
 		B1.setBounds(0, 0, 200, 200);
@@ -92,6 +93,10 @@ public class VentanaPrincipal  extends JFrame{
 		B1.addActionListener(new ControlImagenes());
 		L1.addMouseListener(new ControlBienvenida());
 		B4.addMouseListener(new controlSalir());
+
+		B2.addActionListener(oidor);
+		B3.addActionListener(oidor);
+		B5.addActionListener(oidor);
 		//haciendo  el panel izquierdo (P1)
 		
 		P1.setLayout(new BorderLayout(10,10));
@@ -122,6 +127,16 @@ public class VentanaPrincipal  extends JFrame{
 		Frame.add(P1, BorderLayout.WEST);
 		Frame.add(P2, BorderLayout.EAST);
 
+        P7.add(L2, BorderLayout.SOUTH);
+        P8.add(L3);
+        P8.add(T2);
+        P8.add(L4);
+        P8.add(T3);
+        L2.setVisible(false);
+        L3.setVisible(false);
+        L4.setVisible(false);
+        T2.setVisible(false);
+        T3.setVisible(false);
 		Border padding = BorderFactory.createEmptyBorder(10, 10, 10, 10);
 		Frame.setBorder(padding);
 		getContentPane().add(Frame);	
@@ -165,32 +180,75 @@ public class VentanaPrincipal  extends JFrame{
 	}
 
 	public void ingresarAdministrador() {
-		P7.add(L2, BorderLayout.SOUTH);
-		P8.add(L3);
-		P8.add(T2);
-		P8.add(L4);
-		P8.add(T3);
-		
+        L2.setVisible(true);
+        L3.setVisible(true);
+        L4.setVisible(true);
+        T2.setVisible(true);
+        T3.setVisible(true);
+
 		B3.setText("Usuario Común");
 		B3.setActionCommand("Usuario Común");
 		B2.setText("Administrador Completo y Nuevamente Clic");
 		B2.setActionCommand("AdministradorLogin");
+		B5.setText("Veterinario");
+		B5.setActionCommand("Veterinario");
+
 		pack();
 	}
 
-	public void ingresarUsario() {
-		P7.add(L2, BorderLayout.SOUTH);
-		P8.add(L3);
-		P8.add(T2);
-		P8.add(L4);
-		P8.add(T3);
+	public void ingresarUsuario() {
+        L2.setVisible(true);
+        L3.setVisible(true);
+        L4.setVisible(true);
+        T2.setVisible(true);
+        T3.setVisible(true);
 		
 		B3.setText("Usuario Comun Complete y Nuevamente Clic");
-		B3.setActionCommand("Usuario ComunLogin");
+		B3.setActionCommand("Usuario Comun");
 		B2.setText("Administrador");
 		B2.setActionCommand("Administrador");
+        B5.setText("Veterinario");
+        B5.setActionCommand("Veterinario");
+
 		pack();
 	}
+
+    public void ingresarVeterinario() {
+        L2.setVisible(true);
+        L3.setVisible(true);
+        L4.setVisible(true);
+        T2.setVisible(true);
+        T3.setVisible(true);
+
+        B3.setText("Usuario Comun");
+        B3.setActionCommand("Usuario Comun");
+        B2.setText("Administrador");
+        B2.setActionCommand("Administrador");
+        B5.setText("Veterinario Completo y Nuevamente Clic");
+        B5.setActionCommand("Veterinario");
+
+        pack();
+    }
+
+    ActionListener oidor = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getSource().equals(B3)) {
+                System.out.println(e);
+                ingresarUsuario();
+            }
+
+            else if(e.getSource().equals(B2)) {
+                System.out.println(e);
+                ingresarAdministrador();
+            }
+
+            else if(e.getSource().equals(B5)) {
+                System.out.println(e);
+                ingresarVeterinario();
+            }
+        }
+    };
 
 	public JLabel getL1() {
 		return L1;
