@@ -11,10 +11,14 @@ public class ControlBienvenida implements MouseListener {
     public void mouseExited(MouseEvent evento2) {
     	Main.ventanaLogin.getL1().setForeground((Color.BLACK));
     }
+
     public void mouseReleased(MouseEvent evento3) {
+
     }
     public void mouseClicked(MouseEvent evento3) {
+
     }
-    public void mousePressed(MouseEvent evento3) {	
+    public void mousePressed(MouseEvent evento3) {
+
     }
 }

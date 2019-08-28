@@ -7,6 +7,7 @@ import javax.swing.border.Border;
 import UIMain.Main;
 import control.loginControl.ControlBienvenida;
 import control.loginControl.ControlImagenes;
+import control.loginControl.controlSalir;
 
 public class VentanaPrincipal  extends JFrame{
 	
@@ -33,6 +34,7 @@ public class VentanaPrincipal  extends JFrame{
 	private JButton B2;
 	private JButton B3;
 	private JButton B4;
+	private JButton B5;
 
 	private JTextArea Tinicial;
 	private JScrollPane T1;
@@ -43,7 +45,7 @@ public class VentanaPrincipal  extends JFrame{
 	private Icon icono;
 	
 	public VentanaPrincipal() {
-		super("Login");
+		super("Inicio");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel Frame = new JPanel();
 		Frame.setLayout(new BorderLayout(20,20));
@@ -69,6 +71,7 @@ public class VentanaPrincipal  extends JFrame{
 		B2 = new JButton("Administrador");	
 		B3 = new JButton("Usuario común");
 		B4 = new JButton("Salir");
+		B5 = new JButton("Veterinario");
 
 		//Imagen del Boton 1
 		B1 = new JButton();	
@@ -88,10 +91,8 @@ public class VentanaPrincipal  extends JFrame{
 		//Action listeners
 		B1.addActionListener(new ControlImagenes());
 		L1.addMouseListener(new ControlBienvenida());
-
-				
-		
-		//haciiendo  el panel izquierdo (P1)
+		B4.addMouseListener(new controlSalir());
+		//haciendo  el panel izquierdo (P1)
 		
 		P1.setLayout(new BorderLayout(10,10));
 		
@@ -100,18 +101,16 @@ public class VentanaPrincipal  extends JFrame{
 		
 		P1.add(P3,BorderLayout.NORTH);
 		P1.add(P4,BorderLayout.CENTER);
-		
-		
+
 		P2.setLayout(new BorderLayout(10,10));
 		
 		P5.add(T1, BorderLayout.NORTH);
 		P6.setLayout(new BorderLayout(10,10));
-		
 	
 		P7.add(B2,BorderLayout.WEST);
 		P7.add(B3,BorderLayout.EAST);
-	
-		
+		P7.add(B5,BorderLayout.CENTER);
+
 		JPanel P9 = new JPanel(new BorderLayout(10,10));
 		P9.add(P8,BorderLayout.CENTER);
 		P9.add(B4,BorderLayout.SOUTH);
@@ -119,12 +118,9 @@ public class VentanaPrincipal  extends JFrame{
 		P2.add(P5, BorderLayout.NORTH);
 		P2.add(P7, BorderLayout.CENTER);
 		P2.add(P9, BorderLayout.SOUTH);
-		
 
-		
 		Frame.add(P1, BorderLayout.WEST);
 		Frame.add(P2, BorderLayout.EAST);
-		
 
 		Border padding = BorderFactory.createEmptyBorder(10, 10, 10, 10);
 		Frame.setBorder(padding);
@@ -132,7 +128,6 @@ public class VentanaPrincipal  extends JFrame{
 		setVisible(true);
 		pack();
 		setLocationRelativeTo(null);
-
 	}
 
 	public long getCedula() {
@@ -168,6 +163,7 @@ public class VentanaPrincipal  extends JFrame{
 		B1.setIcon(icono);
 		pack();
 	}
+
 	public void ingresarAdministrador() {
 		P7.add(L2, BorderLayout.SOUTH);
 		P8.add(L3);
@@ -181,6 +177,7 @@ public class VentanaPrincipal  extends JFrame{
 		B2.setActionCommand("AdministradorLogin");
 		pack();
 	}
+
 	public void ingresarUsario() {
 		P7.add(L2, BorderLayout.SOUTH);
 		P8.add(L3);
@@ -194,6 +191,7 @@ public class VentanaPrincipal  extends JFrame{
 		B2.setActionCommand("Administrador");
 		pack();
 	}
+
 	public JLabel getL1() {
 		return L1;
 	}
