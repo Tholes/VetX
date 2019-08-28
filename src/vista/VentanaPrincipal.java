@@ -88,7 +88,8 @@ public class VentanaPrincipal  extends JFrame{
 		JScrollPane T1 = new JScrollPane(Tinicial);
 		T2 = new JTextField(8);
 		T3 = new JTextField(8);
-		
+		T2.addActionListener(oidor);
+		T2.addActionListener(oidor);
 		//Action listeners
 		B1.addActionListener(new ControlImagenes());
 		L1.addMouseListener(new ControlBienvenida());
@@ -234,19 +235,23 @@ public class VentanaPrincipal  extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource().equals(B3)) {
-                System.out.println(e);
-                ingresarUsuario();
-            }
-
+				ingresarUsuario();
+			}
             else if(e.getSource().equals(B2)) {
-                System.out.println(e);
                 ingresarAdministrador();
             }
 
             else if(e.getSource().equals(B5)) {
-                System.out.println(e);
                 ingresarVeterinario();
             }
+            else if(e.getSource().equals(T2)){
+            	VentanaUsuario venta = new VentanaUsuario();
+            	venta.arranca();
+			}
+            else if (e.getSource().equals(T3)){
+				VentanaUsuario venta = new VentanaUsuario();
+				venta.arranca();
+			}
         }
     };
 

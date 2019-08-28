@@ -15,7 +15,7 @@ public class VentanaUsuario extends JFrame{
     public static JPanel p3= new JPanel();
 
     public VentanaUsuario() {
-        super("");
+        super("Usuario: ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         contenedor = getContentPane();
         contenedor.setLayout(new BorderLayout());
@@ -54,12 +54,9 @@ public class VentanaUsuario extends JFrame{
         textoDescribe.setText(explic);
         textoDescribe.setBounds(290, 150, 550, 100);
 
-
-
         p1.add(barraMenu,BorderLayout.NORTH);
         p1.add(descripcion,BorderLayout.CENTER);
         p1.add(textoDescribe,BorderLayout.SOUTH);
-
 
         JLabel A = new JLabel("(a)");
         A.setBorder(javax.swing.BorderFactory.createBevelBorder(BevelBorder.RAISED));
