@@ -1,16 +1,16 @@
 package UIMain.funcionalidades;
-import BaseDatos.in;
+import modelo.BaseDatos.in;
 import UIMain.Main;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Animales.Mascota;
-import gestorAplicacion.Usuarios.Cliente;
+import modelo.gestorAplicacion.Animales.Mascota;
+import modelo.gestorAplicacion.Usuarios.Cliente;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import gestorAplicacion.Usuarios.Persona;
-import gestorAplicacion.Usuarios.Veterinario;
-import gestorAplicacion.prestacion.Cita;
+import modelo.gestorAplicacion.Usuarios.Persona;
+import modelo.gestorAplicacion.Usuarios.Veterinario;
+import modelo.gestorAplicacion.prestacion.Cita;
 
 public class PedirCita extends OpcionDeMenu {
 

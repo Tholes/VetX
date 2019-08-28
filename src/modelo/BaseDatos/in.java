@@ -1,4 +1,4 @@
-package BaseDatos;
+package modelo.BaseDatos;
 
 import java.io.BufferedReader;
 import java.io.IOException;

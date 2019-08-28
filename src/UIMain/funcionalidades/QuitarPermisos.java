@@ -1,5 +1,5 @@
 package UIMain.funcionalidades;
-import BaseDatos.Data;
+import modelo.BaseDatos.Data;
 import UIMain.Main;
 import UIMain.MenuDeConsola;
 import UIMain.OpcionDeMenu;
@@ -8,9 +8,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 
-import gestorAplicacion.Usuarios.Cliente;
+import modelo.gestorAplicacion.Usuarios.Cliente;
 
-import gestorAplicacion.Usuarios.Veterinario;
+import modelo.gestorAplicacion.Usuarios.Veterinario;
 
 import java.io.IOException;
 

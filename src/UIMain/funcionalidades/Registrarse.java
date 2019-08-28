@@ -1,10 +1,10 @@
 package UIMain.funcionalidades;
 
-import BaseDatos.in;
+import modelo.BaseDatos.in;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Usuarios.Administrador;
-import gestorAplicacion.Usuarios.Cliente;
-import gestorAplicacion.Usuarios.Veterinario;
+import modelo.gestorAplicacion.Usuarios.Administrador;
+import modelo.gestorAplicacion.Usuarios.Cliente;
+import modelo.gestorAplicacion.Usuarios.Veterinario;
 
 import java.io.IOException;
 

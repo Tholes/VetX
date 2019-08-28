@@ -1,7 +1,7 @@
-package gestorAplicacion.Animales;
+package modelo.gestorAplicacion.Animales;
 
-import gestorAplicacion.Usuarios.*;
-import gestorAplicacion.prestacion.*;
+import modelo.gestorAplicacion.Usuarios.*;
+import modelo.gestorAplicacion.prestacion.*;
 
 import java.util.HashMap;
 

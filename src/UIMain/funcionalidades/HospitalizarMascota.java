@@ -1,12 +1,10 @@
 package UIMain.funcionalidades;
-import BaseDatos.in;
-import UIMain.Main;
+import modelo.BaseDatos.in;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Animales.Mascota;
-import gestorAplicacion.Usuarios.Administrador;
-import gestorAplicacion.Usuarios.Cliente;
-import gestorAplicacion.Usuarios.Persona;
-import gestorAplicacion.prestacion.Clinica;
+import modelo.gestorAplicacion.Animales.Mascota;
+import modelo.gestorAplicacion.Usuarios.Administrador;
+import modelo.gestorAplicacion.Usuarios.Cliente;
+import modelo.gestorAplicacion.prestacion.Clinica;
 import java.util.Scanner;
 public class HospitalizarMascota extends OpcionDeMenu{
     Scanner entrada = new Scanner (System.in);

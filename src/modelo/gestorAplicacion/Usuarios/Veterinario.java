@@ -1,11 +1,11 @@
-package gestorAplicacion.Usuarios;
+package modelo.gestorAplicacion.Usuarios;
 
 import java.util.ArrayList;
 
-import BaseDatos.Data;
+import modelo.BaseDatos.Data;
 import UIMain.Main;
 import UIMain.MenuDeConsola;
-import gestorAplicacion.prestacion.Cita;
+import modelo.gestorAplicacion.prestacion.Cita;
 
 public class Veterinario extends Persona {
     /*

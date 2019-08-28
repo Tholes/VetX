@@ -1,10 +1,10 @@
 package UIMain.funcionalidades;
 
-import BaseDatos.Data;
-import BaseDatos.in;
+import modelo.BaseDatos.Data;
+import modelo.BaseDatos.in;
 import UIMain.Main;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Usuarios.Persona;
+import modelo.gestorAplicacion.Usuarios.Persona;
 
 public class EliminarUsuario extends OpcionDeMenu {
     @Override

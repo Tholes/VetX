@@ -1,4 +1,4 @@
-package gestorAplicacion.prestacion;
+package modelo.gestorAplicacion.prestacion;
 
 import java.util.HashMap;
 

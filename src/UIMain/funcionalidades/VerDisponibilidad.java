@@ -1,6 +1,6 @@
 package UIMain.funcionalidades;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.prestacion.Cita;
+import modelo.gestorAplicacion.prestacion.Cita;
 
 public class VerDisponibilidad extends OpcionDeMenu{
 

@@ -1,6 +1,6 @@
-package gestorAplicacion.Usuarios;
+package modelo.gestorAplicacion.Usuarios;
 
-import BaseDatos.Data;
+import modelo.BaseDatos.Data;
 import UIMain.Main;
 
 import java.util.ArrayList;

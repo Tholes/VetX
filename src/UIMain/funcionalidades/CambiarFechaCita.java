@@ -1,13 +1,13 @@
 package UIMain.funcionalidades;
-import BaseDatos.Data;
+import modelo.BaseDatos.Data;
 import UIMain.Main;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Usuarios.Cliente;
-import gestorAplicacion.Usuarios.Persona;
-import gestorAplicacion.Usuarios.Veterinario;
-import gestorAplicacion.prestacion.Cita;
+import modelo.gestorAplicacion.Usuarios.Cliente;
+import modelo.gestorAplicacion.Usuarios.Persona;
+import modelo.gestorAplicacion.Usuarios.Veterinario;
+import modelo.gestorAplicacion.prestacion.Cita;
 
-import BaseDatos.in;
+import modelo.BaseDatos.in;
 
 public class CambiarFechaCita extends OpcionDeMenu{
     public void ejecutar() throws Throwable {

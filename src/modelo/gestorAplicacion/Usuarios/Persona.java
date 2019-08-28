@@ -1,7 +1,7 @@
-package gestorAplicacion.Usuarios;
-import BaseDatos.Data;
-import gestorAplicacion.Animales.Mascota;
-import gestorAplicacion.prestacion.Cita;
+package modelo.gestorAplicacion.Usuarios;
+import modelo.BaseDatos.Data;
+import modelo.gestorAplicacion.Animales.Mascota;
+import modelo.gestorAplicacion.prestacion.Cita;
 import UIMain.Main;
 
 import java.util.HashMap;

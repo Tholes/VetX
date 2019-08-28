@@ -2,7 +2,7 @@ package UIMain.funcionalidades;
 
 import UIMain.Main;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Usuarios.Administrador;
+import modelo.gestorAplicacion.Usuarios.Administrador;
 import java.util.Scanner;
 
 public class ContratarVeterinario extends OpcionDeMenu {

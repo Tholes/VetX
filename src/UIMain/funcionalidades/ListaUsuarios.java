@@ -1,7 +1,7 @@
 package UIMain.funcionalidades;
 
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Usuarios.Persona;
+import modelo.gestorAplicacion.Usuarios.Persona;
 
 public class ListaUsuarios extends OpcionDeMenu {
     @Override

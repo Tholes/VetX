@@ -1,6 +1,6 @@
 package UIMain.funcionalidades;
 
-import BaseDatos.Data;
+import modelo.BaseDatos.Data;
 import UIMain.OpcionDeMenu;
 
 import java.io.IOException;

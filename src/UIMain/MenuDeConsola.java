@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import UIMain.funcionalidades.*;
-import gestorAplicacion.Usuarios.Administrador;
-import gestorAplicacion.Usuarios.Cliente;
-import gestorAplicacion.Usuarios.Persona;
-import gestorAplicacion.Usuarios.Veterinario;
+import modelo.gestorAplicacion.Usuarios.Administrador;
+import modelo.gestorAplicacion.Usuarios.Cliente;
+import modelo.gestorAplicacion.Usuarios.Persona;
+import modelo.gestorAplicacion.Usuarios.Veterinario;
 
 public class MenuDeConsola {
 

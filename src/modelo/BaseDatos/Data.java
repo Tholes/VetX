@@ -1,12 +1,12 @@
-package BaseDatos;
+package modelo.BaseDatos;
 
-import gestorAplicacion.Animales.Mascota;
-import gestorAplicacion.Usuarios.Administrador;
-import gestorAplicacion.Usuarios.Cliente;
-import gestorAplicacion.Usuarios.Persona;
-import gestorAplicacion.Usuarios.Veterinario;
-import gestorAplicacion.prestacion.Cita;
-import gestorAplicacion.prestacion.Clinica;
+import modelo.gestorAplicacion.Animales.Mascota;
+import modelo.gestorAplicacion.Usuarios.Administrador;
+import modelo.gestorAplicacion.Usuarios.Cliente;
+import modelo.gestorAplicacion.Usuarios.Persona;
+import modelo.gestorAplicacion.Usuarios.Veterinario;
+import modelo.gestorAplicacion.prestacion.Cita;
+import modelo.gestorAplicacion.prestacion.Clinica;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package UIMain.funcionalidades;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Usuarios.Veterinario;
+import modelo.gestorAplicacion.Usuarios.Veterinario;
 
 
 public class SueldoVeterinarios extends OpcionDeMenu {

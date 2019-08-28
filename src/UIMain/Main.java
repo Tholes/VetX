@@ -1,10 +1,9 @@
 package UIMain;
 
-import BaseDatos.Data;
 import UIMain.funcionalidades.*;
 
 import vista.VentanaPrincipal;
-import gestorAplicacion.Usuarios.Persona;
+import modelo.gestorAplicacion.Usuarios.Persona;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,61 +16,7 @@ public class Main {
     public static VentanaPrincipal ventanaLogin = new VentanaPrincipal();
     public static void main(String[] args) throws IOException, Throwable {
 
-        System.out.println("");
-        inicializarDatos();
-
-        while(true){
-            try{
-                if(Main.usuarioActivo != null){
-                    menu = new MenuDeConsola(usuarioActivo);
-                    menu.lanzarMenu();
-                }
-                else {
-                    menuPorDefecto.lanzarMenu();
-                }
-            }
-
-            catch (Exception e){
-                System.out.println(e);
-                Data guardar = new Data();
-                guardar.guardarDatos();
-                System.out.println("Saliendo...");
-                System.exit(0);
-            }
-        }
     }
-
-    public static void inicializarDatos(){
-        Data cargar = new Data();
-        cargar.cargarDatos();
-        System.out.println(
-                " .----------------.  .----------------.  .----------------.  .----------------. \n" +
-                        "| .--------------. || .--------------. || .--------------. || .--------------. |\n" +
-                        "| | ____   ____  | || |  _________   | || |  _________   | || |  ____  ____  | |\n" +
-                        "| ||_  _| |_  _| | || | |_   ___  |  | || | |  _   _  |  | || | |_  _||_  _| | |\n" +
-                        "| |  \\ \\   / /   | || |   | |_  \\_|  | || | |_/ | | \\_|  | || |   \\ \\  / /   | |\n" +
-                        "| |   \\ \\ / /    | || |   |  _|  _   | || |     | |      | || |    > `' <    | |\n" +
-                        "| |    \\ ' /     | || |  _| |___/ |  | || |    _| |_     | || |  _/ /'`\\ \\_  | |\n" +
-                        "| |     \\_/      | || | |_________|  | || |   |_____|    | || | |____||____| | |\n" +
-                        "| |              | || |              | || |              | || |              | |\n" +
-                        "| '--------------' || '--------------' || '--------------' || '--------------' |\n" +
-                        " '----------------'  '----------------'  '----------------'  '----------------'"
-        );
-
-        System.out.println("");
-        System.out.println("BIENVENIDO A NUESTRA CLÍNICA!");
-        System.out.println("GRACIAS POR PREFERIR NUESTROS SERVICIOS.");
-        System.out.println("POR FAVOR ELIGE UNA DE LAS SIGUIENTES OPCIONES ");
-        System.out.println("");
-
-        ArrayList<OpcionDeMenu> opcionesInvitado = new ArrayList<OpcionDeMenu>(){{
-            add(new IniciarSesion());
-            add(new Registrarse());
-            add(new SalirDeLaAplicacion());
-        }};
-        menuPorDefecto = (new MenuDeConsola(opcionesInvitado));
-    }
-
     public static Persona getUsuarioActivo() {
         return usuarioActivo;
     }
@@ -83,5 +28,4 @@ public class Main {
     public static MenuDeConsola getMenu() {
         return menu;
     }
-
 }

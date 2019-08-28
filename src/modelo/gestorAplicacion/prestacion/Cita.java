@@ -1,11 +1,11 @@
-package gestorAplicacion.prestacion;
+package modelo.gestorAplicacion.prestacion;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-import BaseDatos.Data;
-import gestorAplicacion.Animales.Mascota;
-import gestorAplicacion.Usuarios.*;
+import modelo.BaseDatos.Data;
+import modelo.gestorAplicacion.Animales.Mascota;
+import modelo.gestorAplicacion.Usuarios.*;
 
 public class Cita {
     /*

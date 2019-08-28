@@ -1,14 +1,14 @@
 package UIMain.funcionalidades;
-import BaseDatos.Data;
-import BaseDatos.in;
+import modelo.BaseDatos.Data;
+import modelo.BaseDatos.in;
 import UIMain.Main;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Usuarios.Persona;
-import gestorAplicacion.Usuarios.Cliente;
+import modelo.gestorAplicacion.Usuarios.Persona;
+import modelo.gestorAplicacion.Usuarios.Cliente;
 
 
 import java.io.IOException;
-import java.util.Date;
+
 public class RegistrarMascota extends OpcionDeMenu {
 
     @Override

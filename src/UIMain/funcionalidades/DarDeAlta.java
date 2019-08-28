@@ -1,8 +1,8 @@
 package UIMain.funcionalidades;
 //Opción de menú 5
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Animales.Mascota;
-import gestorAplicacion.prestacion.Clinica;
+import modelo.gestorAplicacion.Animales.Mascota;
+import modelo.gestorAplicacion.prestacion.Clinica;
 
 import java.util.Scanner;
 

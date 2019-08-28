@@ -4,8 +4,8 @@ import UIMain.OpcionDeMenu;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import BaseDatos.in;
-import gestorAplicacion.Usuarios.Persona;
+import modelo.BaseDatos.in;
+import modelo.gestorAplicacion.Usuarios.Persona;
 
 
 public class IniciarSesion extends OpcionDeMenu {

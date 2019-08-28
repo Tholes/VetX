@@ -1,12 +1,12 @@
-package gestorAplicacion.Usuarios;
+package modelo.gestorAplicacion.Usuarios;
 
 import java.util.ArrayList;
 
-import BaseDatos.Data;
+import modelo.BaseDatos.Data;
 import UIMain.Main;
 import UIMain.MenuDeConsola;
-import gestorAplicacion.Animales.*;
-import gestorAplicacion.prestacion.*;
+import modelo.gestorAplicacion.Animales.*;
+import modelo.gestorAplicacion.prestacion.*;
 import java.util.HashMap;
 
 public class Cliente extends Persona {

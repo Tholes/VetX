@@ -2,9 +2,9 @@ package UIMain.funcionalidades;
 
 import UIMain.Main;
 import UIMain.OpcionDeMenu;
-import gestorAplicacion.Usuarios.Cliente;
-import gestorAplicacion.Usuarios.Persona;
-import gestorAplicacion.prestacion.Cita;
+import modelo.gestorAplicacion.Usuarios.Cliente;
+import modelo.gestorAplicacion.Usuarios.Persona;
+import modelo.gestorAplicacion.prestacion.Cita;
 
 import java.io.IOException;
 import java.util.Scanner;
